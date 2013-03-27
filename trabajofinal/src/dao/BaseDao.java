@@ -66,7 +66,7 @@ public abstract class BaseDao {
 	@SuppressWarnings("rawtypes")
 	abstract public List listar();
 	abstract public Integer guardar(Object obj);
-	abstract public Integer eliminar(Object obj);
+	abstract public Integer eliminar(Integer id);
 	abstract public Integer modificar(Object obj);
 	abstract public Object buscar(Integer id);
 }

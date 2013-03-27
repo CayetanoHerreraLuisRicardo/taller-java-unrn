@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.ResultSet;
 import java.util.*;
 
 public class Pedido {
@@ -50,4 +51,34 @@ public class Pedido {
 	}
 	
 	public Pedido(){}
+
+	public static Pedido cargarProds(Pedido ped){
+		//Creación de la lista de productos
+		try{
+			ResultSet p_pID=dao.BaseDao.consultar("Select * FROM pedido_producto WHERE id="+ped.getId());
+			List<Producto> pList=new ArrayList<Producto>();
+			while(p_pID.next()){
+				ResultSet prodID=dao.BaseDao.consultar("Select * FROM producto WHERE id="+p_pID.getInt("producto_id"));
+				prodID.next();
+				Producto prod=new Producto();
+				prod.setId(prodID.getInt("id"));
+				prod.setDescripcion(prodID.getString("descrip"));
+				prod.setNombre(prodID.getString("nombre"));
+				prod.setPrecio(prodID.getDouble("precio"));
+					ResultSet catID=dao.BaseDao.consultar("Select * FROM categoria WHERE id="+prodID.getInt("categoria_id"));
+					catID.next();
+					Categoria cat=new Categoria();
+					cat.setId(catID.getInt("id"));
+					cat.setNombre(catID.getString("nombre"));
+				pList.add(prod);
+			}
+			ped.setProductos(pList);
+			return ped;
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ped.setProductos(null);
+			return ped;
+		}
+	}
 }
