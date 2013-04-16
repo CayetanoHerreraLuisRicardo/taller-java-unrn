@@ -79,10 +79,21 @@ public class ZLucianoPedidoController extends HttpServlet {
 				}
 				//Guardar
 				if(accion.equals("guardar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					@SuppressWarnings("unchecked")
 					List<Producto>productos=(List<Producto>) session.getAttribute("carrito");
 					session.removeAttribute("carrito");//Previene repagos de una misma factura
-					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					usuario=(Usuario) session.getAttribute("usuario");
 					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 					Date date=new Date();
 					String fechaPedido=dateFormat.format(date);
@@ -111,6 +122,17 @@ public class ZLucianoPedidoController extends HttpServlet {
 				}
 				//Eliminar
 				if(accion.equals("eliminar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					PedidoDao daoPedido=new PedidoDao();
 					Pedido pedido=(Pedido) request.getAttribute("pedido");
 					Integer resultado=daoPedido.eliminar(pedido.getId());
@@ -120,6 +142,17 @@ public class ZLucianoPedidoController extends HttpServlet {
 				}
 				//Modificar
 				if(accion.equals("modificar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					PedidoDao daoPedido=new PedidoDao();
 					Integer resultado=daoPedido.modificar(request.getAttribute("pedido"));
 					if(resultado != -1){

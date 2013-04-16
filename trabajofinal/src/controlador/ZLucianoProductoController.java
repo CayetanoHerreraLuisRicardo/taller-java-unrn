@@ -67,6 +67,18 @@ public class ZLucianoProductoController extends HttpServlet {
 				}
 				//Guardar
 				if(accion.equals("guardar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					//Guardar
 					Producto prod=new Producto();
 					prod.setNombre(request.getParameter("v_nombre"));
 					prod.setDescripcion(request.getParameter("v_desc"));
@@ -94,6 +106,18 @@ public class ZLucianoProductoController extends HttpServlet {
 				}
 				//Eliminar
 				if(accion.equals("eliminar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					//Eliminar
 					String prodID=request.getParameter("prodID");
 					Integer id=Integer.parseInt(prodID);
 					ProductoDao pDao=new ProductoDao();
@@ -114,6 +138,18 @@ public class ZLucianoProductoController extends HttpServlet {
 				}
 				//Modificar
 				if(accion.equals("modificar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					//Modificar
 					String prodID=request.getParameter("id");
 					Integer id=Integer.parseInt(prodID);
 					Producto prod=new Producto();

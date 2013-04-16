@@ -59,6 +59,17 @@ public class ZLucianoUsuarioController extends HttpServlet {
 				}
 				//Guardar
 				if(accion.equals("guardar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Lista los Usuarios
 					UsuarioDao usDao=new UsuarioDao();
 					List<Usuario>usuarios=usDao.listar();
@@ -69,7 +80,7 @@ public class ZLucianoUsuarioController extends HttpServlet {
 						us.setUser(request.getParameter("v_user"));
 						us.setPass(request.getParameter("v_pass"));
 						us.setMail(request.getParameter("v_mail"));
-						Rol rol=new Rol();
+						rol=new Rol();
 						rol.setId(2);
 						us.setRol(rol);
 						Integer id=usDao.guardar(us);
@@ -105,7 +116,7 @@ public class ZLucianoUsuarioController extends HttpServlet {
 						us.setUser(request.getParameter("v_user"));
 						us.setPass(request.getParameter("v_pass"));
 						us.setMail(request.getParameter("v_mail"));
-						Rol rol=new Rol();
+						rol=new Rol();
 						rol.setId(2);
 						us.setRol(rol);
 						Integer id=usDao.guardar(us);
@@ -127,6 +138,17 @@ public class ZLucianoUsuarioController extends HttpServlet {
 				}
 				//Eliminar
 				if(accion.equals("eliminar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Listar usuarios
 					String users=request.getParameter("us");
 					Integer id=Integer.parseInt(users);
@@ -148,6 +170,17 @@ public class ZLucianoUsuarioController extends HttpServlet {
 				}
 				//Modificar
 				if(accion.equals("modificar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Lista los Usuarios
 					UsuarioDao usDao=new UsuarioDao();
 					List<Usuario>usuarios=usDao.listar();

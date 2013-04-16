@@ -66,6 +66,17 @@ public class ZLucianoCategoriaController extends HttpServlet {
 				//Guardar
 				//
 				if(accion.equals("guardar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Lista las Categorías
 					@SuppressWarnings("unchecked")
 					List<Categoria>categorias=(List<Categoria>) session.getAttribute("listacategorias");
@@ -130,6 +141,17 @@ public class ZLucianoCategoriaController extends HttpServlet {
 				//Eliminar
 				//
 				if(accion.equals("eliminar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Listar categorías
 					String cats=request.getParameter("cat");
 					Integer id=Integer.parseInt(cats);
@@ -155,6 +177,17 @@ public class ZLucianoCategoriaController extends HttpServlet {
 				//Modificar
 				//
 				if(accion.equals("modificar")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					Rol rol=usuario.getRol();
+					if(rol.getId() != 1){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Lista las Categorías
 					@SuppressWarnings("unchecked")
 					List<Categoria>categorias=(List<Categoria>) session.getAttribute("listacategorias");
