@@ -16,13 +16,13 @@ import modelo.Usuario;
 /**
  * Servlet implementation class InicioSesion
  */
-public class InicioSesionLuciano extends HttpServlet {
+public class ZLucianoInicioSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public InicioSesionLuciano() {
+	public ZLucianoInicioSesion() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

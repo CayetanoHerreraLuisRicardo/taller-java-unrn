@@ -17,13 +17,13 @@ import dao.ProductoDao;
 /**
  * Servlet implementation class ProductoModif
  */
-public class ProductoModifLuciano extends HttpServlet {
+public class ZLucianoProductoModif extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	   
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ProductoModifLuciano() {
+	public ZLucianoProductoModif() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

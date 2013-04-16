@@ -15,13 +15,13 @@ import dao.*;
 /**
  * Servlet implementation class CategoriaController
  */
-public class CarritoControllerLuciano extends HttpServlet {
+public class ZLucianoCarritoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CarritoControllerLuciano() {
+    public ZLucianoCarritoController() {
         super();
         // TODO Auto-generated constructor stub
     }

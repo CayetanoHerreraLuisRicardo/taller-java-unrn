@@ -17,13 +17,13 @@ import dao.*;
 /**
  * Servlet implementation class CategoriaController
  */
-public class CategoriaControllerLuciano extends HttpServlet {
+public class ZLucianoCategoriaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	   
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CategoriaControllerLuciano() {
+	public ZLucianoCategoriaController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

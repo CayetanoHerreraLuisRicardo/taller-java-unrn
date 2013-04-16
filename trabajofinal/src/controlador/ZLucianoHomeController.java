@@ -15,13 +15,13 @@ import dao.*;
 /**
  * Servlet implementation class HomeController
  */
-public class HomeControllerLuciano extends HttpServlet {
+public class ZLucianoHomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeControllerLuciano() {
+    public ZLucianoHomeController() {
         super();
         // TODO Auto-generated constructor stub
     }

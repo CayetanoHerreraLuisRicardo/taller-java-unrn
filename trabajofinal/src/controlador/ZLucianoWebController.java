@@ -17,13 +17,13 @@ import dao.CategoriaDao;
 /**
  * Servlet implementation class WebController
  */
-public class WebControllerLuciano extends HttpServlet {
+public class ZLucianoWebController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	   
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public WebControllerLuciano() {
+	public ZLucianoWebController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
