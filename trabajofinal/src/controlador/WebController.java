@@ -1,7 +1,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,20 +29,6 @@ public class WebController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		
-		//Verifica las Categorías
-		@SuppressWarnings("unchecked")
-		Enumeration<String> verif=session.getAttributeNames();
-		Boolean contiene=false;
-		while(verif.hasMoreElements()){
-			String elem=verif.nextElement();
-			if(elem.contains("listacategorias")){
-				contiene=true;
-			}
-		}if(contiene == false){
-			CategoriaDao daoCat=new CategoriaDao();
-			List<Categoria> listaCategoria=daoCat.listar();
-			session.setAttribute("listacategorias", listaCategoria);
-		}
 		//Servlet en sí
 		
 		//Controla la facturación del carrito
