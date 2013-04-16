@@ -1,9 +1,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,13 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CategoriaDao;
-import dao.ProductoDao;
+import dao.*;
 
-import modelo.Categoria;
-import modelo.Pedido;
-import modelo.Producto;
-import modelo.Usuario;
+import modelo.*;
 
 /**
  * Servlet implementation class HomeController
@@ -35,8 +28,6 @@ public class ZManoloHomeController extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //PrintWriter out = response.getWriter();
         try{
         	HttpSession sesion = request.getSession();
 	        CategoriaDao daocategoria = new CategoriaDao();
@@ -53,7 +44,7 @@ public class ZManoloHomeController extends HttpServlet {
 	        getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
         }
         catch(Exception e){
-        	e.printStackTrace();        
+        	e.printStackTrace();
         }
 	}
 	/**
