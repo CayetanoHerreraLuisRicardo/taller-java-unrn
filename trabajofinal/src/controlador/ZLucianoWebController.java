@@ -29,11 +29,7 @@ public class ZLucianoWebController extends HttpServlet {
 	}
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		//Verifica Existencia del usuario
-		if(session.getAttribute("usuario") == null){
-			response.sendRedirect("HomeController");
-			return;
-		}
+		
 		//Verifica las Categorías
 		@SuppressWarnings("unchecked")
 		Enumeration<String> verif=session.getAttributeNames();
@@ -44,17 +40,11 @@ public class ZLucianoWebController extends HttpServlet {
 				contiene=true;
 			}
 		}if(contiene == false){
-			response.sendRedirect("HomeController");
-			return;
+			CategoriaDao daoCat=new CategoriaDao();
+			List<Categoria> listaCategoria=daoCat.listar();
+			session.setAttribute("listacategorias", listaCategoria);
 		}
 		//Servlet en sí
-		//Lista las Categorías
-		CategoriaDao daoCat=new CategoriaDao();
-		List<Categoria> listaCategoria=daoCat.listar();
-		session.setAttribute("listacategorias", listaCategoria);
-		//
-		//Inicio cosas particulares de una página
-		//
 		
 		//Controla la facturación del carrito
 		String tema=request.getParameter("tema");
