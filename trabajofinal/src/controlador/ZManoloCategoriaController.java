@@ -53,7 +53,7 @@ public class CategoriaController extends HttpServlet {
           					sesion.setAttribute("mensaje", mensaje);
           					System.out.println("Categoria Insertada");
           					List<Categoria> listacategorias = daocategoria.listar();
-          			        sesion.setAttribute("listacategorias", listacategorias); 
+          					sesion.setAttribute("listacategorias", listacategorias); 
           					getServletContext().getRequestDispatcher("/crearcategoria.jsp").forward(request, response);
           				}
           				else{

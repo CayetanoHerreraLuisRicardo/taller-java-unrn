@@ -34,6 +34,7 @@ public class ZLucianoWebController extends HttpServlet {
 			response.sendRedirect("HomeController");
 			return;
 		}
+		//Verifica las Categorías
 		@SuppressWarnings("unchecked")
 		Enumeration<String> verif=session.getAttributeNames();
 		Boolean contiene=false;
@@ -54,6 +55,8 @@ public class ZLucianoWebController extends HttpServlet {
 		//
 		//Inicio cosas particulares de una página
 		//
+		
+		//Controla la facturación del carrito
 		String tema=request.getParameter("tema");
 		if(tema==null || tema.isEmpty()){
 			getServletContext().getRequestDispatcher(request.getParameter("url")).forward(request, response);

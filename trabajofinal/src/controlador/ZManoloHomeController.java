@@ -1,4 +1,4 @@
-package controladores;
+package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,26 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
+import dao.CategoriaDao;
+import dao.ProductoDao;
 
-import daos.CategoriaDao;
-import daos.ProductoDao;
-
-import modelos.Categoria;
-import modelos.Pedido;
-import modelos.Producto;
-import modelos.Usuario;
+import modelo.Categoria;
+import modelo.Pedido;
+import modelo.Producto;
+import modelo.Usuario;
 
 /**
  * Servlet implementation class HomeController
  */
-public class HomeController extends HttpServlet {
+public class ZManoloHomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeController() {
+    public ZManoloHomeController() {
         super();
         // TODO Auto-generated constructor stub
     }
