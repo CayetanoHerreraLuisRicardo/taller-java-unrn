@@ -53,7 +53,7 @@ public class ProductoModifLuciano extends HttpServlet {
 		Producto prod=prodDao.buscar(prodID);
 		if(prod != null){
 			request.setAttribute("v_nombre", prod.getNombre());
-			request.setAttribute("v_desc", prod.getDescrip());
+			request.setAttribute("v_desc", prod.getDescripcion());
 			request.setAttribute("v_precio", prod.getPrecio());
 			request.setAttribute("v_img_url", prod.getImgURL());
 			Categoria cat=prod.getCategoria();

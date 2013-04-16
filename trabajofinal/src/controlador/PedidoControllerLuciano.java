@@ -86,11 +86,9 @@ public class PedidoControllerLuciano extends HttpServlet {
 					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 					Date date=new Date();
 					String fechaPedido=dateFormat.format(date);
-					String estado="Vendido";
 					String fechaEntrega=dateFormat.format(date);
 					PedidoDao pedDao=new PedidoDao();
 					Pedido pedido=new Pedido();
-					pedido.setEstado(estado);
 					pedido.setFechaEntrega(fechaEntrega);
 					pedido.setFechaPedido(fechaPedido);
 					pedido.setProductos(productos);
@@ -114,7 +112,8 @@ public class PedidoControllerLuciano extends HttpServlet {
 				//Eliminar
 				if(accion.equals("eliminar")){
 					PedidoDao daoPedido=new PedidoDao();
-					Integer resultado=daoPedido.eliminar(request.getAttribute("pedido"));
+					Pedido pedido=(Pedido) request.getAttribute("pedido");
+					Integer resultado=daoPedido.eliminar(pedido.getId());
 					if(resultado != -1){
 						//No se qué debe avisar en cada caso
 					}

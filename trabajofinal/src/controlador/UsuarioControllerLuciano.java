@@ -130,10 +130,8 @@ public class UsuarioControllerLuciano extends HttpServlet {
 					//Listar usuarios
 					String users=request.getParameter("us");
 					Integer id=Integer.parseInt(users);
-					Usuario us=new Usuario();
-					us.setId(id);
 					UsuarioDao usDao=new UsuarioDao();
-					Integer borrar=usDao.eliminar(us);
+					Integer borrar=usDao.eliminar(id);
 					if(borrar != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);

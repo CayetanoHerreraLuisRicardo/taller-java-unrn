@@ -60,7 +60,7 @@ public class ProductoControllerLuciano extends HttpServlet {
 					}else{
 						Categoria cat=new Categoria();
 						cat.setId(catID);
-						listaProducto=daoProd.listar(cat.getId());
+						listaProducto=daoProd.listar(cat);
 					}
 					request.setAttribute("listaproductos", listaProducto);
 					getServletContext().getRequestDispatcher("/WebController?url=/productoListar.jsp").forward(request, response);
@@ -69,7 +69,7 @@ public class ProductoControllerLuciano extends HttpServlet {
 				if(accion.equals("guardar")){
 					Producto prod=new Producto();
 					prod.setNombre(request.getParameter("v_nombre"));
-					prod.setDescrip(request.getParameter("v_desc"));
+					prod.setDescripcion(request.getParameter("v_desc"));
 					prod.setPrecio(Double.parseDouble(request.getParameter("v_precio")));
 					prod.setImgURL(request.getParameter("v_img_url"));
 					Categoria cat=new Categoria();
@@ -96,10 +96,8 @@ public class ProductoControllerLuciano extends HttpServlet {
 				if(accion.equals("eliminar")){
 					String prodID=request.getParameter("prodID");
 					Integer id=Integer.parseInt(prodID);
-					Producto prod=new Producto();
-					prod.setId(id);
 					ProductoDao pDao=new ProductoDao();
-					Integer borrar=pDao.eliminar(prod);
+					Integer borrar=pDao.eliminar(id);
 					if(borrar != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
@@ -121,7 +119,7 @@ public class ProductoControllerLuciano extends HttpServlet {
 					Producto prod=new Producto();
 					prod.setId(id);
 					prod.setNombre(request.getParameter("v_nombre"));
-					prod.setDescrip(request.getParameter("v_desc"));
+					prod.setDescripcion(request.getParameter("v_desc"));
 					prod.setPrecio(Double.parseDouble(request.getParameter("v_precio")));
 					prod.setImgURL(request.getParameter("v_img_url"));
 					Categoria cat=new Categoria();

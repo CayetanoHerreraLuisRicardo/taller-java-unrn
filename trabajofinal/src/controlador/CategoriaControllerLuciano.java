@@ -133,10 +133,8 @@ public class CategoriaControllerLuciano extends HttpServlet {
 					//Listar categorías
 					String cats=request.getParameter("cat");
 					Integer id=Integer.parseInt(cats);
-					Categoria cat=new Categoria();
-					cat.setId(id);
 					CategoriaDao catDao=new CategoriaDao();
-					Integer borrar=catDao.eliminar(cat);
+					Integer borrar=catDao.eliminar(id);
 					if(borrar != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
