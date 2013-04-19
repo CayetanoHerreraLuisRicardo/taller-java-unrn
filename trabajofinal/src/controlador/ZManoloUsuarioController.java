@@ -20,7 +20,7 @@ import daos.UsuarioDao;
 /**
  * Servlet implementation class UsuarioController
  */
-public class UsuarioController extends HttpServlet {
+public class ZManoloUsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private	int idusuario = 0;
        

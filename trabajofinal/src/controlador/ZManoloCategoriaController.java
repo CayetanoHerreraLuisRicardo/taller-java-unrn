@@ -17,7 +17,7 @@ import daos.CategoriaDao;
 /**
  * Servlet implementation class CategoriaController
  */
-public class CategoriaController extends HttpServlet {
+public class ZManoloCategoriaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**

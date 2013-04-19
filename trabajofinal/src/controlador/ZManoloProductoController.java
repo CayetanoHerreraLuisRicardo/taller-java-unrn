@@ -51,7 +51,7 @@ import daos.UsuarioDao;
  * 
  * @param <ServletFileUpload>
  */
-public class ProductoController extends HttpServlet {
+public class ZManoloProductoController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private String dirUploadFiles;

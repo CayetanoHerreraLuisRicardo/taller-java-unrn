@@ -20,7 +20,7 @@ import daos.ProductoDao;
 /**
  * Servlet implementation class PedidoController
  */
-public class PedidoController extends HttpServlet {
+public class ZManoloPedidoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
