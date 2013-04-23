@@ -59,7 +59,7 @@ public class ZManoloProductoController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ProductoController() {
+	public ZManoloProductoController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -73,6 +73,7 @@ public class ZManoloProductoController extends HttpServlet {
 			String accion = request.getParameter("accion");
 			if (accion == null || accion.isEmpty()) {
 				response.sendRedirect("vistas/web_mensaje.jsp?mensaje=El sistema no reconoce esta Accion");
+				
 			} else if (accion.equals("listado")) {// LISTAR TODOS LOS PRODUCTOS
 				ProductoDao daoproducto = new ProductoDao();
 				List<Producto> listaproducto = daoproducto.listar(null);

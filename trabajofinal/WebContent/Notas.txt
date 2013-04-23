@@ -1,0 +1,19 @@
+Luciano:
+-- ProductoController
+	¿Decís que hace falta tener un listado de productos completo? Yo nunca lo necesité, por eso pregunto.
+	Yo listaba al clickear una categoría, y así se mostrarían los productos de esa categoría, para poder realizar
+	una acción en alguno de ellos.
+	
+	-- Agregar al carrito
+		¿Hay que marcar que no se pueda comprar más de una vez un mismo juego por compra?
+	
+	-- Buscar
+		¿Alguna vez lo usaste? Porque yo no. Dejé tu código como comentario.
+
+-- JSP
+	-- Estructura de nominación que utilicé:
+		modeloAcción.jsp
+		Ej:
+			productoAlta.jsp
+			productoEliminar.jsp
+			productoModif.jsp

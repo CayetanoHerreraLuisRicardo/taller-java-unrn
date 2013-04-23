@@ -15,29 +15,31 @@ import modelo.*;
  */
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HomeController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
-        	HttpSession sesion = request.getSession();
-	        sesion.setAttribute("error", new String());
-	        sesion.setAttribute("mensaje", new String());
-	        if(sesion.getAttribute("carrito")==null){
-	        	sesion.setAttribute("carrito", new Pedido());
-	        	sesion.setAttribute("usuario", null);
-	        }
-	        getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
-        }
-        catch(Exception e){
-        	e.printStackTrace();
-        }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public HomeController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try{
+		HttpSession session = request.getSession();
+			session.setAttribute("error", new String());
+			session.setAttribute("mensaje", new String());
+			if(session.getAttribute("carrito")==null){
+				session.setAttribute("carrito", new Pedido());
+				session.setAttribute("usuario", null);
+				Double total=0.00;
+				session.setAttribute("total",total);
+			}
+			getServletContext().getRequestDispatcher("vista/home.jsp").forward(request, response);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
