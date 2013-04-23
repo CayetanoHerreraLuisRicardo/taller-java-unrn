@@ -17,7 +17,7 @@
 		</div>
 
 			<div id="menu">
-				<c:if test="${sessionScope.usulog.rol == null}">
+				<c:if test="${sessionScope.usulog.rol.nombre == null}">
 					<jsp:include page="menusimple.jsp" />
 				</c:if>
 				<c:if test="${sessionScope.usulog.rol eq 'simple'}">

@@ -101,6 +101,7 @@ public class UsuarioDao extends BaseDao {
 				usuario.setNombre(usuarioID.getString("nombre"));
 				usuario.setApellido(usuarioID.getString("apellido"));
 				usuario.setMail(usuarioID.getString("mail"));
+				usuario.setRol(new RolDao().buscar(usuarioID.getInt("rol_id")));
 				return usuario;
 			}else{
 				usuario=null;
