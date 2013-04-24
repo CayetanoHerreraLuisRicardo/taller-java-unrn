@@ -7,18 +7,17 @@
 /*--------------------------------------------------------*/
 #inicio{
 	position:relative;
-	float:left;
-	left:50%;
-	margin-left:-125px;
+	margin:0 auto;
 }
 #formInic{
-	width:275px;
+	width:180px;
+	margin:0 0 5px 0;
 }
 #nom{
 	heigh:10px;
 }
 .campo{
-	float:right;
+	float:left;
 }
 .infocampo{
 	padding:5px 0 0 0;
@@ -27,9 +26,12 @@
 	float:left;
 }
 #datos{
-	border:1px solid #067098;
-	color:#067098;
+	border:1px solid #888888;
+	color:#000000;
 }
 .campoUsu{
 	font-weight:bold;
+}
+p{
+	text-align : justify;
 }

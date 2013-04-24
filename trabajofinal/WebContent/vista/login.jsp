@@ -4,7 +4,7 @@
 <script>
 	function validar(form) {
 		if (form.nombusuario.value == "" && form.passusuario.value == "") {
-			alert("Debe llenar todos los campos para poder continuar!!");
+			alert("Debe llenar todos los campos para poder continuar.");
 			return (false);
 		}
 	}
