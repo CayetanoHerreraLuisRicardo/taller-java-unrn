@@ -98,6 +98,15 @@ public class UsuarioController extends HttpServlet {
 					}
 				}
 				//
+				//Buscar usuarios antes de Eliminar
+				//
+				else if(accion.equals("buscar")){
+        			UsuarioDao daousuario= new UsuarioDao();
+        			List<Usuario> listausuario = daousuario.buscador(request.getParameter("v_buscar"));
+        			request.setAttribute("listausuario", listausuario);
+        			getServletContext().getRequestDispatcher("/vista/usuarioEliminar.jsp").forward(request, response);
+        		}
+				//
 				//Eliminar
 				//
 				if(accion.equals("eliminar")){

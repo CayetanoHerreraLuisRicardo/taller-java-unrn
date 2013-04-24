@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import modelo.*;
+import modelos.Producto;
 
 public class ProductoDao extends BaseDao {
 	private ResultSet productoResult;
@@ -128,5 +129,27 @@ public class ProductoDao extends BaseDao {
 			producto=null;
 			return producto;
 		}
+	}
+	
+	public List<Producto> buscador(String cond, int categoria) throws SQLException, Exception{
+		String sentenciaSQL = "SELECT p.* FROM producto p, categoria c " +
+							"WHERE p.categoria_id = c.id and c.id = '" + categoria + "' " +
+							"and p.nombre like '%" + cond + "%' " +
+							"ORDER BY p.id ASC"; 
+		System.out.println(sentenciaSQL);
+		Producto producto = null;
+		ResultSet filasConsulta = consultar(sentenciaSQL);
+		while (filasConsulta.next()) {
+			producto = new Producto();
+			producto.setId(filasConsulta.getInt("id"));
+			producto.setNombre(filasConsulta.getString("nombre"));
+			producto.setDescripcion(filasConsulta.getString("descripcion"));
+			producto.setPrecio(filasConsulta.getDouble("precio"));
+			producto.setCategoria(cat.buscar(filasConsulta.getInt("categoria_id")));
+			lista.add(producto);
+						
+		}
+		cerrarConexion();
+		return lista;
 	}
 }

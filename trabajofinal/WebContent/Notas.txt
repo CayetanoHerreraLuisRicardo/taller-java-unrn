@@ -3,7 +3,7 @@ Luciano:
 	-- Agregar al carrito
 		Se puede agregar cantidades de un mismo producto.
 	
-	-- Falta agregar el buscador en el productoDao
+	-- Falta agregar el buscador en el productoDao 
 
 -- JSP
 	-- Estructura de nominación que utilicé:
@@ -12,3 +12,11 @@ Luciano:
 			productoAlta.jsp
 			productoEliminar.jsp
 			productoModif.jsp
+
+Manolo
+--ProductoController
+	(agregado el buscador en ProductoDao al igual que usuarioDao)
+	(variable txtbuscar por v_buscar)
+--Usuario Controller
+	--el buscador que utilizaba para buscar productos tambien lo utilizo para buscar usuarios antes de
+	eliminarlos por el administrador
