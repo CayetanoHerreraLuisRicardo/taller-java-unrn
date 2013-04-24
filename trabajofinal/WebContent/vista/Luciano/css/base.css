@@ -1,0 +1,165 @@
+/* CSS Document */
+
+/*--------------------------------------------------------*/
+/*-----Página---------------------------------------------*/
+/*--------------------------------------------------------*/
+#wrapper{
+	margin:2%;
+	max-height:600px;
+	max-width::300px;
+	height:expression(this.scrollHeight > 600? "600px" : "auto" );
+	width:expression(this.scrollHeight > 300? "300px" : "auto" );
+}
+/*	*::-moz-selection{
+	   background:#AAAAAA;
+	   color:black;
+	}
+	
+	*::selection {
+	   background:#AAAAAA;
+	   color:black;
+	}
+*/
+/*--------------------------------------------------------*/
+/*-----Header---------------------------------------------*/
+/*--------------------------------------------------------*/
+#header{
+	height:60px;
+	margin:10px;
+	position:relative;
+}
+#header h1{
+	display:inline;
+	position:absolute;
+	margin:0;
+	padding:5px 5px 5px 30px;
+}
+/*--------------------------------------------------------*/
+/*-----Menú Principal-------------------------------------*/
+/*--------------------------------------------------------*/
+#main_nav{
+	height:40px;
+	margin:5px 0 0 0;
+}
+#main_nav ul{
+	height:100%;
+	list-style-type:none;
+}
+#main_nav ul li.lvl1{
+	float: left;
+	margin-right: 2px;
+	width: 162px;
+	left:0;
+}
+#main_nav ul li a{
+	text-align:center;
+	text-decoration: none;
+	background-color:#067098;
+	color:#FFFFFF;
+	display: block;
+	padding: 8px;
+	position: relative;
+	text-decoration: none;
+	z-index: 1;
+}
+#main_nav ul li:hover{
+	position: relative;
+}
+#main_nav ul li a:hover, #main_nav ul li:hover a.lvl1{
+	background-color:#AAAAAA;
+	color: #000000;
+	position: relative;
+}
+#main_nav ul li a.lvl1{
+	display: block !important;
+	position: relative;
+}
+#main_nav ul li ul{
+	display:none;
+	padding-left:0;
+}
+#main_nav ul li a:hover ul, #main_nav ul li:hover ul {
+	display: block;
+	position: absolute;
+}
+#main_nav ul li ul li a{
+	padding: 6px 0 8px;
+	width: 162px;
+}
+#main_nav ul li ul li a:hover {
+	position:relative;
+}
+/*--------------------------------------------------------*/
+/*-----Página---------------------------------------------*/
+/*--------------------------------------------------------*/
+#page{
+	width:100%;
+	position:relative;
+	overflow:auto;
+	margin:20px 0 0 0;
+}
+/*--------------------------------------------------------*/
+/*-----Panel de navegación izquierdo----------------------*/
+/*--------------------------------------------------------*/
+#content{
+	overflow:auto;
+	position:relative;
+	border-left:1px solid #067098;
+}
+#panelIzq{
+	float:left;
+	padding:0 26px 0 0;
+	margin:0 -1px 0 0;
+	border-right:1px solid #067098;
+}
+#panelIzq h3{
+	margin:0 0 5px 0;
+}
+.subMenuNove,
+#subMenuTit{
+	list-style-type:none;
+}
+.titulo{
+	width:300px;
+	padding:5px 0 0 0;
+}
+.titulo > a{
+	display:block;
+	padding:2px 0 2px 5px;
+	background-color:#067098;
+	color:white;
+	text-decoration: none;
+}
+.titulo > a:hover{
+	color:black;
+	background-color:#AAAAAA;
+}
+	
+.subMenuNove > li{
+	margin:5px 0 0 0;
+	background-color:#067098;
+}
+.subMenuNove li:hover{
+	background-color:#AAAAAA;
+}
+.subMenuNove > li > a{
+	display:block;
+	padding:0 2px 0 2px;
+	color:white;
+}
+.subMenuNove > li > a:hover{
+	color:black;
+}
+/*--------------------------------------------------------*/
+/*-----Pie de página--------------------------------------*/
+/*--------------------------------------------------------*/
+#footer{
+	border-top:1px solid #067098;
+	padding:0 0 0 40px;
+	margin-top:20px;
+	padding-top:20px;
+}
+#footer img{
+	display:block;
+	margin:auto;
+}

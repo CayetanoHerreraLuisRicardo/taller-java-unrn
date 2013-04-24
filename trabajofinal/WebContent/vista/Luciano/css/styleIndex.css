@@ -1,0 +1,35 @@
+@CHARSET "ISO-8859-1";
+
+@import url(base.css);
+
+/*--------------------------------------------------------*/
+/*-----Contenido de la página-----------------------------*/
+/*--------------------------------------------------------*/
+#inicio{
+	position:relative;
+	float:left;
+	left:50%;
+	margin-left:-125px;
+}
+#formInic{
+	width:275px;
+}
+#nom{
+	heigh:10px;
+}
+.campo{
+	float:right;
+}
+.infocampo{
+	padding:5px 0 0 0;
+}
+#pass label{
+	float:left;
+}
+#datos{
+	border:1px solid #067098;
+	color:#067098;
+}
+.campoUsu{
+	font-weight:bold;
+}
