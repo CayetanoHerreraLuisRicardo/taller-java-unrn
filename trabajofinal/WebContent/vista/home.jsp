@@ -1,6 +1,5 @@
 <%@page import="modelo.Usuario"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,15 +7,14 @@
 		<title>PS3 Argento</title>
 		<meta http-equiv="Content-Language" content="English" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 	</head>
 	<body>
 
 		<div id="wrap">
 		
 			<div id="header">
-				
-			<img ></img>
+			<img src="img/ac3.jpg"></img>
 		</div>
 
 			<div id="menu">
@@ -40,7 +38,7 @@
 					Sin embargo en la realidad puede ayudar en el desarrollo de los niños, mejorar la coordinación ojo mano, he incluso hasta contribuir en problemas para combatir el sobrepeso, 
 					entre otros beneficios.	 
 					<br /><br />
-					<img src="images/juegos.jpg" alt="Example pic" style="border: 3px solid #ccc;" />
+					<img src="img/juegos.jpg" alt="Example pic" style="border: 3px solid #ccc;" />
 					<br /><br />
 					<strong>"Los Video Juegos te hacen mas lento"</strong> has escuchado esa frase? Con el paso del tiempo la industria de los Video Juegos 
 					han luchado para traer al mercado juegos con contenido o educacionales, que rompan estos estereotipos. 

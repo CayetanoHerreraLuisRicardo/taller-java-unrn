@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
@@ -9,23 +8,6 @@
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>Compras</title>
 </head>
-<!-- Verifica Existencia del usuario -->
-<%if(session.getAttribute("usuario") == null){
-	response.sendRedirect("HomeController");
-	return;
-}
-		@SuppressWarnings("unchecked")
-		Enumeration<String> verif=session.getAttributeNames();
-		Boolean contiene=false;
-		while(verif.hasMoreElements()){
-			String elem=verif.nextElement();
-			if(elem.contains("listacategorias")){
-				contiene=true;
-			}
-		}if(contiene == false){
-			response.sendRedirect("HomeController");
-			return;
-		}%>
 <body>
 <div id="wrapper">
 	<!------------------------------------------------------->
@@ -49,6 +31,12 @@
 		<!------------------------------------------------------->
 		<div id="panelIzq">
 		<jsp:include page="panel_izq.jsp" />
+		</div>
+		<!------------------------------------------------------->
+		<!---Panel de navegación, ubicado a la derecha----------->
+		<!------------------------------------------------------->
+		<div id="panelDer">
+		<jsp:include page="panel_der.jsp" />
 		</div>
 		<!------------------------------------------------------->
 		<!---Estructura de la página en cuestión----------------->

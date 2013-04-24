@@ -4,7 +4,7 @@
 }
 
 body {
-background: black url("images/batman.png") center no-repeat; /*color original #333*/
+background: black url("http://localhost:8080/trabajofinal/vista/img/batman.png") center no-repeat; /*color original #333*/
 font-family: Tahoma, Arial, Helvetica, sans-serif;
 font-size: 12px;
 line-height: 20px;
@@ -87,7 +87,7 @@ border: 5px solid #000;
 
 #header {
 height: 160px;
-background: #554d42 url("images/ac3.jpg") no-repeat;
+background: #554d42 url("img/ac3.jpg") no-repeat;
 /* background: #554d42 url(images/ac3.png) no-repeat; */
 }
 #header h1 { 

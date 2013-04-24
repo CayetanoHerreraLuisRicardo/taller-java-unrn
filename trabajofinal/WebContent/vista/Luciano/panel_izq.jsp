@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="dao.CategoriaDao, java.util.List, modelo.Categoria" %>
+<%@ page import="dao.CategoriaDao, java.util.List, modelo.Categoria, java.util.*" %>
 <%
 	//Listar las Categorías
 	CategoriaDao daoCat=new CategoriaDao();
 	List<Categoria> listaCategoria=daoCat.listar();
+	if(listaCategoria==null)listaCategoria=new ArrayList<Categoria>();
 	session.setAttribute("listacategorias", listaCategoria);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

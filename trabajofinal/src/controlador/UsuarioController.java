@@ -60,13 +60,13 @@ public class UsuarioController extends HttpServlet {
 					//Lista los Usuarios
 					UsuarioDao usDao=new UsuarioDao();
 					List<Usuario>usuarios=usDao.listar();
-					//Nota: tu existe.
+					//Nota: función Manuel existe.
 					for(int i=0;i<usuarios.size();i++){
 						Usuario usTemp=usuarios.get(i);
-						if(usTemp.getUser().contains(request.getParameter("v_user"))){
+						if(usTemp.getUser().contains(request.getParameter("v_user")) || usTemp.getUser().contains(request.getParameter("v_mail"))){
 							Boolean exito=false;
 							request.setAttribute("exito", exito);
-							String error="El nick ya está usado por otra persona, por favor, ingrese otro.";
+							String error="El nick o mail ya está usado por otra persona, por favor, ingrese otro.";
 							request.setAttribute("error", error);
 							getServletContext().getRequestDispatcher("/vista/usuarioAlta.jsp").forward(request, response);
 							return;
@@ -85,7 +85,7 @@ public class UsuarioController extends HttpServlet {
 					if(id != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
-						String error="Se cargó correctamente el usuario.";
+						String error="Se guardó correctamente el usuario.";
 						request.setAttribute("error", error);
 						getServletContext().getRequestDispatcher("/vista/usuarioAlta.jsp").forward(request, response);
 						return;
@@ -153,14 +153,6 @@ public class UsuarioController extends HttpServlet {
 							if(usTemp.getPass().equals(request.getParameter("v_pass"))){
 								Usuario us=new Usuario();
 								us.setId(usTemp.getId());
-								if(us.getId()==null){
-									Boolean exito=false;
-									request.setAttribute("error", exito);
-									String error="El id es nulo, no se puede modificar un usuario si su identificador es nulo.";
-									request.setAttribute("error", error);
-									getServletContext().getRequestDispatcher("/vista/usuarioModif.jsp").forward(request, response);
-									return;
-								}
 								us.setUser(request.getParameter("v_user"));
 								us.setPass(request.getParameter("v_pass1"));
 								us.setPedidos(usTemp.getPedidos());
@@ -203,7 +195,7 @@ public class UsuarioController extends HttpServlet {
 				//
 				//Iniciar sesión
 				//
-				if(accion.equals("loginUsuario")){
+				if(accion.equals("logIn")){
 					//Nota: podríamos tener variaciones en la nomenclatura de variables
 					Integer id=validarUsuario(request.getParameter("v_user"), request.getParameter("v_pass"));
 					if(id != -1){
@@ -211,8 +203,7 @@ public class UsuarioController extends HttpServlet {
 						UsuarioDao daousuario = new UsuarioDao();
 						usuario = daousuario.buscar(id);
 						session.setAttribute("usuario", usuario);
-						//Nota: podría variar
-						getServletContext().getRequestDispatcher("/vista/home.jsp?nombre=" + request.getParameter("v_user")).forward(request, response);
+						getServletContext().getRequestDispatcher("/vista/home.jsp").forward(request, response);
 					}
 					else{
 						Boolean exito=false;
@@ -225,7 +216,7 @@ public class UsuarioController extends HttpServlet {
 				//
 				//Cerrar Sesión
 				//
-				else if(accion.equals("cerrarSesion")){ 
+				else if(accion.equals("logOut")){ 
 					session.invalidate();
 					getServletContext().getRequestDispatcher("/vista/home.jsp").forward(request, response);
 				}

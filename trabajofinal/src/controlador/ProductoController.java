@@ -234,12 +234,13 @@ public class ProductoController extends HttpServlet {
 			//
 			//Buscar
 			//
-			//if (accion.equals("buscar")) {
-			//	ProductoDao daoproducto = new ProductoDao();
-			//	List<Producto> listaproducto = daoproducto.buscador(request.getParameter("txtbuscar"),Integer.valueOf(request.getParameter("categoria")));
-			//	request.setAttribute("listaproducto", listaproducto);
-			//	getServletContext().getRequestDispatcher("/eliminarproducto.jsp").forward(request, response);
-			//}
+			
+			/*if (accion.equals("buscar")) {
+				ProductoDao daoproducto = new ProductoDao();
+				List<Producto> listaproducto = daoproducto.buscador(request.getParameter("txtbuscar"),Integer.valueOf(request.getParameter("categoria")));
+				request.setAttribute("listaproducto", listaproducto);
+				getServletContext().getRequestDispatcher("vista/productoEliminar.jsp").forward(request, response);
+			}*/
 		}catch (Exception e){
 			e.printStackTrace();
 			response.sendRedirect("/vista/web_mensaje.jsp?mensaje="+e.getMessage());

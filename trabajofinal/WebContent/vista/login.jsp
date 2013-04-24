@@ -11,7 +11,7 @@
 </script>
 <div class="login">
 <h2><u>Iniciar Sesion :</u></h2>
-<form action="UsuarioController" onsubmit="return validar(this)">
+<form action="UsuarioController" onsubmit="return validar(this)" method="post">
 	<table>
 		<tr>
 			<td>Usuario:</td>
