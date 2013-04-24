@@ -26,6 +26,7 @@ public class ProductoController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+	@SuppressWarnings("unchecked")
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		
@@ -58,7 +59,19 @@ public class ProductoController extends HttpServlet {
 				if (accion.equals("carritoAdd")) {
 					ProductoDao daoProd = new ProductoDao();
 					Pedido pedido = (Pedido) session.getAttribute("carrito");
+					Hashtable<Producto,Integer>total=(Hashtable<Producto,Integer>)session.getAttribute("total");
 					Producto prod=daoProd.buscar(Integer.valueOf(request.getParameter("id")));
+					//Busca dentro del carrito si ya está cargado el mismo producto
+					List<Producto>prods=pedido.getProductos();
+					for(Producto tempProd:prods){
+						if(tempProd.getId()==prod.getId()){
+							Integer cant=total.get(tempProd);
+							cant++;
+							total.put(tempProd, cant);
+							session.setAttribute("total", total);
+							break;
+						}
+					}
 					if(pedido.getProductos().add(prod)){
 						Double precio=(Double) session.getAttribute("total");
 						Double cantTemp=prod.getPrecio();
@@ -125,7 +138,7 @@ public class ProductoController extends HttpServlet {
 						request.setAttribute("exito", exito);
 						String error = "El nombre de este producto ya existe, por favor ingrese otro e intente de nuevo.";
 						session.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/productoAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/productoAlta.jsp").forward(request, response);
 						return;
 					}
 					Producto prod=new Producto();
@@ -143,14 +156,14 @@ public class ProductoController extends HttpServlet {
 						request.setAttribute("exito", exito);
 						String error="Se cargó correctamente el producto.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/productoAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/productoAlta.jsp").forward(request, response);
 						return;
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Hubo un problema al cargar el producto, inténtelo de nuevo más tarde.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/productoAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/productoAlta.jsp").forward(request, response);
 					}
 				}
 				//
@@ -232,17 +245,18 @@ public class ProductoController extends HttpServlet {
 				}
 			}
 			//
-			//Buscar producto antes de eliminar
+			//Buscar
 			//
-			if (accion.equals("buscar")) {
+			
+			/*if (accion.equals("buscar")) {
 				ProductoDao daoproducto = new ProductoDao();
-				List<Producto> listaproducto = daoproducto.buscador(request.getParameter("v_buscar"),Integer.valueOf(request.getParameter("categoria")));
+				List<Producto> listaproducto = daoproducto.buscador(request.getParameter("txtbuscar"),Integer.valueOf(request.getParameter("categoria")));
 				request.setAttribute("listaproducto", listaproducto);
 				getServletContext().getRequestDispatcher("vista/productoEliminar.jsp").forward(request, response);
-			}
+			}*/
 		}catch (Exception e){
 			e.printStackTrace();
-			response.sendRedirect("/vista/web_mensaje.jsp?mensaje="+e.getMessage());
+			response.sendRedirect("vista/web_mensaje.jsp?mensaje="+e.getMessage());
 		}
 	}
 

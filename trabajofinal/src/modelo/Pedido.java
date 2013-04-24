@@ -8,7 +8,7 @@ public class Pedido {
 	private String fechaPedido;
 	private String fechaEntrega;
 	private Usuario usuario;
-	private List<Producto> productos=new ArrayList<Producto>();
+	private Hashtable<Producto,Integer> productos=new Hashtable<Producto,Integer>();
 
 	public Integer getId() {
 		return id;
@@ -42,11 +42,11 @@ public class Pedido {
 		this.usuario = usuario;
 	}
 
-	public List<Producto> getProductos() {
+	public Hashtable<Producto,Integer> getProductos() {
 		return productos;
 	}
 
-	public void setProductos(List<Producto> productos) {
+	public void setProductos(Hashtable<Producto,Integer> productos) {
 		this.productos = productos;
 	}
 	
@@ -56,7 +56,7 @@ public class Pedido {
 		//Creación de la lista de productos
 		try{
 			ResultSet p_pID=dao.BaseDao.consultar("Select * FROM pedido_producto WHERE id="+ped.getId());
-			List<Producto> pList=new ArrayList<Producto>();
+			Hashtable<Producto,Integer> pList=new Hashtable<Producto,Integer>();
 			while(p_pID.next()){
 				ResultSet prodID=dao.BaseDao.consultar("Select * FROM producto WHERE id="+p_pID.getInt("producto_id"));
 				prodID.next();

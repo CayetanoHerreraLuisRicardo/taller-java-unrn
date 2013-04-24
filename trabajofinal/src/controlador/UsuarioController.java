@@ -33,14 +33,14 @@ public class UsuarioController extends HttpServlet {
 		try{
 			String accion=request.getParameter("accion");
 			if(accion==null || accion.isEmpty()){
-				response.sendRedirect("/vista/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+				response.sendRedirect("vista/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
 			}else{
 				//Nota: nunca lo usé.
 				if(accion.equals("lista")){
 					UsuarioDao daoUser=new UsuarioDao();
 					List<Usuario> listaUsuario=daoUser.listar();
 					request.setAttribute("listausuarios", listaUsuario);
-					getServletContext().getRequestDispatcher("/vista/usuarioListar.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("vista/usuarioListar.jsp").forward(request, response);
 				}
 				//
 				//Guardar
@@ -68,7 +68,7 @@ public class UsuarioController extends HttpServlet {
 							request.setAttribute("exito", exito);
 							String error="El nick o mail ya está usado por otra persona, por favor, ingrese otro.";
 							request.setAttribute("error", error);
-							getServletContext().getRequestDispatcher("/vista/usuarioAlta.jsp").forward(request, response);
+							getServletContext().getRequestDispatcher("vista/usuarioAlta.jsp").forward(request, response);
 							return;
 						}
 					}
@@ -87,14 +87,14 @@ public class UsuarioController extends HttpServlet {
 						request.setAttribute("exito", exito);
 						String error="Se guardó correctamente el usuario.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/usuarioAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/usuarioAlta.jsp").forward(request, response);
 						return;
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Hubo un problema al crear el usuario.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/usuarioAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/usuarioAlta.jsp").forward(request, response);
 					}
 				}
 				//
@@ -131,13 +131,13 @@ public class UsuarioController extends HttpServlet {
 						request.setAttribute("exito", exito);
 						String error="El usuario ha sido borrado correctamente.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/usuarioEliminar.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/usuarioEliminar.jsp").forward(request, response);
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="El usuario no pudo ser borrado.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/usuarioEliminar.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/usuarioEliminar.jsp").forward(request, response);
 					}
 				}
 				//Modificar
@@ -182,14 +182,14 @@ public class UsuarioController extends HttpServlet {
 									String error="Hubo un problema al acceso a la Base de Datos.";
 									request.setAttribute("error", error);
 								}
-								getServletContext().getRequestDispatcher("/vista/usuarioModif.jsp").forward(request, response);
+								getServletContext().getRequestDispatcher("vista/usuarioModif.jsp").forward(request, response);
 								return;
 							}else{
 								Boolean exito=false;
 								request.setAttribute("exito", exito);
 								String error="La contraseña antigua es incorrecta.";
 								request.setAttribute("error", error);
-								getServletContext().getRequestDispatcher("/vista/usuarioModif.jsp").forward(request, response);
+								getServletContext().getRequestDispatcher("vista/usuarioModif.jsp").forward(request, response);
 								return;
 							}
 						}
@@ -198,7 +198,7 @@ public class UsuarioController extends HttpServlet {
 					request.setAttribute("exito", exito);
 					String error="El usuario no existe. Cárguelo previo a intentar modificarlo.";
 					request.setAttribute("error", error);
-					getServletContext().getRequestDispatcher("/vista/usuarioModif.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("vista/usuarioModif.jsp").forward(request, response);
 					return;
 				}
 				//
@@ -212,14 +212,14 @@ public class UsuarioController extends HttpServlet {
 						UsuarioDao daousuario = new UsuarioDao();
 						usuario = daousuario.buscar(id);
 						session.setAttribute("usuario", usuario);
-						getServletContext().getRequestDispatcher("/vista/home.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/home.jsp").forward(request, response);
 					}
 					else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error= "El usuario y/o contraseña son incorrectos.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/home.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/home.jsp").forward(request, response);
 					}
 				}
 				//
@@ -227,12 +227,12 @@ public class UsuarioController extends HttpServlet {
 				//
 				else if(accion.equals("logOut")){ 
 					session.invalidate();
-					getServletContext().getRequestDispatcher("/vista/home.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("vista/home.jsp").forward(request, response);
 				}
 			}
 		}catch (Exception e){
 			e.printStackTrace();
-			response.sendRedirect("/vista/web_mensaje.jsp?mensaje="+e.getMessage());
+			response.sendRedirect("vista/web_mensaje.jsp?mensaje="+e.getMessage());
 		}
 	}
 

@@ -48,7 +48,7 @@ public class CategoriaController extends HttpServlet {
 			String accion=request.getParameter("accion");
 			if(accion==null || accion.isEmpty()){
 				//Nota: Falta crear el JSP para los mensajes.
-				response.sendRedirect("/vista/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+				response.sendRedirect("vista/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
 			}else{
 				//
 				//Listar
@@ -57,7 +57,7 @@ public class CategoriaController extends HttpServlet {
 					CategoriaDao daoCat=new CategoriaDao();
 					List<Categoria> listaCategoria=daoCat.listar();
 					request.setAttribute("listacategorias", listaCategoria);
-					getServletContext().getRequestDispatcher("/vista/listaCategorias.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("vista/listaCategorias.jsp").forward(request, response);
 				}
 				//
 				//Guardar
@@ -85,7 +85,7 @@ public class CategoriaController extends HttpServlet {
 							request.setAttribute("exito", exito);
 							String error="No se puede cargar una categoría ya existente.";
 							request.setAttribute("error", error);
-							getServletContext().getRequestDispatcher("/vista/categoriaAlta.jsp").forward(request, response);
+							getServletContext().getRequestDispatcher("vista/categoriaAlta.jsp").forward(request, response);
 							return;
 						}
 					}
@@ -100,14 +100,14 @@ public class CategoriaController extends HttpServlet {
 						request.setAttribute("error", error);
 						List<Categoria> listaCategoria=catDao.listar();
 						session.setAttribute("listacategorias", listaCategoria);
-						getServletContext().getRequestDispatcher("/vista/categoriaAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/categoriaAlta.jsp").forward(request, response);
 						return;
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Hubo un problema con la recuperación del identificador de la categoría. Posible error en la carga.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/categoriaAlta.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/categoriaAlta.jsp").forward(request, response);
 					}
 				}
 				//
@@ -137,13 +137,13 @@ public class CategoriaController extends HttpServlet {
 						request.setAttribute("error", error);
 						List<Categoria> listaCategoria=catDao.listar();
 						session.setAttribute("listacategorias", listaCategoria);
-						getServletContext().getRequestDispatcher("/vista/categoriaEliminar.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/categoriaEliminar.jsp").forward(request, response);
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="La categoría no pudo ser borrada.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/vista/categoriaEliminar.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("vista/categoriaEliminar.jsp").forward(request, response);
 					}
 				}
 				//
@@ -185,7 +185,7 @@ public class CategoriaController extends HttpServlet {
 								String error="Hubo un problema al acceso a la Base de Datos.";
 								request.setAttribute("error", error);
 							}
-							getServletContext().getRequestDispatcher("/vista/categoriaModif.jsp").forward(request, response);
+							getServletContext().getRequestDispatcher("vista/categoriaModif.jsp").forward(request, response);
 							return;
 						}
 					}
@@ -193,13 +193,13 @@ public class CategoriaController extends HttpServlet {
 					request.setAttribute("exito", exito);
 					String error="La categoría no existe. Cárguela previo a intentar modificarla.";
 					request.setAttribute("error", error);
-					getServletContext().getRequestDispatcher("/vista/categoriaModif.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("vista/categoriaModif.jsp").forward(request, response);
 					return;
 				}
 			}
 		}catch (Exception e){
 			e.printStackTrace();
-			response.sendRedirect("/vista/web_mensaje.jsp?mensaje="+e.getMessage());
+			response.sendRedirect("vista/web_mensaje.jsp?mensaje="+e.getMessage());
 		}
 	}
 

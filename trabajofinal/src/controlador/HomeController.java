@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class HomeController extends HttpServlet {
 			if(session.getAttribute("carrito")==null){
 				session.setAttribute("carrito", new Pedido());
 				session.setAttribute("usuario", null);
-				Double total=0.00;
+				Hashtable<Producto,Integer>total=new Hashtable<Producto,Integer>();
 				session.setAttribute("total",total);
 			}
 			getServletContext().getRequestDispatcher("vista/home.jsp").forward(request, response);
