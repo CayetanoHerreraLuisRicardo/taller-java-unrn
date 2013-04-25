@@ -18,8 +18,8 @@
 	</head>
 	<body>
 		<!-- Contenido del panel -->
-		<div class="panel"> 
-		    <h3>Panel Deslizablel</h3> 
+		<div class="gadgetCarrito"> 
+		    <h3>Panel Deslizable</h3> 
 		    <p>Aqui esta nuestro panel deslizable hecho con JQuery y algunas funciones en CSS3 que nos daran esquinas redondeadas</p> 
 		    <p>vendria muy bien para nuestro carrito de compras.</p>
 		</div>
