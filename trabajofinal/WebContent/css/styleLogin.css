@@ -1,0 +1,40 @@
+@CHARSET "ISO-8859-1";
+@IMPORT url("base.css");
+
+/*--------------------------------------------------------*/
+/*-----LogIn-Gadget---------------------------------------*/
+/*--------------------------------------------------------*/
+#formInic{
+	width:180px;
+	margin:0 0 5px 0;
+}
+#nom{
+	heigh:10px;
+}
+.campo{
+	float:left;
+}
+.infocampo{
+	padding:5px 0 0 0;
+}
+#pass label{
+	float:left;
+}
+#datos{
+	border:1px solid #888888;
+	color:#000000;
+}
+.campoUsu{
+	font-weight:bold;
+}
+#gadLogIn a{
+	text-align:center;
+	text-decoration: none;
+	color:#888888;
+	display: block;
+	position: relative;
+}
+#gadLogIn a:hover{
+	cursor:pointer;
+	text-decoration: underline;
+}
