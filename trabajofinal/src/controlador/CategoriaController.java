@@ -208,6 +208,20 @@ public class CategoriaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String accion=request.getParameter("accion");
+		if(accion==null || accion.isEmpty()){
+			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+		}else{
+			//Nota: nunca lo usé.
+			if(accion.equals("guardar") || accion.equals("eliminar") || accion.equals("modificar")){
+				Boolean exito=false;
+				request.setAttribute("exito", exito);
+				String error= "Ud está intentando realizar una operación no permitida.";
+				request.setAttribute("error", error);
+				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+				return;
+			}
+		}
 		processRequest(request, response);
 	}
 

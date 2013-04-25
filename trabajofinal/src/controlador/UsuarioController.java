@@ -46,17 +46,6 @@ public class UsuarioController extends HttpServlet {
 				//Guardar
 				//
 				if(accion.equals("guardar")){
-					//Verifica el rol del usuario
-					Usuario usuario=(Usuario) session.getAttribute("usuario");
-					Rol rol=usuario.getRol();
-					if(rol.getId() != 1 || rol.getId() == null){
-						response.sendRedirect("HomeController");
-						Boolean exito=false;
-						request.setAttribute("exito", exito);
-						String error="Ud. no es administrador, no puede realizar dicha acción.";
-						request.setAttribute("error", error);
-						return;
-					}
 					//Lista los Usuarios
 					UsuarioDao usDao=new UsuarioDao();
 					List<Usuario>usuarios=usDao.listar();
@@ -75,10 +64,26 @@ public class UsuarioController extends HttpServlet {
 					Usuario us=new Usuario();
 					us.setNombre(request.getParameter("v_nombre"));
 					us.setApellido(request.getParameter("v_apellido"));
-					us.setUser(request.getParameter("v_user"));
-					us.setPass(request.getParameter("v_pass"));
+					if(validarNick(request.getParameter("v_user")))us.setUser(request.getParameter("v_user"));
+					else{
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Por favor, evite poner caracteres no aceptados.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/usuarioAlta.jsp").forward(request, response);
+						return;
+					}
+					if(validarPass(request.getParameter("v_pass")))us.setPass(request.getParameter("v_pass"));
+					else{
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Por favor, evite poner caracteres no aceptados.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/usuarioAlta.jsp").forward(request, response);
+						return;
+					}
 					us.setMail(request.getParameter("v_mail"));
-					rol=new Rol();
+					Rol rol=new Rol();
 					rol.setId(2);
 					us.setRol(rol);
 					Integer id=usDao.guardar(us);
@@ -145,7 +150,7 @@ public class UsuarioController extends HttpServlet {
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
 					Rol rol=usuario.getRol();
-					if(rol.getId() != 1 || rol.getId() == null){
+					if(rol.getId() == null){
 						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
@@ -241,6 +246,20 @@ public class UsuarioController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String accion=request.getParameter("accion");
+		if(accion==null || accion.isEmpty()){
+			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+		}else{
+			//Nota: nunca lo usé.
+			if(accion.equals("guardar") || accion.equals("eliminar") || accion.equals("modificar")){
+				Boolean exito=false;
+				request.setAttribute("exito", exito);
+				String error= "Ud está intentando realizar una operación no permitida.";
+				request.setAttribute("error", error);
+				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+				return;
+			}
+		}
 		processRequest(request, response);
 	}
 
@@ -265,5 +284,23 @@ public class UsuarioController extends HttpServlet {
 			}
 		}
 		return -1;
+	}
+	private Boolean validarNick(String nick){
+		char[] c=nick.toCharArray();
+		Boolean exito=false;
+		for(int i=0;i<c.length;i++){
+			if((c[i] > 96 && c[i] < 123) || (c[i] >= 48 && c[i] <= 57))exito=true;
+			else return false;
+		}
+		return exito;
+	}
+	private Boolean validarPass(String pass){
+		char[] c=pass.toCharArray();
+		Boolean exito=false;
+		for(int i=0;i<c.length;i++){
+			if((c[i] > 33 && c[i] < 35) || (c[i] > 64 && c[i] < 91) || (c[i] > 96 && c[i] < 123) || (c[i] >= 48 && c[i] <= 57))exito=true;
+			else return false;
+		}
+		return exito;
 	}
 }

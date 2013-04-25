@@ -35,17 +35,15 @@ function isNum(texto,e){
 		return false;
 	}
 }
-function validarNick(e){
-	var k;
-	document.all ? k = e.keyCode : k = e.which;
-	
-	return((k > 96 && k < 123) || k == 8 || k == 9 || k == 2 || k == 3 || (k >= 48 && k <= 57));
-}
-function validarPass(e){
-	var k;
-	document.all ? k = e.keyCode : k = e.which;
-	
-	return((k > 33 && k < 35) || (k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 9 || k == 2 || k == 3 || (k >= 48 && k <= 57));
+function validarUser(texto,e){
+	var minlong=6;
+
+	if (texto.value.length < minlong){
+		document.getElementById("errorNick").style.display="";
+		return false;
+	}
+	document.getElementById("errorNick").style.display="none";
+	return true;
 }
 function validarPass1(texto,e){
 	var minlong=6;

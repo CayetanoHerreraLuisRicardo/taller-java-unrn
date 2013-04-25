@@ -45,16 +45,6 @@
 			<!-- Inicio de sesión vacío -->
 			<div id="inicio">
 				<h2>Efectos positivos de los Video Juegos</h2>
-				<c:choose>
-					<c:when test="${requestScope.exito eq true}">
-						<c:out value="${requestScope.error}" />
-						<br>
-					</c:when>
-					<c:when test="${requestScope.exito eq false}">
-						<c:out value="${requestScope.error}" />
-						<br>
-					</c:when>
-				</c:choose>
 				<p>
 					Durante años muchas personas han argumentado que los Video Juegos no tienen ningún efecto positivo a causa de su uso. 
 					Se ha dicho que atrofia el cerebro, que hace a las personas mas agresivas, e incluso que hace perder la capacidad de concentración en los niños.

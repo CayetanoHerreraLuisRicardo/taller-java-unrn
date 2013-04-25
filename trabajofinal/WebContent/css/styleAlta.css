@@ -9,19 +9,21 @@
 	position:relative;
 	float:left;
 	left:50%;
-	margin-left:-11pc;
+	margin-left:-215px;
 }
-.infoCampo{
+#formAlta .infoCampo{
 	margin-left:25px;
 	display:block;
 }
 #alta fieldset{
-	border:1px solid #067098;
+		border:1px solid #888888;
+		color:#000000;
+		max-width:409px;
 }
 #envio{
 	padding: 5px 0 0 0;
 }
-.campo{
+#formAlta .campo{
 	margin-left:25px;
 	margin-right:25px;
 	margin-bottom:10px;
@@ -31,14 +33,14 @@
 	height: 10pc;
 	resize:none;
 }
-.campoTit{
-	color:blue;
+#formAlta .campoTit{
+	color:#888888;
 	font-weight:bold;
 }
 #select{
 	margin-right:31px;
 }
-textarea.campo{
+textarea .campo{
 	height:40px;
 }
 #radios{

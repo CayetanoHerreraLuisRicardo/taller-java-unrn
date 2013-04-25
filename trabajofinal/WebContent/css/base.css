@@ -102,6 +102,7 @@ color: #222;
 	overflow:auto;
 	position:relative;
 	padding:0 2px 0 2px;
+	max-width:600px;
 	border-left:1px solid #888888;
 }
 /*--------------------------------------------------------*/
@@ -111,6 +112,7 @@ color: #222;
 	float:left;
 	padding:0 15px 0 0;
 	margin:0 -1px 0 0;
+	max-width:180px;
 	border-right:1px solid #888888;
 }
 #panelIzq h3{

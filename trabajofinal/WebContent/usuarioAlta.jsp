@@ -43,11 +43,11 @@
 					<h2>Alta de usuario</h2>
 					<c:choose>
 						<c:when test="${requestScope.exito eq true}">
-							<c:out value="${requestScope.error}" />
+							<label><c:out value="${requestScope.error}" /></label>
 							<br>
 						</c:when>
 						<c:when test="${requestScope.exito eq false}">
-							<c:out value="${requestScope.error}" />
+							<label><c:out value="${requestScope.error}" /></label>
 							<br>
 						</c:when>
 					</c:choose>
@@ -56,16 +56,19 @@
 						<fieldset id="user">
 							<legend class="campoTit">Datos del usuario</legend>
 							<div id="user">
-								<label class="infoCampo">Usuario:</label>
-								<input class="campo" name="v_user" type="text" onkeypress="return validarNick(event)" required="required" maxlength="12" />
+								<label class="infoCampo">Usuario: 
+									<label class="warning">El usuario solo acepta letras y números.</label> 
+									<label id="errorNick" style="display:none;"><br>El nombre de usuario mínimo es de 6 caracteres.</label>
+								</label>
+								<input class="campo" name="v_user" type="text" onblur="return validarUser(this,event)" required="required" maxlength="12" />
 							</div>
 							<div id="pass1">
 								<label class="infoCampo">Contraseña:<label id="errorPass1" style="display:none;"> La contraseña mínima es de 6 caracteres.</label></label>
-								<input id="passContent1" class="campo" name="v_pass" type="password" onkeypress="return validarPass(event)" onblur="return validarPass1(this,event)" required="required" maxlength="11" />
+								<input id="passContent1" class="campo" name="v_pass" type="password" onblur="return validarPass1(this,event)" required="required" maxlength="11" />
 							</div>
 							<div id="pass2">
 								<label class="infoCampo">Confirmar contraseña:<label id="errorPass2" style="display:none"> No coinciden las contraseñas.</label></label>
-								<input id="passContent2"  class="campo" name="v_pass2" type="password" onkeypress="return validarPass(event)" onblur="return validarPass2(this,event)" required="required" maxlength="11" />
+								<input id="passContent2"  class="campo" name="v_pass2" type="password" onblur="return validarPass2(this,event)" required="required" maxlength="11" />
 							</div>
 						</fieldset>
 						<fieldset id="personales">
