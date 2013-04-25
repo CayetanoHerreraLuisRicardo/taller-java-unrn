@@ -6,6 +6,7 @@
 				<a href="HomeController">Inicio</a>
 			</li>
 			<c:if test="${sessionScope.usuario.rol.id eq 1}">
+				<li class="lvl1"><a href="usuarioModif.jsp">Cuenta</a>
 				<li id="catgs" class="lvl1"><a href="#">Categorías</a>
 					<ul>
 						<li class="lvl2"><a href="categoriaAlta.jsp">Crear</a></li>

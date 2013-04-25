@@ -5,7 +5,7 @@ import java.util.*;
 
 public abstract class BaseDao {
 	protected static String host = "localhost";
-	protected static String db = "taller";
+	protected static String db = "trabajofinal";
 	protected static int puertoServidorBD = 3306;					// puerto en el que escucha el servidor
 	protected static String user = "root";							// usuario del servidor de base de datos
 	protected static String pass = "123";							// password correspondiente al usuario
