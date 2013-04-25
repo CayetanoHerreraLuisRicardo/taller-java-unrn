@@ -49,3 +49,20 @@ textarea .campo{
 #mayor{
 	margin-left:25px;
 }
+#categoria table{
+	width:400px;
+}
+#categoria table .del, #categoria table .delDesc{
+	text-align:center;
+}
+.borrar{
+	text-align:center;
+	text-decoration: none;
+	color:#888888;
+	display: block;
+	position: relative;
+}
+.borrar:hover{
+	cursor:pointer;
+	text-decoration: underline;
+}	

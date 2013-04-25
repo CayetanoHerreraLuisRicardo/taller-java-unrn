@@ -251,7 +251,7 @@ public class UsuarioController extends HttpServlet {
 			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
 		}else{
 			//Nota: nunca lo usé.
-			if(accion.equals("guardar") || accion.equals("eliminar") || accion.equals("modificar")){
+			if(accion.equals("guardar") || accion.equals("modificar")){
 				Boolean exito=false;
 				request.setAttribute("exito", exito);
 				String error= "Ud está intentando realizar una operación no permitida.";

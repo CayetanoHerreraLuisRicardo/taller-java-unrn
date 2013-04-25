@@ -64,10 +64,10 @@
 								<tr><th>Categoría</th><th>¿Eliminar?</th></tr>
 								<c:forEach var="cats" items="${sessionScope.listacategorias}">
 									<tr>
-										<td id="${cats.id}">${cats.nombre}</td>
-										<td>
+										<td class="delDesc" id="${cats.id}">${cats.nombre}</td>
+										<td class="del">
 											<!-- <input type="checkbox" name="cat" value="${cats.id}"> -->
-											<a href="CategoriaController?accion=eliminar&cat=${cats.id}">Borrar</a>
+											<a class="borrar" href="CategoriaController?accion=eliminar&cat=${cats.id}">Borrar</a>
 										</td>
 									</tr>
 								</c:forEach>
