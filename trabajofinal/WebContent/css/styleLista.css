@@ -13,7 +13,7 @@
 .tit_prod{
 	padding-bottom: 2px;
 	position:relative;
-	width:95%;
+	width:99%;
 	display:block;
 	float:left;
 	border-bottom: 1px solid #067098;
@@ -51,19 +51,20 @@
 .block_prod .precio_prod{
 	float:right;
 }
-.block_prod #edit{
+.block_prod .edit{
 	float:right;
 	padding-right:5%;
 	margin:0;
+	padding:0;
 	height:100%;
 	list-style-type:none;
 }
-.block_prod #edit li{
+.block_prod .edit li{
 	margin: 0 2px 2px 0;
 	width: 90px;
 	left:0;
 }
-.block_prod #edit li a{
+.block_prod .edit li a{
 	text-align:center;
 	text-decoration: none;
 	background-color:#067098;
@@ -75,20 +76,21 @@
 	text-decoration: none;
 	z-index: 1;
 }
-.block_prod #edit li:hover{
+.block_prod .edit li:hover{
 	position: relative;
 }
-.block_prod #edit li a:hover, .block_prod #edit li:hover a{
+.block_prod .edit li a:hover, .block_prod .edit li:hover a{
 	background-color:#AAAAAA;
 	color: #000000;
 	position: relative;
 }
-.block_prod #edit li a{
+.block_prod .edit li a{
 	display: block !important;
 	position: relative;
 }
 .desc_prod{
 	width:50%;
+	padding:0;
 }
 #total{
 	border:none;

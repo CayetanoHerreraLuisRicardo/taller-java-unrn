@@ -65,7 +65,7 @@
 							<h3 class="tit_prod">${prods.nombre}<label class="precio_prod">Precio: $ ${prods.precio}</label></h3><br><br>
 							<img alt="Imágen no disponible" src="${prods.imgURL}" height="100%" width="25%"/>
 							<ul class="desc_prod">${prods.descripcion}</ul>
-							<ul id="edit">
+							<ul class="edit">
 								<li><a href="ProductoController?accion=eliminar&cat=<%=request.getParameter("cat")%>&prodID=${prods.id}">Borrar</a></li>
 								<li><a href="ProductoModif?cat=<%=request.getParameter("cat")%>&id=${prods.id}">Editar</a></li>
 							</ul>
@@ -73,7 +73,7 @@
 						</c:forEach>
 					</div>
 				</c:when>
-				<c:when test="${sessionScope.usuario.rol.id eq 2}">
+				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">
 					<div id="error">
 						<c:choose>
 							<c:when test="${requestScope.exito eq true}">
@@ -92,33 +92,10 @@
 							<h3 class="tit_prod">${prods.nombre}<label class="precio_prod">Precio: $ ${prods.precio}</label></h3><br><br>
 							<img alt="Imágen no disponible" src="${prods.imgURL}" height="100%" width="25%"/>
 							<ul class="desc_prod">${prods.descripcion}</ul>
-							<ul id="edit">
+							<ul class="edit">
 								<li><a href="CarritoController?accion=agregar&cat=<%=request.getParameter("cat")%>&prodID=${prods.id}">Agregar</a></li>
 								<li><a href="CarritoController?accion=quitar&cat=<%=request.getParameter("cat")%>&prodID=${prods.id}">Quitar</a></li>
 							</ul>
-						</div>
-						</c:forEach>
-					</div>
-				</c:when>
-				<c:when test="${sessionScope.usuario.rol.id eq null}">
-					<div id="error">
-						<c:choose>
-							<c:when test="${requestScope.exito eq true}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-							<c:when test="${requestScope.exito eq false}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-						</c:choose>
-					</div>
-					<div id="listado">
-						<c:forEach var="prods" items="${requestScope.listaproductos}">
-						<div class="block_prod">
-							<h3 class="tit_prod">${prods.nombre}<label class="precio_prod">Precio: $ ${prods.precio}</label></h3><br><br>
-							<img alt="Imágen no disponible" src="${prods.imgURL}" height="100%" width="25%"/>
-							<ul class="desc_prod">${prods.descripcion}</ul>
 						</div>
 						</c:forEach>
 					</div>
