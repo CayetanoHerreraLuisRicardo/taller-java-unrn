@@ -58,12 +58,16 @@
 							</c:when>
 						</c:choose>
 						<form id="formAlta" action="CategoriaController" method="post">
+							<input type="hidden" name="accion" value="modificar">
 							<fieldset id="categoria">
 								<legend class="campoTit">Datos de la categoría</legend>
 								<div id="nom">
 									<label class="infoCampo">Nombre de la Categoria:</label>
-									<input type="hidden" name="accion" value="modificar">
-									<input class="campo" name="v_nombre" type="text" required="required" maxlength="25" />
+									<select class="campo" name="v_nombre">
+										<c:forEach var="cats" items="${sessionScope.listacategorias}">
+											<option value="${cats.nombre}">${cats.nombre}</option>
+										</c:forEach>
+									</select>
 								</div>
 								<div id="nom">
 									<label class="infoCampo">Nombre modificado:</label>
