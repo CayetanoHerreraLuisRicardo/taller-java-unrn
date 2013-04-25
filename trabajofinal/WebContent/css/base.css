@@ -55,6 +55,7 @@ color: #222;
 	left:0;
 }
 #main_nav ul li a{
+	background-color:black;
 	text-align:center;
 	text-decoration: none;
 	color:#FFFFFF;
@@ -76,6 +77,8 @@ color: #222;
 }
 #main_nav ul li ul{
 	display:none;
+	background-color:black;
+	z-index:1;
 	padding-left:0;
 }
 #main_nav ul li a:hover ul, #main_nav ul li:hover ul {

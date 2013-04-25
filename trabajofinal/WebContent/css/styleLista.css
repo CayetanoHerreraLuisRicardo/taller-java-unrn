@@ -46,6 +46,7 @@
 .block_prod .desc_prod{
 	display: inline;
 	float:left;
+	text-align:justify;
 	margin: 0 0 0 15px;
 }
 .block_prod .precio_prod{
