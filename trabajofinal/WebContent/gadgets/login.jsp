@@ -33,4 +33,7 @@
 						<br>
 					</c:when>
 				</c:choose>
+				<a>Editar Perfil</a> <a href="UsuarioController?accion=logOut">Salir</a>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq 1}">
 			</c:if>

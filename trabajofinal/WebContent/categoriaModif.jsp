@@ -9,23 +9,6 @@
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>Compras</title>
 </head>
-<!-- Verifica Existencia del usuario -->
-<%if(session.getAttribute("usuario") == null){
-	response.sendRedirect("HomeController");
-	return;
-}
-		@SuppressWarnings("unchecked")
-		Enumeration<String> verif=session.getAttributeNames();
-		Boolean contiene=false;
-		while(verif.hasMoreElements()){
-			String elem=verif.nextElement();
-			if(elem.contains("listacategorias")){
-				contiene=true;
-			}
-		}if(contiene == false){
-			response.sendRedirect("HomeController");
-			return;
-		}%>
 <body>
 <div id="wrapper">
 	<!------------------------------------------------------->

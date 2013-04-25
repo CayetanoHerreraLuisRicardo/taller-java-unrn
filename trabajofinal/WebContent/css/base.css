@@ -193,6 +193,17 @@ color: #222;
 	.campoUsu{
 		font-weight:bold;
 	}
+	#gadLogIn a{
+		text-align:center;
+		text-decoration: none;
+		color:#888888;
+		display: block;
+		position: relative;
+	}
+	#gadLogIn a:hover{
+		cursor:pointer;
+		text-decoration: underline;
+	}
 /*--------------------------------------------------------*/
 /*-----Pie de página--------------------------------------*/
 /*--------------------------------------------------------*/

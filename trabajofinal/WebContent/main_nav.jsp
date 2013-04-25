@@ -19,7 +19,7 @@
 					</ul>
 				</li>
 				<li class="lvl1"><a href="#">Administrar Cuentas</a></li>
-				<li class="lvl1"><a href="HomeController">Cerrar Sesión</a></li>
+				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
 			</c:if>
 			<c:if test="${sessionScope.usuario.rol.id eq 2}">
 				<li class="lvl1"><a href="usuarioModif.jsp">Cuenta</a>
@@ -29,7 +29,7 @@
 				</li>
 				<li class="lvl1"><a href="#">Carrito</a><jsp:include page="listaProductos.jsp" /></li>
 				<li class="lvl1"><a href="finalizarCompra.jsp&tema=compra">Finalizar Compra</a></li>
-				<li class="lvl1"><a href="HomeController">Cerrar Sesión</a></li>
+				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
 			</c:if>
 			<c:if test="${sessionScope.usuario eq null}">
 				<li class="lvl1"><a href="usuarioAlta.jsp">Crear una cuenta</a></li>

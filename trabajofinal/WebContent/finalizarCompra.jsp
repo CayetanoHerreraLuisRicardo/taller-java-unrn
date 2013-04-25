@@ -9,49 +9,31 @@
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>Compras</title>
 </head>
-<!-- Verifica Existencia del usuario -->
-<%if(session.getAttribute("usuario") == null){
-	response.sendRedirect("HomeController");
-	return;
-}
+<%
+	//Controla la facturación del carrito
+	//Falta poner errores
+	String tema=request.getParameter("tema");
+	if(tema==null || tema.isEmpty()){
+		getServletContext().getRequestDispatcher(request.getParameter("url")).forward(request, response);
+		return;
+	}
+	if(tema.equals("compra")){
 		@SuppressWarnings("unchecked")
-		Enumeration<String> verif=session.getAttributeNames();
-		Boolean contiene=false;
-		while(verif.hasMoreElements()){
-			String elem=verif.nextElement();
-			if(elem.contains("listacategorias")){
-				contiene=true;
-			}
-		}if(contiene == false){
-			response.sendRedirect("HomeController");
+		List<Producto>carrito=(List<Producto>) session.getAttribute("carrito");
+		if(carrito==null || carrito.size()==0){
+			Boolean exito=false;
+			request.setAttribute("exito", exito);
+			String error="No se puede facturar una compra vacía.";
+			request.setAttribute("error", error);
+			String url="/home.jsp";
+			getServletContext().getRequestDispatcher(url).forward(request, response);
 			return;
-		}
-
-		//Controla la facturación del carrito
-		
-		//Falta poner errores
-		String tema=request.getParameter("tema");
-		if(tema==null || tema.isEmpty()){
+		}else{
 			getServletContext().getRequestDispatcher(request.getParameter("url")).forward(request, response);
 			return;
 		}
-		if(tema.equals("compra")){
-			@SuppressWarnings("unchecked")
-			List<Producto>carrito=(List<Producto>) session.getAttribute("carrito");
-			if(carrito==null || carrito.size()==0){
-				Boolean exito=false;
-				request.setAttribute("exito", exito);
-				String error="No se puede facturar una compra vacía.";
-				request.setAttribute("error", error);
-				String url="/home.jsp";
-				getServletContext().getRequestDispatcher(url).forward(request, response);
-				return;
-			}else{
-				getServletContext().getRequestDispatcher(request.getParameter("url")).forward(request, response);
-				return;
-			}
-		}
-		%>
+	}
+%>
 <body>
 <div id="wrapper">
 	<!------------------------------------------------------->
