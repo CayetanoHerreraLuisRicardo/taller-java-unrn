@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/styleLista.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="js/javascript.js"></script>
-	<title>Compras</title>
+	<title>PS3 Argento</title>
 </head>
 <body>
 <div id="wrapper">
@@ -30,7 +30,13 @@
 		<!---Panel de navegación, ubicado a la izquierda--------->
 		<!------------------------------------------------------->
 		<div id="panelIzq">
-		<jsp:include page="panel_izq.jsp" />
+			<jsp:include page="panel_izq.jsp" />
+		</div>
+		<!------------------------------------------------------->
+		<!---Panel de navegación, ubicado a la derecha----------->
+		<!------------------------------------------------------->
+		<div id="panelDer">
+			<jsp:include page="panel_der.jsp" />
 		</div>
 		<!------------------------------------------------------->
 		<!---Estructura de la página en cuestión----------------->
