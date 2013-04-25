@@ -70,7 +70,8 @@ public class Pedido {
 					Categoria cat=new Categoria();
 					cat.setId(catID.getInt("id"));
 					cat.setNombre(catID.getString("nombre"));
-				pList.add(prod);
+				Integer cant=p_pID.getInt("cantProds");
+				pList.put(prod, cant);
 			}
 			ped.setProductos(pList);
 			return ped;
