@@ -2,12 +2,12 @@
 	<!------------------------------------------------------->
 	<!---Listado de categorías------------------------------->
 	<!------------------------------------------------------->
-	<div id="gadCat" class="gadgets">
+	<div id="gadCat" class="gadgetsIzq">
 		<jsp:include page="gadgets/categorias.jsp" />
 	</div>
 	<!------------------------------------------------------->
 	<!---LogIn----------------------------------------------->
 	<!------------------------------------------------------->
-	<div id="gadLogIn" class="gadgets">
+	<div id="gadLogIn" class="gadgetsIzq">
 		<jsp:include page="gadgets/login.jsp" />
 	</div>
