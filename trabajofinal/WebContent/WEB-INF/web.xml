@@ -9,9 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <listener>
-    <listener-class>controlador.CategoriaController</listener-class>
-  </listener>
   <servlet>
     <description></description>
     <display-name>CategoriaController</display-name>
@@ -24,13 +21,23 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>UsuarioController</display-name>
-    <servlet-name>UsuarioController</servlet-name>
-    <servlet-class>controlador.UsuarioController</servlet-class>
+    <display-name>HomeController</display-name>
+    <servlet-name>HomeController</servlet-name>
+    <servlet-class>controlador.HomeController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UsuarioController</servlet-name>
-    <url-pattern>/UsuarioController</url-pattern>
+    <servlet-name>HomeController</servlet-name>
+    <url-pattern>/HomeController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PedidoController</display-name>
+    <servlet-name>PedidoController</servlet-name>
+    <servlet-class>controlador.PedidoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PedidoController</servlet-name>
+    <url-pattern>/PedidoController</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -41,5 +48,15 @@
   <servlet-mapping>
     <servlet-name>ProductoController</servlet-name>
     <url-pattern>/ProductoController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsuarioController</display-name>
+    <servlet-name>UsuarioController</servlet-name>
+    <servlet-class>controlador.UsuarioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsuarioController</servlet-name>
+    <url-pattern>/UsuarioController</url-pattern>
   </servlet-mapping>
 </web-app>

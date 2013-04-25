@@ -43,7 +43,7 @@ public class ProductoDao extends BaseDao {
 				prod.setDescripcion(productoResult.getString("descrip"));
 				prod.setImgURL(productoResult.getString("img_url"));
 				prod.setPrecio(productoResult.getDouble("precio"));
-				prod.setCategoria(catDao.buscar(productoResult.getInt("categoria_id")));
+				prod.setCategoria(cat);
 				productos.add(prod);
 			}
 		} catch (Exception e) {

@@ -36,7 +36,7 @@ public class HomeController extends HttpServlet {
 				Hashtable<Producto,Integer>total=new Hashtable<Producto,Integer>();
 				session.setAttribute("total",total);
 			}
-			getServletContext().getRequestDispatcher("vista/home.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 		}
 		catch(Exception e){
 			e.printStackTrace();
