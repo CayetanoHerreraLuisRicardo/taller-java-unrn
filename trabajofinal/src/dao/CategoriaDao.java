@@ -13,7 +13,7 @@ public class CategoriaDao extends BaseDao {
 	public List<Categoria> listar(){
 		ArrayList<Categoria> list=new ArrayList<Categoria>();
 		try {
-			String sqlSent="SELECT * FROM categoria";
+			String sqlSent="SELECT * FROM categoria ORDER BY nombre";
 			categoriaResult=consultar(sqlSent);
 			while(categoriaResult.next()){
 				Categoria categoria=new Categoria();

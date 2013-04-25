@@ -81,15 +81,15 @@ CREATE  TABLE IF NOT EXISTS `trabajofinal`.`categoria` (
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 INSERT INTO `trabajofinal`.`categoria` (`nombre`) VALUES
-('Accion'),
+('Acción'),
 ('Aventura'),
 ('Casual'),
-('Conduccion'),
+('Conducción'),
 ('Deportes'),
 ('Estrategia'),
 ('MMO'),
 ('Rol-RPG'),
-('Simulacion');
+('Simulación');
 
 
 -- -----------------------------------------------------
