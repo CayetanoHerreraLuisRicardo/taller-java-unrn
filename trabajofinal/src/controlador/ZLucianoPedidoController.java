@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -91,7 +92,7 @@ public class ZLucianoPedidoController extends HttpServlet {
 						return;
 					}
 					@SuppressWarnings("unchecked")
-					List<Producto>productos=(List<Producto>) session.getAttribute("carrito");
+					Hashtable<Producto,Integer>productos=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 					session.removeAttribute("carrito");//Previene repagos de una misma factura
 					usuario=(Usuario) session.getAttribute("usuario");
 					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");

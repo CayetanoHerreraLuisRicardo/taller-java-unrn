@@ -47,9 +47,11 @@ public class PedidoDao extends BaseDao {
 			e1.printStackTrace();
 		}
 		if(resultadoInicial != -1){
-			List<Producto> prod=((Pedido)ped).getProductos();
-			for(int a=0;a<prod.size();a++){
-				String sqlSentProd="INSERT INTO `taller`.`pedido_producto` (`pedido_id`,`producto_id`) VALUES ("+resultadoInicial+","+prod.get(a).getId()+")";
+			Hashtable<Producto,Integer> prodsTable=((Pedido)ped).getProductos();
+			Enumeration<Producto>prods=prodsTable.keys();
+			while(prods.hasMoreElements()){
+				Producto prod=prods.nextElement();
+				String sqlSentProd="INSERT INTO `taller`.`pedido_producto` (`pedido_id`,`producto_id`,`cantProds`) VALUES ("+resultadoInicial+","+prod.getId()+","+prodsTable.get(prod)+")";
 				try {
 					resultadoFinal=modificar(sqlSentProd);
 				} catch (Exception e1) {
@@ -70,8 +72,8 @@ public class PedidoDao extends BaseDao {
 		Pedido ped=new Pedido();
 		ped.setId(id);
 		ped=Pedido.cargarProds(ped);
-		List<Producto> prod=ped.getProductos();
-		for(int a=0;a<prod.size();a++){
+		Hashtable<Producto,Integer> prodsTable=((Pedido)ped).getProductos();
+		for(int a=0;a<prodsTable.size();a++){
 			String sqlSentProd="DELETE FROM `taller`.`pedido_producto` WHERE pedido_id="+id;
 			try {
 				resultado=modificar(sqlSentProd);
