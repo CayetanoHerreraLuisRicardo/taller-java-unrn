@@ -85,7 +85,7 @@
 	border-bottom: 1px solid #ffffff;
 }
 
-#gadgetCarrito a.trigger {
+a.trigger {
 	position: fixed;
 	text-decoration: none;
 	top: 80px;
@@ -107,7 +107,7 @@
 	display: block;
 }
 
-#gadgetCarrito a.trigger:hover {
+a.trigger:hover {
 	position: fixed;
 	text-decoration: none;
 	top: 80px;
@@ -129,6 +129,6 @@
 	display: block;
 }
 
-#gadgetCarrito a.active.trigger {
+a.active.trigger {
 	background: #222222 url("img/menos.png") 85% 55% no-repeat;
 }
