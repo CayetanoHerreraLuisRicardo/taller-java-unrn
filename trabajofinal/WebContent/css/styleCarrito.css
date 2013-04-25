@@ -7,6 +7,7 @@
 /*--------------------------------------------------------*/
 
 #gadgetCarrito a:focus {
+	z-index:101;
 	outline: none;
 }
 
@@ -50,6 +51,7 @@
 	top: 50px;
 	right: 0;
 	display: none;
+	z-index:100;
 	background: #000000;
 	border: 1px solid #111111;
 	-moz-border-radius-topleft: 20px;
@@ -70,6 +72,7 @@
 #gadgetCarrito .panel a,.panel a:visited {
 	margin: 0;
 	padding: 0;
+	z-index:101;
 	color: #9FC54E;
 	text-decoration: none;
 	border-bottom: 1px solid #9FC54E;
@@ -79,6 +82,7 @@
 	margin: 0;
 	padding: 0;
 	color: #ffffff;
+	z-index:101;
 	text-decoration: none;
 	border-bottom: 1px solid #ffffff;
 }
@@ -89,6 +93,7 @@
 	top: 80px;
 	right: 0;
 	font-size: 16px;
+	z-index:101;
 	letter-spacing: -1px;
 	font-family: verdana, helvetica, arial, sans-serif;
 	color: #fff;
@@ -111,6 +116,7 @@
 	top: 80px;
 	right: 0;
 	font-size: 16px;
+	z-index:101;
 	letter-spacing: -1px;
 	font-family: verdana, helvetica, arial, sans-serif;
 	color: #fff;
@@ -128,5 +134,6 @@
 }
 
 #gadgetCarrito a.active.trigger {
+	z-index:101;
 	background: #222222 url("http://localhost:8080/trabajofinal/img/menos.png") 85% 55% no-repeat;
 }
