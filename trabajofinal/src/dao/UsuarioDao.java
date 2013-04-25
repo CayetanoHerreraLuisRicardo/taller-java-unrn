@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.*;
 
 import modelo.*;
-import modelos.Usuario;
 
 public class UsuarioDao extends BaseDao {
 	private ResultSet usuarioID;
@@ -131,13 +130,12 @@ public class UsuarioDao extends BaseDao {
 			usuario.setNombre(filasConsulta.getString("nombre"));
 			usuario.setApellido(filasConsulta.getString("apellido"));
 			usuario.setMail(filasConsulta.getString("mail"));
-			usuario.setNombUsuario(filasConsulta.getString("nomusuario"));
-			usuario.setPassword(filasConsulta.getString("password"));
+			usuario.setUser(filasConsulta.getString("user"));
+			usuario.setPass(filasConsulta.getString("pass"));
 			usuario.setRol(new RolDao().buscar(usuarioID.getInt("rol_id")));
-			lista.add(usuario);
+			usuarios.add(usuario);
 						
 		}
-		cerrarConexion();
-		return lista;
+		return usuarios;
 	}
 }

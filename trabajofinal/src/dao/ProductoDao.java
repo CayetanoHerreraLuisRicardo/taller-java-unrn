@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.*;
 
 import modelo.*;
-import modelos.Producto;
 
 public class ProductoDao extends BaseDao {
 	private ResultSet productoResult;
@@ -143,13 +142,13 @@ public class ProductoDao extends BaseDao {
 			producto = new Producto();
 			producto.setId(filasConsulta.getInt("id"));
 			producto.setNombre(filasConsulta.getString("nombre"));
-			producto.setDescripcion(filasConsulta.getString("descripcion"));
+			producto.setDescripcion(filasConsulta.getString("descrip"));
 			producto.setPrecio(filasConsulta.getDouble("precio"));
-			producto.setCategoria(cat.buscar(filasConsulta.getInt("categoria_id")));
-			lista.add(producto);
+			producto.setImgURL("img_url");
+			producto.setCategoria(catDao.buscar(filasConsulta.getInt("categoria_id")));
+			productos.add(producto);
 						
 		}
-		cerrarConexion();
-		return lista;
+		return productos;
 	}
 }
