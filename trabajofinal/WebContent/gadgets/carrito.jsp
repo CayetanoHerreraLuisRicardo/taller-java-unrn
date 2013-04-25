@@ -5,22 +5,24 @@
 		<link rel="stylesheet" type="text/css" href="css/styleCarrito.css"/>
 		<script type="text/javascript">
 			$(document).ready(function(){ 
-			    $(".trigger").click(function(){ 
-			        $(".panel").toggle("fast"); 
-			        $(this).toggleClass("active"); 
-			        return false; 
+				$(".trigger").click(function(){ 
+					$(".panel").toggle("fast"); 
+					$(this).toggleClass("active"); 
+					return false; 
 			    }); 
 			});
 		</script>
 	</head>
 	<body>
 		<!-- Contenido del panel -->
-		<div class="gadgetCarrito" style="display:none"> 
-		    <h3>Panel Deslizable</h3> 
-		    <p>Aqui esta nuestro panel deslizable hecho con JQuery y algunas funciones en CSS3 que nos daran esquinas redondeadas</p> 
-		    <p>vendria muy bien para nuestro carrito de compras.</p>
+		<div id="gadgetCarrito">
+			<div class="panel">
+				<h3>Panel Deslizable</h3> 
+				<p>Aqui esta nuestro panel deslizable hecho con JQuery y algunas funciones en CSS3 que nos daran esquinas redondeadas</p> 
+				<p>vendria muy bien para nuestro carrito de compras.</p>
+			</div>
+			<!-- Boton del carrito -->
+			<a class="trigger" href="#">Carrito</a>
 		</div>
-		<!-- Boton del carrito -->
-		<a class="trigger" href="#">Carrito</a>
 	</body>
 </html>
