@@ -6,9 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="css/styleIndex.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="js/javascript.js"></script>
-	<title>Compras</title>
+	<title>PS3 Argento</title>
 </head>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->

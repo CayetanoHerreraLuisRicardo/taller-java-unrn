@@ -2,7 +2,6 @@ package controlador;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 
 import javax.servlet.ServletException;
@@ -39,10 +38,12 @@ public class ProductoController extends HttpServlet {
 		//Servlet en si
 		try{
 			String accion=request.getParameter("accion");
-			System.out.println(request.getParameter("accion"));
-			PrintWriter out = response.getWriter();
 			if(accion==null || accion.isEmpty()){
-				response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+				Boolean exito=false;
+				request.setAttribute("exito", exito);
+				String error="El sistema no reconoce esta Acción.";
+				request.setAttribute("error", error);
+				response.sendRedirect("/home.jsp");
 			}else{
 				//
 				//Listar
@@ -212,8 +213,6 @@ public class ProductoController extends HttpServlet {
 						}
 					}catch(Exception e){
 						e.printStackTrace();
-					}finally{
-						out.close();
 					}
 					//CAMBIAR v_img_url por la variable urlimg
 					Producto prod=new Producto();

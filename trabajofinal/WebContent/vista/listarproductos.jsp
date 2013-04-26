@@ -37,7 +37,7 @@
 				<div class="right"> 
 					<div class="algo">
 						<h2><u>Productos</u></h2>
-				    	<table border=""  width="100%" background="/images/flight_simulator_x-1682316.jpg">
+						<table border=""  width="100%" background="/images/flight_simulator_x-1682316.jpg">
 							<tr>
 								<td>Foto</td>
 								<td>Id</td>

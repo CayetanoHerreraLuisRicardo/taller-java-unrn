@@ -33,7 +33,11 @@ public class UsuarioController extends HttpServlet {
 		try{
 			String accion=request.getParameter("accion");
 			if(accion==null || accion.isEmpty()){
-				response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+				Boolean exito=false;
+				request.setAttribute("exito", exito);
+				String error="El sistema no reconoce esta Acción.";
+				request.setAttribute("error", error);
+				response.sendRedirect("/home.jsp");
 			}else{
 				//Nota: nunca lo usé.
 				if(accion.equals("lista")){

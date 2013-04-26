@@ -18,9 +18,10 @@
 		<!-- Contenido del panel -->
 		<div id="gadgetCarrito">
 			<div class="panel">
-				<h3>Panel Deslizable</h3>
-				<p>Aqui esta nuestro panel deslizable hecho con JQuery y algunas funciones en CSS3 que nos daran esquinas redondeadas</p> 
-				<p>vendria muy bien para nuestro carrito de compras.</p>
+				<h3>Carrito</h3>
+				<c:forEach var="prods" items="${sessionScope.carrito.productos}">
+					
+				</c:forEach>
 			</div>
 			<!-- Boton del carrito -->
 			<a class="trigger" href="#">Carrito</a>

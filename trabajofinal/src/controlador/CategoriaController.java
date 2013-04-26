@@ -28,27 +28,16 @@ public class CategoriaController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		//Nota: No debería ser necesario, ya que el HomeController no carga la lista de categorías, lo hace *panel_izq.jsp*
-		//@SuppressWarnings("unchecked")
-		//Enumeration<String> verif=session.getAttributeNames();
-		//Boolean contiene=false;
-		//while(verif.hasMoreElements()){
-		//String elem=verif.nextElement();
-		//if(elem.contains("listacategorias")){
-		//	contiene=true;
-		//}
-		//}if(contiene == false){
-		//response.sendRedirect("HomeController");
-		//return;
-		//}
-		
+		HttpSession session=request.getSession();		
 		//Servlet en sí
 		try{
 			String accion=request.getParameter("accion");
 			if(accion==null || accion.isEmpty()){
-				//Nota: Falta crear el JSP para los mensajes.
-				response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+				Boolean exito=false;
+				request.setAttribute("exito", exito);
+				String error="El sistema no reconoce esta Acción.";
+				request.setAttribute("error", error);
+				response.sendRedirect("/home.jsp");
 			}else{
 				//
 				//Listar
