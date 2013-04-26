@@ -126,8 +126,7 @@ public class UsuarioController extends HttpServlet {
 						request.setAttribute("error", error);
 						return;
 					}
-					//Listar usuarios
-					String users=request.getParameter("us");
+					String users=request.getParameter("userID");
 					Integer id=Integer.parseInt(users);
 					UsuarioDao usDao=new UsuarioDao();
 					Integer borrar=usDao.eliminar(id);

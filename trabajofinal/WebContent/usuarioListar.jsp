@@ -65,8 +65,8 @@
 						<div class="block_user" id="user${users.id}">
 							<li><h3 class="saludo">${users.apellido}, ${users.nombre}</h3></li>
 							<ul class="edit">
-								<li><a href="ProductoController?accion=eliminar&cat=<%=request.getParameter("cat")%>&prodID=${users.id}">Borrar</a></li>
-								<li><a href="ProductoModif?cat=<%=request.getParameter("cat")%>&id=${users.id}">Editar</a></li>
+								<li><a href="UsuarioController?accion=eliminar&userID=${users.id}">Borrar</a></li>
+								<li><a href="UsuarioController?accion=modificar&userID=${users.id}">Editar</a></li>
 							</ul>
 						</div>
 						</c:forEach>
@@ -74,29 +74,8 @@
 					</div>
 				</c:when>
 				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">
-					<div id="error">
-						<c:choose>
-							<c:when test="${requestScope.exito eq true}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-							<c:when test="${requestScope.exito eq false}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-						</c:choose>
-					</div>
-					<div id="listado">
-						<c:forEach var="users" items="${requestScope.listausuarios}">
-						<div class="block_user">
-							<h3 class="saludo">${users.apellido}, ${users.nombre}</h3>
-							<ul class="edit">
-								<li><a href="CarritoController?accion=agregar&cat=<%=request.getParameter("cat")%>&prodID=${users.id}">Agregar</a></li>
-								<li><a href="CarritoController?accion=quitar&cat=<%=request.getParameter("cat")%>&prodID=${users.id}">Quitar</a></li>
-							</ul>
-						</div>
-						</c:forEach>
-					</div>
+					<%	String redirectURL="HomeController";
+						response.sendRedirect(redirectURL);%>
 				</c:when>
 			</c:choose>
 		</div>
