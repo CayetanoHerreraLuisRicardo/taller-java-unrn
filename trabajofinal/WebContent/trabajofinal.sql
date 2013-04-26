@@ -194,7 +194,7 @@ INSERT INTO `trabajofinal`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id
 	<li>Textos: Español</li>
 	<li>Voces: Español</li></ul>
 </li>
-<li>Lanzamiento: 26 de octubre de 2010 (Pegi: +12)</li>', 0, 3, NULL),
+<li>Lanzamiento: 26 de octubre de 2010 (Pegi: +12)</li>', 0, 3, 'img/accion/sims3.jpg'),
 ('Plants Vs. Zombies','<li>Una inmensa horda de divertidos zombis se dispone a invadir tu casa, y tu única línea de defensa es un arsenal de 49 plantas "atrapazombis". Este es el divertido plateamiento de este interesante juego mezcla de estrategia, acción y puzle.</li>
 <li>Plataforma: PlayStation 3 - PC - X360 - 3DS - DS - Vita - Web - iPhone - iPad - Android - Mac</li>
 <li>Desarrollador: PopCap</li>
@@ -205,7 +205,7 @@ INSERT INTO `trabajofinal`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id
 	<li>Textos: Español</li>
 	<li>Voces: Español</li></ul>
 </li>
-<li>Lanzamiento: 9 de febrero de 2011 (Pegi: +12)</li>', 0, 3, NULL),
+<li>Lanzamiento: 9 de febrero de 2011 (Pegi: +12)</li>', 0, 3, 'img/accion/plants_vs_zombies.jpg'),
 ('Spore','<li>Will Wright creador del exitoso "Los Sims" es el responsable de "Spore", un innovador juego evolutivo en el que el jugador creará sus propias criaturas en un mundo que se desarrolla por toda la galaxia.</li>
 <li>Plataforma: PC - DS - iPhone - Mac</li>
 <li>Desarrollador: Maxis</li>
@@ -216,7 +216,7 @@ INSERT INTO `trabajofinal`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id
 	<li>Textos: Español</li>
 	<li>Voces: Español</li></ul>
 </li>
-<li>Lanzamiento: 5 de septiembre de 2008 (Pegi: +12)</li>', 59, 3, NULL),
+<li>Lanzamiento: 5 de septiembre de 2008 (Pegi: +12)</li>', 59, 3, 'img/accion/spore.jpg'),
 ('Braid','<li>Desarrollado por el diseñador experimental Jonathan Blow, ganador del "Independent Games Festival", Braid es un juego que mezcla plataformas 2D con elementos puzle dentro de un sistema de juego que permite manipular el tiempo de la acción.</li>
 <li>Plataforma: PlayStation 3 - PC - X360</li>
 <li>Desarrollador: Hothead Games</li>
@@ -227,8 +227,8 @@ INSERT INTO `trabajofinal`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id
 	<li>Textos: Español</li>
 	<li>Voces: Español</li></ul>
 </li>
-<li>Lanzamiento: 17 de diciembre de 2009 (Pegi: +7)</li>', 149, 3, NULL),
-('Word of Goo','<li>Es un original juego, tanto en concepto como en estilo gráfico, en el que es posible construir a base de una gotas llamadas "goo", todo tipo de impresionantes estructuras con las que resolver montones de ingeniosos puzles.</li>
+<li>Lanzamiento: 17 de diciembre de 2009 (Pegi: +7)</li>', 149, 3, 'img/accion/braid.jpg'),
+('World of Goo','<li>Es un original juego, tanto en concepto como en estilo gráfico, en el que es posible construir a base de una gotas llamadas "goo", todo tipo de impresionantes estructuras con las que resolver montones de ingeniosos puzles.</li>
 <li>Plataforma: PC - Wii - iPhone - iPad - Android - Mac</li>
 <li>Desarrollador: 2D Boy</li>
 <li>Distribuidor: 2D Boy</li>
@@ -238,7 +238,7 @@ INSERT INTO `trabajofinal`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id
 	<li>Textos: Español</li>
 	<li>Voces: Español</li></ul>
 </li>
-<li>Lanzamiento: 19 de junio de 2009 (Pegi: +3)</li>', 149, 3, NULL),
+<li>Lanzamiento: 19 de junio de 2009 (Pegi: +3)</li>', 149, 3, 'img/accion/world_of_goo.jpg'),
 ('Need For Speed: Most Wanted','<li>Juego sin reseña</li>', 299, 4, NULL),
 ('GRID 2','<li>Secuela del trepidante juego de carreras desarrollado por Codemasters, que cuenta entre otras novedades con pleno la última evolución del premiado motor gráfico EGO.</li>
 <li>Plataforma: PlayStation 3 - PC - X360</li>
