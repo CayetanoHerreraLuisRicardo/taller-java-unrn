@@ -22,7 +22,7 @@
 				</li>
 				<li class="lvl1"><a href="#">Administrar Cuentas</a>
 					<ul>
-							<li class="lvl2"><a href="#">Listar Cuentas</a></li>
+							<li class="lvl2"><a href="UsuarioController?accion=lista">Listar Cuentas</a></li>
 							<li class="lvl2"><a href="usuarioAlta.jsp">Crear Cuenta</a></li>
 							<li class="lvl2"><a href="#">Buscar Usuario</a></li>
 					</ul>

@@ -58,11 +58,11 @@
 						</c:when>
 					</c:choose>
 					<form id="formAlta" action="ProductoController" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="accion" value="guardar">
 						<fieldset id="categoria">
 							<legend class="campoTit">Datos del producto</legend>
 							<div id="nom">
 								<label class="infoCampo">Nombre:</label>
-								<input type="hidden" name="accion" value="guardar">
 								<input class="campo" name="v_nombre" type="text" required="required" maxlength="25" />
 							</div>
 							<div id="desc">
