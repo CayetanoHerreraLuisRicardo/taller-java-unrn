@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="css/styleLista.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styleListaUser.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>PS3 Argento</title>
@@ -60,17 +60,17 @@
 						</c:choose>
 					</div>
 					<div id="listado">
+						<ul>
 						<c:forEach var="users" items="${requestScope.listausuarios}">
-						<div class="block_prod" id="prod${users.id}">
-							<h3 class="tit_prod">${users.nombre}<label class="precio_prod">Precio: $ ${users.precio}</label></h3><br><br>
-							<img alt="Imágen no disponible" src="${users.imgURL}" height="100%" width="25%"/>
-							<ul class="desc_prod">${users.descripcion}</ul>
+						<div class="block_user" id="user${users.id}">
+							<li><h3 class="saludo">${users.apellido}, ${users.nombre}</h3></li>
 							<ul class="edit">
 								<li><a href="ProductoController?accion=eliminar&cat=<%=request.getParameter("cat")%>&prodID=${users.id}">Borrar</a></li>
 								<li><a href="ProductoModif?cat=<%=request.getParameter("cat")%>&id=${users.id}">Editar</a></li>
 							</ul>
 						</div>
 						</c:forEach>
+						</ul>
 					</div>
 				</c:when>
 				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">
@@ -87,10 +87,9 @@
 						</c:choose>
 					</div>
 					<div id="listado">
-						<c:forEach var="users" items="${requestScope.listaproductos}">
-						<div class="block_prod">
-							<h3 class="tit_prod">${users.nombre}</h3><br><br>
-							<ul class="desc_prod">${users.descripcion}</ul>
+						<c:forEach var="users" items="${requestScope.listausuarios}">
+						<div class="block_user">
+							<h3 class="saludo">${users.apellido}, ${users.nombre}</h3>
 							<ul class="edit">
 								<li><a href="CarritoController?accion=agregar&cat=<%=request.getParameter("cat")%>&prodID=${users.id}">Agregar</a></li>
 								<li><a href="CarritoController?accion=quitar&cat=<%=request.getParameter("cat")%>&prodID=${users.id}">Quitar</a></li>
