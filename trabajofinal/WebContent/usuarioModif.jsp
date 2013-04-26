@@ -44,7 +44,7 @@
 		<!------------------------------------------------------->
 		<div id="content">
 			<!-- Sesión iniciada -->
-			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1">
+			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
 				<div id="alta">
 					<h2>Información personal</h2>
 					<c:choose>
