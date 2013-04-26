@@ -46,6 +46,15 @@ public class UsuarioController extends HttpServlet {
 				//Guardar
 				//
 				if(accion.equals("guardar")){
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					//Lista los Usuarios
 					UsuarioDao usDao=new UsuarioDao();
 					List<Usuario>usuarios=usDao.listar();
@@ -117,6 +126,14 @@ public class UsuarioController extends HttpServlet {
 				if(accion.equals("eliminar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						response.sendRedirect("HomeController");
@@ -152,10 +169,20 @@ public class UsuarioController extends HttpServlet {
 						getServletContext().getRequestDispatcher("/UsuarioController?accion=lista").forward(request, response);
 					}
 				}
+				//
 				//Modificar
+				//
 				if(accion.equals("modificar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() == null){
 						response.sendRedirect("HomeController");
@@ -211,6 +238,108 @@ public class UsuarioController extends HttpServlet {
 					String error="El usuario no existe. Cárguelo previo a intentar modificarlo.";
 					request.setAttribute("error", error);
 					getServletContext().getRequestDispatcher("/usuarioModif.jsp").forward(request, response);
+					return;
+				}
+				//
+				//Admin modifica usuario
+				//
+				if(accion.equals("adminEdit")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					Rol rol=usuario.getRol();
+					if(rol.getId() == null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					//Lista los Usuarios
+					UsuarioDao usDao=new UsuarioDao();
+					List<Usuario>usuarios=usDao.listar();
+					for(int i=0;i<usuarios.size();i++){
+						Usuario usTemp=usuarios.get(i);
+						Integer id=Integer.parseInt(request.getParameter("userID"));
+						if(usTemp.getId() == id){
+							request.setAttribute("usuarioTemp", usTemp);
+							getServletContext().getRequestDispatcher("/usuarioAdminModif.jsp").forward(request, response);
+						}
+					}
+				}
+				if(accion.equals("adminModif")){
+					//Verifica el rol del usuario
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					Rol rol=usuario.getRol();
+					if(rol.getId() == null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
+					//Lista los Usuarios
+					UsuarioDao usDao=new UsuarioDao();
+					List<Usuario>usuarios=usDao.listar();
+					for(int i=0;i<usuarios.size();i++){
+						Usuario usTemp=usuarios.get(i);
+						if(usTemp.getUser().equals(request.getParameter("v_user"))){
+							if(usTemp.getPass().equals(request.getParameter("v_pass"))){
+								Usuario us=new Usuario();
+								us.setId(usTemp.getId());
+								us.setUser(request.getParameter("v_user"));
+								us.setPass(request.getParameter("v_pass1"));
+								us.setPedidos(usTemp.getPedidos());
+								us.setRol(usTemp.getRol());
+								us.setNombre(request.getParameter("v_nombre_m"));
+								us.setApellido(request.getParameter("v_apellido_m"));
+								us.setMail(request.getParameter("v_mail_m"));
+								Integer modif=usDao.modificar(us);
+								if(modif != -1){
+									Boolean exito=true;
+									request.setAttribute("exito", exito);
+									String error="El usuario se modificó correctamente.";
+									request.setAttribute("error", error);
+								}else{
+									Boolean exito=false;
+									request.setAttribute("exito", exito);
+									String error="Hubo un problema al acceso a la Base de Datos.";
+									request.setAttribute("error", error);
+								}
+								getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
+								return;
+							}else{
+								Boolean exito=false;
+								request.setAttribute("exito", exito);
+								String error="La contraseña antigua es incorrecta.";
+								request.setAttribute("error", error);
+								getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
+								return;
+							}
+						}
+					}
+					Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error="El usuario no existe. Cárguelo previo a intentar modificarlo.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
 					return;
 				}
 				//

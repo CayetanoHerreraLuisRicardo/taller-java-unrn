@@ -99,6 +99,10 @@
 					</form>
 				</div>
 			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq null}">
+				<%	String redirectURL="HomeController";
+					response.sendRedirect(redirectURL);%>
+			</c:if>
 		</div>
 	</div>
 	<!------------------------------------------------------->

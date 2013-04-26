@@ -44,7 +44,7 @@
 		<!------------------------------------------------------->
 		<div id="content">
 			<!-- Sesión iniciada -->
-			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
+			<c:if test="${sessionScope.usuario.rol.id eq 1}">
 				<div id="alta">
 					<h2>Información personal</h2>
 					<c:choose>
@@ -58,12 +58,12 @@
 						</c:when>
 					</c:choose>
 					<form id="formAlta" action="UsuarioController" method="post">
-						<input type="hidden" name="accion" value="modificar">
+						<input type="hidden" name="accion" value="adminModif">
 						<fieldset id="user">
 							<legend class="campoTit">Datos del usuario</legend>
 							<div id="user">
 								<label class="infoCampo">Usuario:</label>
-								<input class="campo" readonly="readonly" name="v_user" type="text" onkeypress="return validarNick(event)" required="required" maxlength="12" value="${sessionScope.usuario.user}" />
+								<input class="campo" readonly="readonly" name="v_user" type="text" onkeypress="return validarNick(event)" required="required" maxlength="12" value="${requestScope.usuarioTemp.user}" />
 							</div>
 							<div id="pass0">
 								<label class="infoCampo">Contraseña:</label>
@@ -71,26 +71,26 @@
 							</div>
 							<div id="pass1">
 								<label class="infoCampo">Nueva contraseña:<label id="errorPass1" style="display:none"> La contraseña mínima es de 6 caracteres.</label></label>
-								<input id="passContent1"  class="campo" name="v_pass1" type="password" onkeypress="return validarPass(event)" onblur="return validarPass1(this,event)" required="required" maxlength="11" />
+								<input id="passContent1" required="required" class="campo" name="v_pass1" type="password" onkeypress="return validarPass(event)" onblur="return validarPass1(this,event)" maxlength="11" />
 							</div>
 							<div id="pass2">
 								<label class="infoCampo">Confirmar contraseña nueva:<label id="errorPass2" style="display:none"> No coinciden las contraseñas.</label></label>
-								<input id="passContent2" class="campo" name="v_pass2" type="password" onkeypress="return validarPass(event)" onblur="return validarPass2(this,event)" required="required" maxlength="11" />
+								<input id="passContent2" required="required" class="campo" name="v_pass2" type="password" onkeypress="return validarPass(event)" onblur="return validarPass2(this,event)" maxlength="11" />
 							</div>
 						</fieldset>
 						<fieldset id="personales">
 							<legend class="campoTit">Datos personales</legend>
 							<div id="nom">
 								<label class="infoCampo">Nombre:</label>
-								<input class="campo" name="v_nombre_m" type="text" required="required" maxlength="45" value="${sessionScope.usuario.nombre}" />
+								<input class="campo" name="v_nombre_m" type="text" required="required" maxlength="45" value="${requestScope.usuarioTemp.nombre}" />
 							</div>
 							<div id="ape">
 								<label class="infoCampo">Apellido:</label>
-								<input class="campo" name="v_apellido_m" type="text" required="required" maxlength="45" value="${sessionScope.usuario.apellido}" />
+								<input class="campo" name="v_apellido_m" type="text" required="required" maxlength="45" value="${requestScope.usuarioTemp.apellido}" />
 							</div>
 							<div id="mail">
 								<label class="infoCampo">Mail:</label>
-								<input class="campo" name="v_mail_m" type="text" required="required" maxlength="45" value="${sessionScope.usuario.mail}" />
+								<input class="campo" name="v_mail_m" type="text" required="required" maxlength="45" value="${requestScope.usuarioTemp.mail}" />
 							</div>
 						</fieldset>
 						<div id="envio">
@@ -98,6 +98,10 @@
 						</div>
 					</form>
 				</div>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq null}">
+				<%	String redirectURL="HomeController";
+					response.sendRedirect(redirectURL);%>
 			</c:if>
 		</div>
 	</div>

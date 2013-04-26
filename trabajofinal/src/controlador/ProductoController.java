@@ -65,6 +65,11 @@ public class ProductoController extends HttpServlet {
 				//Insertar al carrito
 				//
 				if (accion.equals("carritoAdd")) {
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						return;
+					}
 					ProductoDao daoProd = new ProductoDao();
 					Pedido pedido = (Pedido) session.getAttribute("carrito");
 					Hashtable<Producto,Integer>total=(Hashtable<Producto,Integer>)session.getAttribute("total");
@@ -103,6 +108,11 @@ public class ProductoController extends HttpServlet {
 				//Eliminar del carrito
 				//
 				if (accion.equals("carritoDel")){
+					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						return;
+					}
 					Pedido pedido = (Pedido) session.getAttribute("carrito");
 					Hashtable<Producto,Integer>prodsTable=pedido.getProductos();
 					Hashtable<Producto,Integer>total=(Hashtable<Producto,Integer>)session.getAttribute("total");
@@ -146,6 +156,10 @@ public class ProductoController extends HttpServlet {
 				if(accion.equals("guardar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						response.sendRedirect("HomeController");
@@ -233,6 +247,10 @@ public class ProductoController extends HttpServlet {
 				if(accion.equals("eliminar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						response.sendRedirect("HomeController");
@@ -267,6 +285,10 @@ public class ProductoController extends HttpServlet {
 				if(accion.equals("modificar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						response.sendRedirect("HomeController");

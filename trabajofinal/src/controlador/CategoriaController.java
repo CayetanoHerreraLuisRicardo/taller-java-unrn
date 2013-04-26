@@ -65,6 +65,14 @@ public class CategoriaController extends HttpServlet {
 				if(accion.equals("guardar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						//Nota: Para los errores, dejémosle el boolean *exito* - para poder diferenciar los errores de los exitos en el CSS
@@ -116,6 +124,14 @@ public class CategoriaController extends HttpServlet {
 				if(accion.equals("eliminar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						response.sendRedirect("HomeController");
@@ -152,6 +168,14 @@ public class CategoriaController extends HttpServlet {
 				if(accion.equals("modificar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
+					if(usuario==null){
+						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						request.setAttribute("error", error);
+						return;
+					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
 						response.sendRedirect("HomeController");
