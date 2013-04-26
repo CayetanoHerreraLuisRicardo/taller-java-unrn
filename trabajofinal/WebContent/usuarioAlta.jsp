@@ -47,16 +47,12 @@
 			<c:if test="${sessionScope.usuario.rol.id ne 2}">
 				<div id="alta">
 					<h2>Alta de usuario</h2>
-					<c:choose>
-						<c:when test="${requestScope.exito eq true}">
-							<label><c:out value="${requestScope.error}" /></label>
-							<br>
-						</c:when>
-						<c:when test="${requestScope.exito eq false}">
-							<label><c:out value="${requestScope.error}" /></label>
-							<br>
-						</c:when>
-					</c:choose>
+					<!------------------------------------------------------->
+					<!---Alerta---------------------------------------------->
+					<!------------------------------------------------------->
+					<div id="alerta">
+						<jsp:include page="gadgets/alerta.jsp" />
+					</div>
 					<form id="formAlta" action="UsuarioController" method="post">
 						<input type="hidden" name="accion" value="guardar">
 						<fieldset id="user">

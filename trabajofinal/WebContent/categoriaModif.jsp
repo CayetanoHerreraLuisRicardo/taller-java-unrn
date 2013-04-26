@@ -10,6 +10,12 @@
 	<title>PS3 Argento</title>
 </head>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->
@@ -47,16 +53,6 @@
 				<c:if test="${sessionScope.usuario.rol.id eq 1}">
 					<div id="alta">
 						<h2>Modificación de categoría</h2>
-						<c:choose>
-							<c:when test="${requestScope.exito eq true}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-							<c:when test="${requestScope.exito eq false}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-						</c:choose>
 						<form id="formAlta" action="CategoriaController" method="post">
 							<input type="hidden" name="accion" value="modificar">
 							<fieldset id="categoria">

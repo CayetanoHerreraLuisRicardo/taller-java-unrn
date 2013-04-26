@@ -10,6 +10,12 @@
 	<title>PS3 Argento</title>
 </head>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->
@@ -47,18 +53,6 @@
 			<!-- Sesión iniciada -->
 			<c:choose>
 				<c:when test="${sessionScope.usuario.rol.id eq 1}">
-					<div id="error">
-						<c:choose>
-							<c:when test="${requestScope.exito eq true}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-							<c:when test="${requestScope.exito eq false}">
-								<c:out value="${requestScope.error}" />
-								<br>
-							</c:when>
-						</c:choose>
-					</div>
 					<div id="listado">
 						<c:forEach var="users" items="${requestScope.listausuarios}">
 						<div class="block_user" id="user${users.id}">

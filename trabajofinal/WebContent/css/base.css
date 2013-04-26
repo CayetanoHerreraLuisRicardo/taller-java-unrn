@@ -1,13 +1,15 @@
 /* CSS Document */
 
+@import url(alerta.css);
 /*--------------------------------------------------------*/
 /*-----Página---------------------------------------------*/
 /*--------------------------------------------------------*/
 body {
-background: black url("http://localhost:8080/trabajofinal/vista/img/batman.png") top no-repeat; /*color original #333*/
+background: black url("http://localhost:8080/trabajofinal/img/batman.png") top no-repeat; /*color original #333*/
 font-family: Tahoma, Arial, Helvetica, sans-serif;
 font-size: 12px;
 min-width:900px;
+margin:0;
 line-height: 20px;
 color: #222;
 }

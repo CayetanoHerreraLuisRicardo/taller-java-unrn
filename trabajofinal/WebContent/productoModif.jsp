@@ -47,16 +47,12 @@
 			<c:if test="${sessionScope.usuario.rol.id eq 1}">
 				<div id="alta">
 					<h2>Modificación del producto</h2>
-					<c:choose>
-						<c:when test="${requestScope.exito eq true}">
-							<c:out value="${requestScope.error}" />
-							<br>
-						</c:when>
-						<c:when test="${requestScope.exito eq false}">
-							<c:out value="${requestScope.error}" />
-							<br>
-						</c:when>
-					</c:choose>
+					<!------------------------------------------------------->
+					<!---Alerta---------------------------------------------->
+					<!------------------------------------------------------->
+					<div id="alerta">
+						<jsp:include page="gadgets/alerta.jsp" />
+					</div>
 					<form id="formModif" action="ProductoController?cat=<%=request.getParameter("cat")%>&id=<%=request.getParameter("id")%>" method="post">
 						<fieldset id="categoria">
 							<legend class="campoTit">Datos del producto</legend>
@@ -96,6 +92,10 @@
 						</div>
 					</form>
 				</div>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq null}">
+				<%	String redirectURL="HomeController";
+					response.sendRedirect(redirectURL);%>
 			</c:if>
 		</div>
 	</div>

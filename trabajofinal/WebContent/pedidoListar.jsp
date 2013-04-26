@@ -45,18 +45,12 @@
 			<h2 id="titProd">Pedidos</h2>
 			<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
 			<!-- Sesión iniciada -->
-			<c:if test="${sessionScope.usuario.rol.id eq 2}">
-				<div id="error">
-					<c:choose>
-						<c:when test="${requestScope.exito eq true}">
-							<c:out value="${requestScope.error}" />
-							<br>
-						</c:when>
-						<c:when test="${requestScope.exito eq false}">
-							<c:out value="${requestScope.error}" />
-							<br>
-						</c:when>
-					</c:choose>
+			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
+				<!------------------------------------------------------->
+				<!---Alerta---------------------------------------------->
+				<!------------------------------------------------------->
+				<div id="alerta">
+					<jsp:include page="gadgets/alerta.jsp" />
 				</div>
 				<div id="listado">
 					<c:forEach var="peds" items="${requestScope.pedidos}">
@@ -70,6 +64,10 @@
 					</div>
 					</c:forEach>
 				</div>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq null}">
+				<%	String redirectURL="HomeController";
+					response.sendRedirect(redirectURL);%>
 			</c:if>
 		</div>
 	</div>
