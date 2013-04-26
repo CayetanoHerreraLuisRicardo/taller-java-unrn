@@ -20,7 +20,13 @@
 						<li class="lvl2"><a href="">Buscar</a></li>
 					</ul>
 				</li>
-				<li class="lvl1"><a href="#">Administrar Cuentas</a></li>
+				<li class="lvl1"><a href="#">Administrar Cuentas</a>
+					<ul>
+							<li class="lvl2"><a href="#">Listar Cuentas</a></li>
+							<li class="lvl2"><a href="usuarioAlta.jsp">Crear Cuenta</a></li>
+							<li class="lvl2"><a href="#">Buscar Usuario</a></li>
+					</ul>
+				</li>
 				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
 			</c:if>
 			<c:if test="${sessionScope.usuario.rol.id eq 2}">
