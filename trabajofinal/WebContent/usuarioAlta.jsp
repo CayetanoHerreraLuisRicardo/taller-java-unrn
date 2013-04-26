@@ -10,6 +10,12 @@
 	<title>PS3 Argento</title>
 </head>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->
@@ -47,12 +53,6 @@
 			<c:if test="${sessionScope.usuario.rol.id ne 2}">
 				<div id="alta">
 					<h2>Alta de usuario</h2>
-					<!------------------------------------------------------->
-					<!---Alerta---------------------------------------------->
-					<!------------------------------------------------------->
-					<div id="alerta">
-						<jsp:include page="gadgets/alerta.jsp" />
-					</div>
 					<form id="formAlta" action="UsuarioController" method="post">
 						<input type="hidden" name="accion" value="guardar">
 						<fieldset id="user">

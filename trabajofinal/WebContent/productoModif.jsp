@@ -10,6 +10,12 @@
 	<title>PS3 Argento</title>
 </head>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->
@@ -47,12 +53,6 @@
 			<c:if test="${sessionScope.usuario.rol.id eq 1}">
 				<div id="alta">
 					<h2>Modificación del producto</h2>
-					<!------------------------------------------------------->
-					<!---Alerta---------------------------------------------->
-					<!------------------------------------------------------->
-					<div id="alerta">
-						<jsp:include page="gadgets/alerta.jsp" />
-					</div>
 					<form id="formModif" action="ProductoController?cat=<%=request.getParameter("cat")%>&id=<%=request.getParameter("id")%>" method="post">
 						<fieldset id="categoria">
 							<legend class="campoTit">Datos del producto</legend>

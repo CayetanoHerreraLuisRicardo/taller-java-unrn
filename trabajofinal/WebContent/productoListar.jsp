@@ -68,12 +68,6 @@
 					</div>
 				</c:when>
 				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">
-					<!------------------------------------------------------->
-					<!---Alerta---------------------------------------------->
-					<!------------------------------------------------------->
-					<div id="alerta">
-						<jsp:include page="gadgets/alerta.jsp" />
-					</div>
 					<div id="listado">
 						<c:forEach var="prods" items="${requestScope.listaproductos}">
 						<div class="block_prod">

@@ -9,6 +9,12 @@
 	<title>PS3 Argento</title>
 </head>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->
@@ -46,12 +52,6 @@
 			<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
 			<!-- Sesión iniciada -->
 			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
-				<!------------------------------------------------------->
-				<!---Alerta---------------------------------------------->
-				<!------------------------------------------------------->
-				<div id="alerta">
-					<jsp:include page="gadgets/alerta.jsp" />
-				</div>
 				<div id="listado">
 					<c:forEach var="peds" items="${requestScope.pedidos}">
 					<div class="block_ped">
