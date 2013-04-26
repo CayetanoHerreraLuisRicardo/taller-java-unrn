@@ -34,7 +34,7 @@
 			<c:if test="${sessionScope.usuario.user ne null}">
 				<h3>Información del usuario</h3>
 				<p>Hola, <c:out value="${sessionScope.usuario.user}" /></p>
-				<a>Editar Perfil</a> <a href="UsuarioController?accion=logOut">Salir</a>
+				<a href="usuarioModif.jsp">Editar Perfil</a> <a href="UsuarioController?accion=logOut">Salir</a>
 			</c:if>
 			<c:if test="${sessionScope.usuario.rol.id eq 1}">
 			</c:if>

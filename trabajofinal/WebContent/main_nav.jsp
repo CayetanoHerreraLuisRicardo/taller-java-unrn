@@ -24,9 +24,10 @@
 				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
 			</c:if>
 			<c:if test="${sessionScope.usuario.rol.id eq 2}">
-				<li class="lvl1"><a href="usuarioModif.jsp">Cuenta</a>
+				<li class="lvl1"><a href="">Cuenta</a>
 					<ul>
 						<li class="lvl2"><a href="PedidoController?accion=lista">Historial de compras</a></li>
+						<li class="lvl2"><a href="usuarioModif.jsp">Editar Perfil</a></li>
 					</ul>
 				</li>
 				<li id="prods" class="lvl1"><a href="#">Productos</a>
@@ -34,8 +35,6 @@
 						<li class="lvl2"><a href="">Buscar</a></li>
 					</ul>
 				</li>
-				<li class="lvl1"><a href="#">Carrito</a></li>
-				<li class="lvl1"><a href="finalizarCompra.jsp&tema=compra">Finalizar Compra</a></li>
 				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
 			</c:if>
 			<c:if test="${sessionScope.usuario eq null}">
