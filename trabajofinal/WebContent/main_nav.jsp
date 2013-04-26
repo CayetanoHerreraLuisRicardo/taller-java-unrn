@@ -17,6 +17,7 @@
 				<li id="prods" class="lvl1"><a href="#">Productos</a>
 					<ul>
 						<li class="lvl2"><a href="productoAlta.jsp">Crear</a></li>
+						<li class="lvl2"><a href="">Buscar</a></li>
 					</ul>
 				</li>
 				<li class="lvl1"><a href="#">Administrar Cuentas</a></li>
@@ -28,12 +29,22 @@
 						<li class="lvl2"><a href="PedidoController?accion=lista">Historial de compras</a></li>
 					</ul>
 				</li>
+				<li id="prods" class="lvl1"><a href="#">Productos</a>
+					<ul>
+						<li class="lvl2"><a href="">Buscar</a></li>
+					</ul>
+				</li>
 				<li class="lvl1"><a href="#">Carrito</a></li>
 				<li class="lvl1"><a href="finalizarCompra.jsp&tema=compra">Finalizar Compra</a></li>
 				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
 			</c:if>
 			<c:if test="${sessionScope.usuario eq null}">
 				<li class="lvl1"><a href="usuarioAlta.jsp">Crear una cuenta</a></li>
+				<li id="prods" class="lvl1"><a href="#">Productos</a>
+					<ul>
+						<li class="lvl2"><a href="">Buscar</a></li>
+					</ul>
+				</li>
 				<li class="lvl1"><a href="http://www.3djuegos.com/">Ir a 3dJuegos</a></li>
 			</c:if>
 		</ul>
