@@ -65,10 +65,6 @@
 								<label class="infoCampo">Usuario:</label>
 								<input class="campo" readonly="readonly" name="v_user" type="text" onkeypress="return validarNick(event)" required="required" maxlength="12" value="${requestScope.usuarioTemp.user}" />
 							</div>
-							<div id="pass0">
-								<label class="infoCampo">Contraseña:</label>
-								<input id="passContent0" class="campo" name="v_pass" type="password" onkeypress="return validarPass(event)" required="required" maxlength="11" />
-							</div>
 							<div id="pass1">
 								<label class="infoCampo">Nueva contraseña:<label id="errorPass1" style="display:none"> La contraseña mínima es de 6 caracteres.</label></label>
 								<input id="passContent1" required="required" class="campo" name="v_pass1" type="password" onkeypress="return validarPass(event)" onblur="return validarPass1(this,event)" maxlength="11" />

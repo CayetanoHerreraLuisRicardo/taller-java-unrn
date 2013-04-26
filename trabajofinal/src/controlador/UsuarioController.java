@@ -301,45 +301,36 @@ public class UsuarioController extends HttpServlet {
 					for(int i=0;i<usuarios.size();i++){
 						Usuario usTemp=usuarios.get(i);
 						if(usTemp.getUser().equals(request.getParameter("v_user"))){
-							if(usTemp.getPass().equals(request.getParameter("v_pass"))){
-								Usuario us=new Usuario();
-								us.setId(usTemp.getId());
-								us.setUser(request.getParameter("v_user"));
-								us.setPass(request.getParameter("v_pass1"));
-								us.setPedidos(usTemp.getPedidos());
-								us.setRol(usTemp.getRol());
-								us.setNombre(request.getParameter("v_nombre_m"));
-								us.setApellido(request.getParameter("v_apellido_m"));
-								us.setMail(request.getParameter("v_mail_m"));
-								Integer modif=usDao.modificar(us);
-								if(modif != -1){
-									Boolean exito=true;
-									request.setAttribute("exito", exito);
-									String error="El usuario se modificó correctamente.";
-									request.setAttribute("error", error);
-								}else{
-									Boolean exito=false;
-									request.setAttribute("exito", exito);
-									String error="Hubo un problema al acceso a la Base de Datos.";
-									request.setAttribute("error", error);
-								}
-								getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
-								return;
+							Usuario us=new Usuario();
+							us.setId(usTemp.getId());
+							us.setUser(request.getParameter("v_user"));
+							us.setPass(request.getParameter("v_pass1"));
+							us.setPedidos(usTemp.getPedidos());
+							us.setRol(usTemp.getRol());
+							us.setNombre(request.getParameter("v_nombre_m"));
+							us.setApellido(request.getParameter("v_apellido_m"));
+							us.setMail(request.getParameter("v_mail_m"));
+							Integer modif=usDao.modificar(us);
+							if(modif != -1){
+								Boolean exito=true;
+								request.setAttribute("exito", exito);
+								String error="El usuario se modificó correctamente.";
+								request.setAttribute("error", error);
 							}else{
 								Boolean exito=false;
 								request.setAttribute("exito", exito);
-								String error="La contraseña antigua es incorrecta.";
+								String error="Hubo un problema al acceso a la Base de Datos.";
 								request.setAttribute("error", error);
-								getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
-								return;
 							}
+							getServletContext().getRequestDispatcher("/UsuarioController?accion=lista").forward(request, response);
+							return;
 						}
 					}
 					Boolean exito=false;
 					request.setAttribute("exito", exito);
 					String error="El usuario no existe. Cárguelo previo a intentar modificarlo.";
 					request.setAttribute("error", error);
-					getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/UsuarioController?accion=lista").forward(request, response);
 					return;
 				}
 				//
