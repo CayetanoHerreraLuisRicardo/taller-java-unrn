@@ -412,14 +412,82 @@ INSERT INTO `trabajofinal`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id
 	<li>Voces: Español</li></ul>
 </li>
 <li>Lanzamiento: 30 de octubre de 2009 (Pegi: +12)</li>', 0, 7, 'img/lol.jpg'),
-('Skyrim-Dragonborn','<li>Juego sin reseña</li>', 189, 8, NULL),
-('Diablo III','<li>Juego sin reseña</li>', 209, 8, NULL),
-('LOTR: La Guerra del Norte','<li>Juego sin reseña</li>', 199, 8, NULL),
-('Dark Souls','<li>Juego sin reseña</li>', 239, 8, NULL),
-('Microsoft Flight','<li>Juego sin reseña</li>', 0, 9, NULL),
-('X3: Reunion','<li>Juego sin reseña</li>', 0, 9, NULL),
-('JASF','<li>Juego sin reseña</li>', 0, 9, NULL),
-('Silent Hunter 5','<li>Juego sin reseña</li>', 0, 9, NULL);
+('Skyrim-Dragonborn','<li>Dragonborn, es el tercer contenido descargable para The Elder Scrolls V: Skyrim, el popular RPG de Bethesda.</li>
+<li>Plataforma: PlayStation 3 - PC - X360</li>
+<li>Tipo: Contenido descargable (DLC) de The Elder Scrolls V: Skyrim (requerido)</li>
+<li>Desarrollador: Bethesda Softworks</li>
+<li>Distribuidor: Bethesda Softworks</li>
+<li>Jugadores: 1</li>
+<li>Idioma:<ul>
+	<li>Manual: Español</li>
+	<li>Textos: Español</li>
+	<li>Voces: Español</li></ul>
+</li>
+<li>Lanzamiento: 27 de febrero de 2013 (Pegi: +18)</li>', 189, 8, 'img/skyrim.jpg'),
+('Diablo III','<li>Tercera entrega del ya clásico juego de Blizzard que sentó las bases de lo que hoy en día entendemos como un Action RPG. Un fuerte componente multijugador cooperativo, nuevas clases, habilidades, interfaz de juego y una campaña más profunda y dinámica marcada por la aleatoriedad de las misiones, conforman un auténtico diablo jugable que promete tener mucho que decir.</li>
+<li>Plataforma: PlayStation 3 - PC - PS4 - Mac</li>
+<li>Desarrollador: Blizzard</li>
+<li>Distribuidor: Activision Blizzard</li>
+<li>Jugadores: 1-4 (Cooperativo: 2-4)</li>
+<li>Idioma:<ul>
+	<li>Manual: Español</li>
+	<li>Textos: Español</li>
+	<li>Voces: Español</li></ul>
+</li>
+<li>Lanzamiento: 2013 (Por determinar) (Pegi: +16)</li>', 209, 8, 'img/diablo3.jpg'),
+('LOTR: La Guerra del Norte','<li>Videojuego multijugador de acción y aventura RPG, basado en la obra literaria de Tolkien, donde el jugador se convertirá en héroe de la gran batalla del Norte como parte de la épica Guerra del Anillo. Pudiendo explorar tierras desconocidas, elementos y personajes del universo de la Tierra Media, así como elementos de las últimas películas. Disponiendo además, de un innovador modo cooperativo online de hasta tres jugadores.</li>
+<li>Plataforma: PlayStation 3 - PC - X360</li>
+<li>Desarrollador: Snowblind Studios</li>
+<li>Distribuidor: Warner Bros</li>
+<li>Jugadores: 1-3 (Cooperativo: 2-3)</li>
+<li>Idioma:<ul>
+	<li>Manual: Español</li>
+	<li>Textos: Español</li>
+	<li>Voces: Español</li></ul>
+</li>
+<li>Lanzamiento: 15 de noviembre de 2011 (Pegi: +18)</li>', 199, 8, 'img/lotr.jpg'),
+('Dark Souls','<li>RPG de acción y fantasía oscura y medieval muy similar en estilo a Demon\'s Soul, videojuego del que se considera sucesor espiritual.</li>
+<li>Plataforma: PlayStation 3 - PC - X360</li>
+<li>Desarrollador: From Software</li>
+<li>Distribuidor: Namco Bandai</li>
+<li>Jugadores: 1-2 (Cooperativo: 2)</li>
+<li>Idioma:<ul>
+	<li>Manual: Español</li>
+	<li>Textos: Español</li>
+	<li>Voces: Inglés</li></ul>
+</li>
+<li>Lanzamiento: 7 de octubre de 2011 (Pegi: +16)</li>', 239, 8, 'img/darksouls.jpg'),
+('Microsoft Flight','<li>Nuevo episodio de la veterana saga de simulación aérea de Microsoft que responde, en esta ocasión, al escueto nombre de Flight. Tras más de un lustro de ausencia, la IP regresa con Hawái como telón de fondo y un renovado esfuerzo por actualizar su experiencia de juego a los tiempos actuales.</li>
+<li>Plataforma: PC</li>
+<li>Desarrollador: Microsoft</li>
+<li>Distribuidor: Microsoft</li>
+<li>Lanzamiento: 29 de febrero de 2012 (Pegi: +3)</li>', 0, 9, 'img/microsoft_flight.jpg'),
+('X3: Reunion','<li>La saga X vuelve con esta tercera entrega, estrenando un nuevo engine mucho más potente. Con esta entrega sus creadores pretenden “dar” a todos los fans de este simulador espacial las demandas que llevan tiempo solicitando.</li>
+<li>Plataforma: PC</li>
+<li>Desarrollador: EgoSoft</li>
+<li>Distribuidor: LudisGames</li>
+<li>Idioma:<ul>
+	<li>Manual: Español</li>
+	<li>Textos: Español</li>
+	<li>Voces: Inglés</li></ul>
+</li>
+<li>Lanzamiento: 11 de agosto de 2006 (Pegi: +12)</li>', 0, 9, 'img/x3.jpg'),
+('JASF','<li>En Jane‘s Advanced Strike Fighters los jugadores combaten para poner fin a la guerra civil que se libra en el estado ficticio de Azbaristan. La acción se desarrolla en 16 misiones, cubre 65.000 kilómetros cuadrados de montañas, desierto y suelo urbano e incluye 30 cazas de EE. UU., Rusia, Europa y China.</li>
+<li>Plataforma: PlayStation 3 - PC - X360</li>
+<li>Desarrollador: Evolved Games</li>
+<li>Distribuidor: Koch Media</li>
+<li>Lanzamiento: 2 de marzo de 2012 (Pegi: +7)</li>', 0, 9, 'img/jasf.jpg'),
+('Silent Hunter 5','<li>Quinta entrega de la popular serie bélica de combate submarino caracterizada por su realismo e inmersión.</li>
+<li>Plataforma: PC</li>
+<li>Desarrollador: Ubisoft Romania</li>
+<li>Distribuidor: UbiSoft</li>
+<li>Jugadores: 1; (8 online) (Competitivo: 8)</li>
+<li>Idioma:<ul>
+	<li>Manual: Español</li>
+	<li>Textos: Español</li>
+	<li>Voces: Inglés</li></ul>
+</li>
+Lanzamiento: 11 de marzo de 2010 (Pegi: +12)</li>', 0, 9, 'img/silent_hunter_5.jpg');
 
 
 -- -----------------------------------------------------
