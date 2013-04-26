@@ -66,7 +66,7 @@
 							<ul class="edit">
 								<li><a href="PedidoController?accion=lista&userID=${users.id}">Historial de compras</a></li>
 								<li><a href="UsuarioController?accion=eliminar&userID=${users.id}">Borrar</a></li>
-								<li><a href="usuarioModif.jsp?userID=${users.id}">Editar Perfil</a></li>
+								<li><a href="UsuarioController?accion=adminEdit&userID=${users.id}">Editar Perfil</a></li>
 							</ul>
 						</div>
 						</c:forEach>
