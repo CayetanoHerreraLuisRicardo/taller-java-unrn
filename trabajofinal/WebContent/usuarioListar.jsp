@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="css/styleListaUser.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styleListaUsers.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>PS3 Argento</title>
@@ -60,17 +60,16 @@
 						</c:choose>
 					</div>
 					<div id="listado">
-						<ul>
 						<c:forEach var="users" items="${requestScope.listausuarios}">
 						<div class="block_user" id="user${users.id}">
-							<li><h3 class="saludo">${users.apellido}, ${users.nombre}</h3></li>
+							<h3 class="saludo">${users.apellido}, ${users.nombre}</h3>
 							<ul class="edit">
+								<li><a href="PedidoController?accion=lista&userID=${users.id}">Historial de compras</a></li>
 								<li><a href="UsuarioController?accion=eliminar&userID=${users.id}">Borrar</a></li>
-								<li><a href="UsuarioController?accion=modificar&userID=${users.id}">Editar</a></li>
+								<li><a href="usuarioModif.jsp?userID=${users.id}">Editar Perfil</a></li>
 							</ul>
 						</div>
 						</c:forEach>
-						</ul>
 					</div>
 				</c:when>
 				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">

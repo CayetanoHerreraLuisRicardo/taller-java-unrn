@@ -7,101 +7,39 @@
 #content{
 	padding:0 3% 0 3%;
 }
-#titProd{
-	margin:0 0 0 0;
-}
-.tit_prod{
+.block_user{
+	margin: 0 10px 20px 10px;
+	padding-top: 5px;
 	padding-bottom: 2px;
+	overflow: auto;
+}
+.saludo{
+	padding-bottom: 2px;
+	list-style-type:none;
 	position:relative;
 	width:99%;
 	display:block;
 	float:left;
 	border-bottom: 1px solid #067098;
 }
-#tit{
-	margin: 0 0 0 5px;
-	padding-top: 5px;
-	padding-left: 10px;
-	padding-bottom: 2px;
-	border-bottom: 1px solid #067098;
-	border-bottom-style: dotted;
-}
-.block_prod{
-	margin: 0 0 20px 0;
-	padding-top: 5px;
-	padding-bottom: 2px;
-	overflow: auto;
-}
-.block_prod img{
-	margin: 0 5px 5px 0;
-	border-bottom: 1px solid silver;
-	border-right: 1px solid silver;
-	display: inline;
-	float: left;
-}
-.block_prod .tit_prod{
-	float: left;
-	margin: 0 0 0 5px;
-}
-.block_prod .desc_prod{
-	display: inline;
+.block_user .edit{
 	float:left;
-	text-align:justify;
-	margin: 0 0 0 15px;
-}
-.block_prod .precio_prod{
-	float:right;
-}
-.block_prod .edit{
-	float:right;
 	padding-right:5%;
-	margin:0;
+	margin:0 0 0 15px;
 	padding:0;
 	height:100%;
 	list-style-type:none;
 }
-.block_prod .edit li{
+.block_user .edit li{
 	margin: 0 2px 2px 0;
-	width: 90px;
-	left:0;
-}
-.block_prod .edit li a{
-	text-align:center;
-	text-decoration: none;
-	background-color:#067098;
-	margin: 0 2px 2px 0;
-	color:#FFFFFF;
-	display: block;
-	padding: 8px;
-	position: relative;
-	text-decoration: none;
-	z-index: 1;
-}
-.block_prod .edit li:hover{
-	position: relative;
-}
-.block_prod .edit li a:hover, .block_prod .edit li:hover a{
-	background-color:#AAAAAA;
-	color: #000000;
-	position: relative;
-}
-.block_prod .edit li a{
-	display: block !important;
-	position: relative;
-}
-.desc_prod{
-	width:50%;
-	padding:0;
-}
-#total{
-	border:none;
-}
-#total a{
-	text-align:center;
-	text-decoration: none;
-	background-color:#067098;
-	width: 162px;
+	width: 128px;
 	float:left;
+}
+.block_user .edit li a{
+	text-align:center;
+	text-decoration: none;
+	background-color:#067098;
+	margin: 0 2px 2px 0;
 	color:#FFFFFF;
 	display: block;
 	padding: 8px;
@@ -109,8 +47,15 @@
 	text-decoration: none;
 	z-index: 1;
 }
-#total a:hover{
+.block_user .edit li:hover{
+	position: relative;
+}
+.block_user .edit li a:hover, .block_user .edit li:hover a{
 	background-color:#AAAAAA;
 	color: #000000;
+	position: relative;
+}
+.block_user .edit li a{
+	display: block !important;
 	position: relative;
 }

@@ -103,13 +103,13 @@ public class UsuarioController extends HttpServlet {
 					}
 				}
 				//
-				//Buscar usuarios antes de Eliminar
+				//Buscar usuarios
 				//
 				else if(accion.equals("buscar")){
         			UsuarioDao daousuario= new UsuarioDao();
         			List<Usuario> listausuario = daousuario.buscador(request.getParameter("v_buscar"));
         			request.setAttribute("listausuario", listausuario);
-        			getServletContext().getRequestDispatcher("//usuarioEliminar.jsp").forward(request, response);
+        			getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
         		}
 				//
 				//Eliminar
@@ -128,6 +128,14 @@ public class UsuarioController extends HttpServlet {
 					}
 					String users=request.getParameter("userID");
 					Integer id=Integer.parseInt(users);
+					if(id==usuario.getId()){
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="No puede borrar una cuenta con sesión activa.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/UsuarioController?accion=lista").forward(request, response);
+						return;
+					}
 					UsuarioDao usDao=new UsuarioDao();
 					Integer borrar=usDao.eliminar(id);
 					if(borrar != -1){
@@ -135,13 +143,13 @@ public class UsuarioController extends HttpServlet {
 						request.setAttribute("exito", exito);
 						String error="El usuario ha sido borrado correctamente.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/usuarioEliminar.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/UsuarioController?accion=lista").forward(request, response);
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="El usuario no pudo ser borrado.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/usuarioEliminar.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/UsuarioController?accion=lista").forward(request, response);
 					}
 				}
 				//Modificar
