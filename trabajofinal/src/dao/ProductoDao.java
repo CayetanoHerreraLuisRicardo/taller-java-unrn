@@ -57,7 +57,7 @@ public class ProductoDao extends BaseDao {
 	public Integer guardar(Object prod) {
 		Integer id=null;
 		Categoria cat=((Producto) prod).getCategoria();
-		String sqlSent="INSERT INTO `taller`.`producto` (`nombre`,`descrip`,`precio`,`categoria_id`) VALUES " +
+		String sqlSent="INSERT INTO `producto` (`nombre`,`descrip`,`precio`,`categoria_id`) VALUES " +
 				"('"+((Producto) prod).getNombre()+"','"+((Producto) prod).getDescripcion()+"',"+((Producto) prod).getPrecio()+","+cat.getId()+")";
 		try {
 			id=modificar(sqlSent);
@@ -72,7 +72,7 @@ public class ProductoDao extends BaseDao {
 	@Override
 	public Integer eliminar(Integer id) {
 		Integer resultado=null;
-		String sqlSent="DELETE FROM `taller`.`producto` WHERE id="+id;
+		String sqlSent="DELETE FROM `producto` WHERE id="+id;
 		try {
 			resultado=modificar(sqlSent);
 			return resultado;
@@ -87,7 +87,7 @@ public class ProductoDao extends BaseDao {
 	public Integer modificar(Object prod) {
 		Integer resultado=null;
 		Categoria cat=((Producto) prod).getCategoria();
-		String sqlSent="UPDATE `taller`.`producto` SET " +
+		String sqlSent="UPDATE `producto` SET " +
 			"nombre='"+((Producto) prod).getNombre()+"'," +
 			"descrip='"+((Producto) prod).getDescripcion()+"', " +
 			"precio='"+((Producto) prod).getPrecio()+"', " +

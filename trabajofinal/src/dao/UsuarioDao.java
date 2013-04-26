@@ -42,7 +42,7 @@ public class UsuarioDao extends BaseDao {
 	public Integer guardar(Object us) {
 		Integer id=null;
 		Rol rol=((Usuario)us).getRol();
-		String sqlSent="INSERT INTO `taller`.`usuario` (`user`,`pass`,`nombre`,`apellido`,`mail`,`rol_id`) VALUES " +
+		String sqlSent="INSERT INTO `usuario` (`user`,`pass`,`nombre`,`apellido`,`mail`,`rol_id`) VALUES " +
 				"('"+((Usuario)us).getUser()+"','"+((Usuario)us).getPass()+
 				"','"+((Usuario)us).getNombre()+"','"+((Usuario)us).getApellido()+"','"+((Usuario)us).getMail()+"',"+rol.getId()+")";
 		try {
@@ -57,7 +57,7 @@ public class UsuarioDao extends BaseDao {
 
 	@Override
 	public Integer eliminar(Integer id){
-		String sqlSent="DELETE FROM `taller`.`usuario` WHERE id="+id;
+		String sqlSent="DELETE FROM `usuario` WHERE id="+id;
 		try {
 			id=modificar(sqlSent);
 			return id;
@@ -71,7 +71,7 @@ public class UsuarioDao extends BaseDao {
 	@Override
 	public Integer modificar(Object us) {
 		Integer id=null;
-		String sqlSent="UPDATE `taller`.`usuario` SET " +
+		String sqlSent="UPDATE `usuario` SET " +
 				"user='"+((Usuario)us).getUser()+"', " +
 				"pass='"+((Usuario)us).getPass()+"', " +
 				"nombre='"+((Usuario)us).getNombre()+"', " +

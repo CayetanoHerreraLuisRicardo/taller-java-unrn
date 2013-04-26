@@ -38,7 +38,7 @@ public class PedidoDao extends BaseDao {
 		Integer resultadoFinal=null;
 		//Por cada producto en el objeto pedido, se crea una tupla en la tabla pedidio_producto
 		Usuario usuario=((Pedido) ped).getUsuario();
-		String sqlSent="INSERT INTO `taller`.`pedido` (`usuario_id`,`fecha_pedido`,`estado`,`fecha_entrega`) VALUES " +
+		String sqlSent="INSERT INTO `pedido` (`usuario_id`,`fecha_pedido`,`estado`,`fecha_entrega`) VALUES " +
 			"("+usuario.getId()+",'"+((Pedido) ped).getFechaPedido()+"','"+((Pedido) ped).getFechaEntrega()+"');";
 		try {
 			resultadoInicial=modificar(sqlSent);
@@ -51,7 +51,7 @@ public class PedidoDao extends BaseDao {
 			Enumeration<Producto>prods=prodsTable.keys();
 			while(prods.hasMoreElements()){
 				Producto prod=prods.nextElement();
-				String sqlSentProd="INSERT INTO `taller`.`pedido_producto` (`pedido_id`,`producto_id`,`cantProds`) VALUES ("+resultadoInicial+","+prod.getId()+","+prodsTable.get(prod)+")";
+				String sqlSentProd="INSERT INTO `pedido_producto` (`pedido_id`,`producto_id`,`cantProds`) VALUES ("+resultadoInicial+","+prod.getId()+","+prodsTable.get(prod)+")";
 				try {
 					resultadoFinal=modificar(sqlSentProd);
 				} catch (Exception e1) {
@@ -74,7 +74,7 @@ public class PedidoDao extends BaseDao {
 		ped=Pedido.cargarProds(ped);
 		Hashtable<Producto,Integer> prodsTable=((Pedido)ped).getProductos();
 		for(int a=0;a<prodsTable.size();a++){
-			String sqlSentProd="DELETE FROM `taller`.`pedido_producto` WHERE pedido_id="+id;
+			String sqlSentProd="DELETE FROM `pedido_producto` WHERE pedido_id="+id;
 			try {
 				resultado=modificar(sqlSentProd);
 			} catch (Exception e1) {
@@ -85,7 +85,7 @@ public class PedidoDao extends BaseDao {
 			}
 		}
 		if(resultado != -1){
-			String sqlSent="DELETE FROM `taller`.`pedido` WHERE pedido_id="+id;
+			String sqlSent="DELETE FROM `pedido` WHERE pedido_id="+id;
 				try {
 					resultado=modificar(sqlSent);
 				} catch (Exception e1) {
@@ -100,7 +100,7 @@ public class PedidoDao extends BaseDao {
 	public Integer modificar(Object ped) {
 		Integer resultado=null;
 		Usuario user=((Pedido)ped).getUsuario();
-		String sqlSent="UPDATE `taller`.`pedido` SET " +
+		String sqlSent="UPDATE `pedido` SET " +
 			"usuario_id="+user.getId()+", " +
 			"fecha_pedido="+((Pedido)ped).getFechaPedido()+", " +
 			"fecha_entrega="+((Pedido)ped).getFechaEntrega()+" " +
