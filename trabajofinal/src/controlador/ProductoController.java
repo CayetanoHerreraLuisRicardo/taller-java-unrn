@@ -1,6 +1,8 @@
 package controlador;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 import javax.servlet.ServletException;
@@ -8,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.multipart.FilePart;
+import com.oreilly.servlet.multipart.MultipartParser;
+import com.oreilly.servlet.multipart.Part;
 
 import modelo.*;
 import dao.*;
@@ -30,11 +36,12 @@ public class ProductoController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		
-		//Servlet en sí
+		//Servlet en sï¿½
 		try{
 			String accion=request.getParameter("accion");
+			PrintWriter out = response.getWriter();
 			if(accion==null || accion.isEmpty()){
-				response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+				response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acciï¿½n");
 			}else{
 				//
 				//Listar
@@ -61,7 +68,7 @@ public class ProductoController extends HttpServlet {
 					Pedido pedido = (Pedido) session.getAttribute("carrito");
 					Hashtable<Producto,Integer>total=(Hashtable<Producto,Integer>)session.getAttribute("total");
 					Producto prod=daoProd.buscar(Integer.valueOf(request.getParameter("id")));
-					//Busca dentro del carrito si ya está cargado el mismo producto
+					//Busca dentro del carrito si ya estï¿½ cargado el mismo producto
 					Hashtable<Producto,Integer>prodsTable=pedido.getProductos();
 					Enumeration<Producto> prods=prodsTable.keys();
 					while(prods.hasMoreElements()){
@@ -75,7 +82,7 @@ public class ProductoController extends HttpServlet {
 							session.setAttribute("carrito", pedido);
 							Boolean exito=true;
 							request.setAttribute("exito", exito);
-							String error="Se cargó un nuevo producto a su carrito.";
+							String error="Se cargï¿½ un nuevo producto a su carrito.";
 							request.setAttribute("error", error);
 							getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
 							return;
@@ -87,7 +94,7 @@ public class ProductoController extends HttpServlet {
 					session.setAttribute("carrito", pedido);
 					Boolean exito=true;
 					request.setAttribute("exito", exito);
-					String error="Se agregó un nuevo producto a su carrito.";
+					String error="Se agregï¿½ un nuevo producto a su carrito.";
 					request.setAttribute("error", error);
 					getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
 				}
@@ -103,14 +110,14 @@ public class ProductoController extends HttpServlet {
 						Producto prod=prods.nextElement();
 						//Existe?
 						if(prod.getId() == Integer.parseInt(request.getParameter("id"))){
-							//Tiene más de un producto?
+							//Tiene mï¿½s de un producto?
 							if(prodsTable.get(prod)>1){
 								prodsTable.put(prod,prodsTable.get(prod)-1);
 								total.put(prod,prodsTable.get(prod)-1);
 								session.setAttribute("total", total);
 								pedido.setProductos(prodsTable);
 								session.setAttribute("carrito", pedido);
-							}//Solo tenía uno
+							}//Solo tenï¿½a uno
 							else{
 								prodsTable.remove(prod);
 								total.remove(prod);
@@ -119,7 +126,7 @@ public class ProductoController extends HttpServlet {
 								session.setAttribute("carrito", pedido);
 								Boolean exito=true;
 								request.setAttribute("exito", exito);
-								String error="Se borró un producto de su carrito.";
+								String error="Se borrï¿½ un producto de su carrito.";
 								request.setAttribute("error", error);
 								break;
 							}
@@ -143,7 +150,7 @@ public class ProductoController extends HttpServlet {
 						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
-						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						String error="Ud. no es administrador, no puede realizar dicha acciï¿½n.";
 						request.setAttribute("error", error);
 						return;
 					}
@@ -156,11 +163,49 @@ public class ProductoController extends HttpServlet {
 						getServletContext().getRequestDispatcher("/productoAlta.jsp").forward(request, response);
 						return;
 					}
+					//GUARDAR IMAGEN EN SERVIDOR
+					String urlimg = "";
+					try{
+						MultipartParser mp = new MultipartParser(request, 1024*100);
+						Part parte;
+						String[] extenciones = {"image/gif", "image/pgn", "image/jpg"}; 
+						List<String> listaext = Arrays.asList(extenciones) ;
+							
+						while((parte = mp.readNextPart()) != null){
+							if(parte.isFile()){
+								FilePart filepart = (FilePart) parte;
+								if(listaext.contains(filepart.getContentType())){
+									System.out.println(filepart.getFileName());
+									System.out.println(filepart.getFilePath());
+									System.out.println(filepart.getContentType());
+									//cambiar url de la variable dir
+									File dir = new File("/home/localadmin/Escritorio/eclipse/pruebaimg/WebContent/img");
+									filepart.writeTo(dir);
+									urlimg = dir.getAbsolutePath() +"/"+ filepart.getFileName();
+								}
+								else{
+									//ver si esto esta bien xD
+									Boolean exito=false;
+									request.setAttribute("exito", exito);
+									String error = "La extencion del archivo que intenta subir es incorrecta";
+									session.setAttribute("error", error);
+									getServletContext().getRequestDispatcher("/productoAlta.jsp").forward(request, response);
+									return;
+								}
+
+							}
+						}
+					}catch(Exception e){
+						e.printStackTrace();
+					}finally{
+						out.close();
+					}
+					//CAMBIAR v_img_url por la variable urlimg
 					Producto prod=new Producto();
 					prod.setNombre(request.getParameter("v_nombre"));
 					prod.setDescripcion(request.getParameter("v_desc"));
 					prod.setPrecio(Double.parseDouble(request.getParameter("v_precio")));
-					prod.setImgURL(request.getParameter("v_img_url"));
+					prod.setImgURL(request.getParameter(urlimg));
 					Categoria cat=new Categoria();
 					cat.setId(Integer.parseInt(request.getParameter("v_cat_id")));
 					prod.setCategoria(cat);
@@ -169,14 +214,14 @@ public class ProductoController extends HttpServlet {
 					if(id != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
-						String error="Se cargó correctamente el producto.";
+						String error="Se cargï¿½ correctamente el producto.";
 						request.setAttribute("error", error);
 						getServletContext().getRequestDispatcher("/productoAlta.jsp").forward(request, response);
 						return;
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
-						String error="Hubo un problema al cargar el producto, inténtelo de nuevo más tarde.";
+						String error="Hubo un problema al cargar el producto, intï¿½ntelo de nuevo mï¿½s tarde.";
 						request.setAttribute("error", error);
 						getServletContext().getRequestDispatcher("/productoAlta.jsp").forward(request, response);
 					}
@@ -192,7 +237,7 @@ public class ProductoController extends HttpServlet {
 						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
-						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						String error="Ud. no es administrador, no puede realizar dicha acciï¿½n.";
 						request.setAttribute("error", error);
 						return;
 					}
@@ -204,7 +249,7 @@ public class ProductoController extends HttpServlet {
 					if(borrar != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
-						String error="Se borró el producto correctamente.";
+						String error="Se borrï¿½ el producto correctamente.";
 						request.setAttribute("error", error);
 						getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
 					}else{
@@ -226,7 +271,7 @@ public class ProductoController extends HttpServlet {
 						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
-						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						String error="Ud. no es administrador, no puede realizar dicha acciï¿½n.";
 						request.setAttribute("error", error);
 						return;
 					}
@@ -247,7 +292,7 @@ public class ProductoController extends HttpServlet {
 					if(borrar != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
-						String error="Se modificó el producto correctamente.";
+						String error="Se modificï¿½ el producto correctamente.";
 						request.setAttribute("error", error);
 						getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
 					}else{
@@ -282,13 +327,13 @@ public class ProductoController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String accion=request.getParameter("accion");
 		if(accion==null || accion.isEmpty()){
-			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acciï¿½n");
 		}else{
-			//Nota: nunca lo usé.
+			//Nota: nunca lo usï¿½.
 			if(accion.equals("guardar") || accion.equals("modificar")){
 				Boolean exito=false;
 				request.setAttribute("exito", exito);
-				String error= "Ud está intentando realizar una operación no permitida.";
+				String error= "Ud estï¿½ intentando realizar una operaciï¿½n no permitida.";
 				request.setAttribute("error", error);
 				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 				return;

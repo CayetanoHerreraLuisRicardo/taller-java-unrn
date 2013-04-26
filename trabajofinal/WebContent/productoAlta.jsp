@@ -57,7 +57,7 @@
 							<br>
 						</c:when>
 					</c:choose>
-					<form id="formAlta" action="ProductoController" method="post">
+					<form id="formAlta" action="ProductoController" method="post" enctype="multipart/form-data">
 						<fieldset id="categoria">
 							<legend class="campoTit">Datos del producto</legend>
 							<div id="nom">
@@ -73,9 +73,16 @@
 								<label class="infoCampo">Precio:</label>
 								<input id="precioInput" class="campo" name="v_precio" onkeyup="return isNum(this,event)" type="text" required="required" maxlength="25" />
 							</div>
+							<!-- COMENTADO TU INGRESAR IMAGEN
 							<div id="img">
 								<label class="infoCampo">URL local de la imagen:</label>
 								<input class="campo" name="v_img_url" type="text" required="required" maxlength="500" />
+							</div>
+							-->
+							<!-- INGRESAR IMAGEN -->
+							<div id="img">
+								<label class="infoCampo">Cargar Imagen (opcional):</label>
+								<input class="campo" type="file" name="v_img_url" maxlength="500"/>
 							</div>
 							<div id="cat">
 								<label class="infoCampo">Categoría:</label>
