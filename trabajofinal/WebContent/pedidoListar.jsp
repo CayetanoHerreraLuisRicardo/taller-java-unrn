@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
+import="java.util.*, modelo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
@@ -49,22 +50,39 @@
 		<!------------------------------------------------------->
 		<div id="content">
 			<h2 id="titProd">Pedidos</h2>
-			<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
 			<!-- Sesión iniciada -->
-			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
-				<div id="listado">
-					<c:forEach var="peds" items="${requestScope.pedidos}">
-					<div class="block_ped">
-						<h3 class="tit_ped">Pedido Nº: ${peds.id}<label class="fecha_ped">Fecha: ${peds.fechaPedido}</label></h3>
-						<c:forEach var="prods" items="${peds.productos}">
-						<div class="block_prod">
-							<h3 class="tit_prod">${prods.nombre}<label class="precio_prod">Precio: $${prods.precio}</label></h3>
-						</div>
-						</c:forEach>
-					</div>
-					</c:forEach>
-				</div>
-			</c:if>
+			<div id="pedidos">
+				<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
+				<table id="prods">
+					<tr class="fila">
+						<th class="producto">Producto</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>Subtotal</th>
+					</tr>
+					<%	@SuppressWarnings("unchecked")
+						Hashtable<Producto,Integer>carrito=(Hashtable<Producto,Integer>) session.getAttribute("carrito");Enumeration<Producto>prods=carrito.keys();
+						Double total=0.00;
+						while(prods.hasMoreElements()){
+							Producto prod=prods.nextElement();
+							Integer cantidad=carrito.get(prod);
+							total=total+prod.getPrecio()*cantidad;%>
+							<tr class="fila">
+								<td class="producto"><%=prod.getNombre() %></td>
+								<td><%=prod.getPrecio() %></td>
+								<td><%=cantidad %></td>
+								<td><%=prod.getPrecio()*cantidad %></td>
+							</tr>
+							<%
+						}%>
+						<tr class="fila">
+							<td class="producto"></td>
+							<td></td>
+							<td style="text-align:right;">Total:</td>
+							<td><%=total%></td>
+						</tr>
+				</table>
+			</div>
 			<c:if test="${sessionScope.usuario.rol.id ne 1 && sessionScope.usuario.rol.id ne 2}">
 				<%	String redirectURL="HomeController";
 					response.sendRedirect(redirectURL);%>
