@@ -122,7 +122,7 @@ public class ImagenController extends HttpServlet {
 				}
 			}
 			else{
-				urlimg = null;
+				urlimg = "img/nodisponible.jpg";
 				System.out.println("<li>No uploaded files");
 			}
 		} catch (UploadException exc) {
