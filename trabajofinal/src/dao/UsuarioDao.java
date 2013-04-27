@@ -7,7 +7,7 @@ import modelo.*;
 
 public class UsuarioDao extends BaseDao {
 	private ResultSet usuarioID;
-	private List<Usuario> usuarios;
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
 
 	@Override
 	public List<Usuario> listar() {
