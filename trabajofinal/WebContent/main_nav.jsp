@@ -24,7 +24,7 @@
 					<ul>
 							<li class="lvl2"><a href="UsuarioController?accion=lista">Listar Cuentas</a></li>
 							<li class="lvl2"><a href="usuarioAlta.jsp">Crear Cuenta</a></li>
-							<li class="lvl2"><a href="#">Buscar Usuario</a></li>
+							<li class="lvl2"><a href="usuarioBuscar.jsp">Buscar Usuario</a></li>
 					</ul>
 				</li>
 				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
