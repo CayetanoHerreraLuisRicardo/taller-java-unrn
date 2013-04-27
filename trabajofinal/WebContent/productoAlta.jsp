@@ -53,7 +53,7 @@
 			<c:if test="${sessionScope.usuario.rol.id eq 1}">
 				<div id="alta">
 					<h2>Alta de producto</h2>
-					<form id="formAlta" action="ProductoController" method="post">
+					<form id="formAlta" action="ImagenController" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="accion" value="guardar">
 						<fieldset id="categoria">
 							<legend class="campoTit">Datos del producto</legend>
