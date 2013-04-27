@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="css/styleLogin.css"/>
-			<c:if test="${sessionScope.usuario.user eq null}">
-				<c:choose>
-					<c:when test="${requestScope.exito eq true}">
-						<c:out value="${requestScope.error}" />
-						<br>
-					</c:when>
-					<c:when test="${requestScope.exito eq false}">
-						<c:out value="${requestScope.error}" />
-						<br>
-					</c:when>
-				</c:choose>
+			<c:if test="${sessionScope.usuario eq null}">
 				<form id="formInic" action="UsuarioController?accion=logIn" method="post">
 					<fieldset id="datos">
 						<legend class="campoUsu">Iniciar Sesión</legend>
@@ -31,7 +21,7 @@
 				</form>
 			</c:if>
 			<!-- Sesión iniciada -->
-			<c:if test="${sessionScope.usuario.user ne null}">
+			<c:if test="${sessionScope.usuario ne null}">
 				<h3>Información del usuario</h3>
 				<p>Hola, <c:out value="${sessionScope.usuario.user}" /></p>
 				<a href="usuarioModif.jsp">Editar Perfil</a> <a href="UsuarioController?accion=logOut">Salir</a>

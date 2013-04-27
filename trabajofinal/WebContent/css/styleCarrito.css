@@ -6,11 +6,18 @@
 /*-----Contenido del boton del gadgetCarrito--------------------*/
 /*--------------------------------------------------------*/
 
-#gadgetCarrito a:focus {
-	z-index:101;
-	outline: none;
+#gadgetCarrito a:hover {
+	cursor:pointer;
+	text-decoration: underline;
 }
-
+#finCompra{
+	position:absolute;
+	right:133px;
+	bottom:20px;
+}
+#gadgetCarrito label{
+	color:white;
+}
 #gadgetCarrito h1 {
 	font-size: 34px;
 	font-family: verdana, helvetica, arial, sans-serif;
@@ -44,8 +51,8 @@
 	padding: 0 0 10px;
 	text-align:center;
 }
-.fila td{
-	width:75px;
+.fila .producto{
+	width:300px;
 }
 #gadgetCarrito .panel {
 	position: fixed;
@@ -59,7 +66,7 @@
 	-webkit-border-top-left-radius: 20px;
 	-moz-border-radius-bottomleft: 20px;
 	-webkit-border-bottom-left-radius: 20px;
-	width: 330px;
+	width: auto;
 	height: auto;
 	padding: 30px 130px 30px 30px;
 }
@@ -70,22 +77,20 @@
 	color: #fff;
 }
 
-#gadgetCarrito .panel a,.panel a:visited {
+#gadgetCarrito .panel a{
 	margin: 0;
 	padding: 0;
 	z-index:101;
 	color: #9FC54E;
 	text-decoration: none;
-	border-bottom: 1px solid #9FC54E;
 }
 
-#gadgetCarrito .panel a:hover,.panel a:visited:hover {
+#gadgetCarrito .panel a:hover{
 	margin: 0;
 	padding: 0;
-	color: #ffffff;
 	z-index:101;
-	text-decoration: none;
-	border-bottom: 1px solid #ffffff;
+	cursor:pointer;
+	text-decoration: underline;
 }
 
 #gadgetCarrito a.trigger {

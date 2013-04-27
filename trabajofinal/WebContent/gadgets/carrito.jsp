@@ -26,7 +26,7 @@
 				<h3>Carrito</h3>
 				<table id="prods">
 					<tr class="fila">
-						<th>Producto</th>
+						<th class="producto">Producto</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
 						<th>Subtotal</th>
@@ -38,7 +38,7 @@
 							Integer cantidad=carrito.get(prod);
 							total=total+prod.getPrecio()*cantidad;%>
 							<tr class="fila">
-								<td><%=prod.getNombre() %></td>
+								<td class="producto"><%=prod.getNombre() %></td>
 								<td><%=prod.getPrecio() %></td>
 								<td><%=cantidad %></td>
 								<td><%=prod.getPrecio()*cantidad %></td>
@@ -47,13 +47,19 @@
 							<%
 						}%>
 						<tr class="fila">
-							<td></td>
+							<td class="producto"></td>
 							<td></td>
 							<td style="text-align:right;">Total:</td>
 							<td><%=total%></td>
-							<td><a href="ProductoController?accion=carritoSupr">Sacar</a></td>
+							<td><a href="ProductoController?accion=carritoSupr">Vaciar</a></td>
 						</tr>
 				</table>
+				<c:if test="${sessionScope.usuario eq null}">
+					<label>Inicie sesión para poder finalizar la compra</label>
+				</c:if>
+				<c:if test="${sessionScope.usuario.id eq 1 || sessionScope.usuario.id eq 2}">
+					<a id="finCompra" href="#">Finalizar compra</a>
+				</c:if>
 				<%}%>
 			</div>
 			<!-- Boton del carrito -->
