@@ -117,21 +117,20 @@ public class UsuarioDao extends BaseDao {
 	
 	public List<Usuario> buscador(String cond) throws SQLException, Exception{
 		String sentenciaSQL = "SELECT * FROM usuario WHERE nombre like '%" + cond + "%' " +
-							"or apellido like '%admin%'	or mail like '%" + cond + "%' " +
-							"or nomusuario like '%" + cond + "%' " +
-							"or rol like '%" + cond + "%' " +
+							"or apellido like '%" + cond + "%' " +
+							"or mail like '%" + cond + "%' " +
+							"or user like '%" + cond + "%' " +
 							"ORDER BY id ASC";
 		System.out.println(sentenciaSQL);
 		Usuario usuario = null;
-		ResultSet filasConsulta = consultar(sentenciaSQL);
-		while (filasConsulta.next()) {
+		usuarioID = consultar(sentenciaSQL);
+		while (usuarioID.next()) {
 			usuario = new Usuario();
-			usuario.setId(filasConsulta.getInt("id"));
-			usuario.setNombre(filasConsulta.getString("nombre"));
-			usuario.setApellido(filasConsulta.getString("apellido"));
-			usuario.setMail(filasConsulta.getString("mail"));
-			usuario.setUser(filasConsulta.getString("user"));
-			usuario.setPass(filasConsulta.getString("pass"));
+			usuario.setNombre(usuarioID.getString("nombre"));
+			usuario.setApellido(usuarioID.getString("apellido"));
+			usuario.setMail(usuarioID.getString("mail"));
+			usuario.setUser(usuarioID.getString("user"));
+			usuario.setPass(usuarioID.getString("pass"));
 			usuario.setRol(new RolDao().buscar(usuarioID.getInt("rol_id")));
 			usuarios.add(usuario);
 						
