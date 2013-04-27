@@ -58,7 +58,7 @@
 					<label>Inicie sesión para poder finalizar la compra</label>
 				</c:if>
 				<c:if test="${sessionScope.usuario.id eq 1 || sessionScope.usuario.id eq 2}">
-					<a id="finCompra" href="#">Finalizar compra</a>
+					<a id="finCompra" href="finalizarCompra.jsp?compra=facturar">Finalizar compra</a>
 				</c:if>
 				<%}%>
 			</div>

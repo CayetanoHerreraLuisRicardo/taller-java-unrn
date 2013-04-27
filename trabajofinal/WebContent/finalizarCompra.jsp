@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="java.util.Enumeration, java.util.List, modelo.Producto"%>
+	pageEncoding="ISO-8859-1" import="java.util.*, modelo.Producto"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
@@ -7,19 +7,22 @@
 	<link rel="stylesheet" type="text/css" href="css/styleLista.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="js/javascript.js"></script>
-	<title>Compras</title>
+	<title>PS3 Argento</title>
 </head>
 <%
 	//Controla la facturación del carrito
 	//Falta poner errores
-	String tema=request.getParameter("tema");
-	if(tema==null || tema.isEmpty()){
-		getServletContext().getRequestDispatcher(request.getParameter("url")).forward(request, response);
-		return;
+	String compra=request.getParameter("compra");
+	if(compra==null || compra.isEmpty()){
+		Boolean exito=false;
+		request.setAttribute("exito", exito);
+		String error="El sistema no reconoce esta Acción.";
+		request.setAttribute("error", error);
+		getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 	}
-	if(tema.equals("compra")){
+	if(compra.equals("facturar")){
 		@SuppressWarnings("unchecked")
-		List<Producto>carrito=(List<Producto>) session.getAttribute("carrito");
+		Hashtable<Producto,Integer>carrito=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 		if(carrito==null || carrito.size()==0){
 			Boolean exito=false;
 			request.setAttribute("exito", exito);
@@ -33,8 +36,15 @@
 			return;
 		}
 	}
+	
 %>
 <body>
+<!------------------------------------------------------->
+<!---Alerta---------------------------------------------->
+<!------------------------------------------------------->
+<div id="alerta">
+	<jsp:include page="gadgets/alerta.jsp" />
+</div>
 <div id="wrapper">
 	<!------------------------------------------------------->
 	<!---Cabecera, ubicada al tope del documento------------->
