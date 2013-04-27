@@ -126,6 +126,7 @@ public class UsuarioDao extends BaseDao {
 		usuarioID = consultar(sentenciaSQL);
 		while (usuarioID.next()) {
 			usuario = new Usuario();
+			usuario.setId(Integer.parseInt(usuarioID.getString("id")));
 			usuario.setNombre(usuarioID.getString("nombre"));
 			usuario.setApellido(usuarioID.getString("apellido"));
 			usuario.setMail(usuarioID.getString("mail"));
