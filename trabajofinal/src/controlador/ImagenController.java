@@ -34,7 +34,7 @@ import dao.ProductoDao;
  * Servlet implementation class imagenController
  */
 public class ImagenController extends HttpServlet {
-	//private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()

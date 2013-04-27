@@ -156,7 +156,7 @@ public class ProductoController extends HttpServlet {
 				//
 				//Eliminar del carrito
 				//
-				if (accion.equals("carritoDel")){
+				if (accion.equals("carritoSupr")){
 					Hashtable<Producto,Integer>productos=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 					if(productos == null){
 						Boolean exito=false;
