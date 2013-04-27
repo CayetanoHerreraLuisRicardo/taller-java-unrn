@@ -6,7 +6,7 @@ import modelo.*;
 
 public class PedidoDao extends BaseDao {
 	private ResultSet pedidoResult;
-	private UsuarioDao userDao;
+	private UsuarioDao userDao=new UsuarioDao();
 	private List<Pedido> pedidos=new ArrayList<Pedido>();
 
 	@Override
@@ -38,7 +38,7 @@ public class PedidoDao extends BaseDao {
 		Integer resultadoFinal=null;
 		//Por cada producto en el objeto pedido, se crea una tupla en la tabla pedidio_producto
 		Usuario usuario=((Pedido) ped).getUsuario();
-		String sqlSent="INSERT INTO `pedido` (`usuario_id`,`fecha_pedido`,`estado`,`fecha_entrega`) VALUES " +
+		String sqlSent="INSERT INTO `pedido` (`usuario_id`,`fecha_pedido`,`fecha_entrega`) VALUES " +
 			"("+usuario.getId()+",'"+((Pedido) ped).getFechaPedido()+"','"+((Pedido) ped).getFechaEntrega()+"');";
 		try {
 			resultadoInicial=modificar(sqlSent);

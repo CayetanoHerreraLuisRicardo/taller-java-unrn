@@ -7,7 +7,7 @@
 						<legend class="campoUsu">Iniciar Sesión</legend>
 						<div id="nom">
 							<label class="infoCampo">Usuario:</label>
-							<input autofocus="autofocus" class="campo" name="v_user" type="text" required="required" maxlength="12" />
+							<input class="campo" name="v_user" type="text" required="required" maxlength="12" />
 						</div>
 						<br>
 						<div id="pass">

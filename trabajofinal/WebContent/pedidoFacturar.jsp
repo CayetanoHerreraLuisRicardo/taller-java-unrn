@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="css/styleLista.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styleFactura.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>PS3 Argento</title>
@@ -61,19 +61,14 @@
 		<jsp:include page="panel_izq.jsp" />
 		</div>
 		<!------------------------------------------------------->
-		<!---Panel de navegación, ubicado a la derecha----------->
-		<!------------------------------------------------------->
-		<div id="panelDer">
-			<jsp:include page="panel_der.jsp" />
-		</div>
-		<!------------------------------------------------------->
 		<!---Estructura de la página en cuestión----------------->
 		<!------------------------------------------------------->
 		<div id="content">
-			<h2 id="titProd">Factura</h2>
-			<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
+			<h2 id="titulo">Factura</h2>
 			<!-- Sesión iniciada -->
 			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
+			<div id="factura">
+				<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
 				<table id="prods">
 					<tr class="fila">
 						<th class="producto">Producto</th>
@@ -92,7 +87,6 @@
 								<td><%=prod.getPrecio() %></td>
 								<td><%=cantidad %></td>
 								<td><%=prod.getPrecio()*cantidad %></td>
-								<td><a href="ProductoController?accion=carritoDel&cat=<%=prod.getCategoria().getId()%>&prodID=<%=prod.getId() %>">Sacar</a></td>
 							</tr>
 							<%
 						}%>
@@ -101,9 +95,13 @@
 							<td></td>
 							<td style="text-align:right;">Total:</td>
 							<td><%=total%></td>
-							<td><a href="ProductoController?accion=carritoSupr">Vaciar</a></td>
 						</tr>
 				</table>
+				<form action="PedidoController" method="post">
+					<input type="hidden" name="accion" value="guardar">
+					<input type="submit" value="Finalizar compra">
+				</form>
+			</div>
 			</c:if>
 			<c:if test="${sessionScope.usuario.rol.id ne 1 && sessionScope.usuario.rol.id ne 2}">
 				<%	String redirectURL="HomeController";

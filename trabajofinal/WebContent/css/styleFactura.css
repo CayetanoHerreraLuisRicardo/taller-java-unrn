@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+
+@import url(base.css);
+/*---------------------------------------------------------*/
+/*Estilo de la página en cuestión*/
+/*---------------------------------------------------------*/
+#content{
+	padding:0 3% 0 3%;
+}
+#titulo{
+	margin:0 0 0 0;
+}
+#factura{
+	margin:0 0 0 75px;
+	width:auto;
+}
+#factura #prods{
+	text-align:center;
+}
+#factura #prods .producto{
+	padding:0 25px 0 0;
+}
+#total{
+	border:none;
+}
+#total a{
+	text-align:center;
+	text-decoration: none;
+	background-color:#067098;
+	width: 162px;
+	float:left;
+	color:#FFFFFF;
+	display: block;
+	padding: 8px;
+	position: relative;
+	text-decoration: none;
+	z-index: 1;
+}
+#total a:hover{
+	background-color:#AAAAAA;
+	color: #000000;
+	position: relative;
+}
