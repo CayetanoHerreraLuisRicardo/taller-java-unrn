@@ -94,6 +94,14 @@
 					</form>
 				</div>
 			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq 2}">
+				<%	Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error= "Ud estó intentando realizar una operación no permitida.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+					return;%>
+			</c:if>
 		</div>
 	</div>
 	<!------------------------------------------------------->

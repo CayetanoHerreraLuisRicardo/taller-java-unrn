@@ -50,24 +50,32 @@
 		<!------------------------------------------------------->
 		<div id="content">
 			<!-- Sesión iniciada -->
-				<c:if test="${sessionScope.usuario.rol.id eq 1}">
-					<div id="alta">
-						<h2>Alta de categoría</h2>
-						<form id="formAlta" action="CategoriaController" method="post">
-							<fieldset id="categoria">
-								<legend class="campoTit">Datos de la categoría</legend>
-								<div id="nom">
-									<label class="infoCampo">Nombre:</label>
-									<input type="hidden" name="accion" value="guardar">
-									<input class="campo" name="v_nombre" type="text" required="required" maxlength="25" />
-								</div>
-							</fieldset>
-							<div id="envio">
-								<input type="submit" value="Enviar"/>
+			<c:if test="${sessionScope.usuario.rol.id eq 1}">
+				<div id="alta">
+					<h2>Alta de categoría</h2>
+					<form id="formAlta" action="CategoriaController" method="post">
+						<fieldset id="categoria">
+							<legend class="campoTit">Datos de la categoría</legend>
+							<div id="nom">
+								<label class="infoCampo">Nombre:</label>
+								<input type="hidden" name="accion" value="guardar">
+								<input class="campo" name="v_nombre" type="text" required="required" maxlength="25" />
 							</div>
-						</form>
-					</div>
-				</c:if>
+						</fieldset>
+						<div id="envio">
+							<input type="submit" value="Enviar"/>
+						</div>
+					</form>
+				</div>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id ne 1}">
+				<%	Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error= "Ud estó intentando realizar una operación no permitida.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+					return;%>
+			</c:if>
 		</div>
 	</div>
 	<!------------------------------------------------------->

@@ -20,21 +20,24 @@
 		request.setAttribute("error", error);
 		getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 	}
+	@SuppressWarnings("unchecked")
+	Hashtable<Producto,Integer>carrito=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 	if(compra.equals("facturar")){
-		@SuppressWarnings("unchecked")
-		Hashtable<Producto,Integer>carrito=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 		if(carrito==null || carrito.size()==0){
 			Boolean exito=false;
 			request.setAttribute("exito", exito);
 			String error="No se puede facturar una compra vacía.";
 			request.setAttribute("error", error);
-			String url="/home.jsp";
+			String url="HomeController";
 			getServletContext().getRequestDispatcher(url).forward(request, response);
 			return;
-		}else{
-			getServletContext().getRequestDispatcher(request.getParameter("url")).forward(request, response);
-			return;
 		}
+	}else{
+		Boolean exito=false;
+		request.setAttribute("exito", exito);
+		String error="El sistema no reconoce esta Acción.";
+		request.setAttribute("error", error);
+		getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 	}
 	
 %>
@@ -69,35 +72,57 @@
 		<jsp:include page="panel_izq.jsp" />
 		</div>
 		<!------------------------------------------------------->
+		<!---Panel de navegación, ubicado a la derecha----------->
+		<!------------------------------------------------------->
+		<div id="panelDer">
+			<jsp:include page="panel_der.jsp" />
+		</div>
+		<!------------------------------------------------------->
 		<!---Estructura de la página en cuestión----------------->
 		<!------------------------------------------------------->
 		<div id="content">
 			<h2 id="titProd">Factura</h2>
 			<h3>${sessionScope.usuario.apellido}, ${sessionScope.usuario.nombre}.</h3>
 			<!-- Sesión iniciada -->
-			<c:if test="${sessionScope.usuario.rol.id eq 2}">
-				<div id="error">
-					<c:choose>
-						<c:when test="${requestScope.exito eq true}">
-							<c:out value="${requestScope.error}" />
-							<br>
-						</c:when>
-						<c:when test="${requestScope.exito eq false}">
-							<c:out value="${requestScope.error}" />
-							<br>
-						</c:when>
-					</c:choose>
-				</div>
-				<div id="listado">
-					<c:forEach var="prods" items="${sessionScope.carrito}">
-					<div class="block_prod">
-						<h3 class="tit_prod">${prods.nombre}<label class="precio_prod">Precio: $${prods.precio}</label></h3>
-					</div>
-					</c:forEach>
-					<div class="block_prod">
-						<h3 id="total" class="tit_prod"><a href="PedidoController?accion=guardar">Pagar</a><label class="precio_prod">Total: $${sessionScope.total}</label></h3>
-					</div>
-				</div>
+			<c:if test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario.rol.id eq 1}">
+				<table id="prods">
+					<tr class="fila">
+						<th class="producto">Producto</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>Subtotal</th>
+					</tr>
+					<%	Enumeration<Producto>prods=carrito.keys();
+						Double total=0.00;
+						while(prods.hasMoreElements()){
+							Producto prod=prods.nextElement();
+							Integer cantidad=carrito.get(prod);
+							total=total+prod.getPrecio()*cantidad;%>
+							<tr class="fila">
+								<td class="producto"><%=prod.getNombre() %></td>
+								<td><%=prod.getPrecio() %></td>
+								<td><%=cantidad %></td>
+								<td><%=prod.getPrecio()*cantidad %></td>
+								<td><a href="ProductoController?accion=carritoDel&cat=<%=prod.getCategoria().getId()%>&prodID=<%=prod.getId() %>">Sacar</a></td>
+							</tr>
+							<%
+						}%>
+						<tr class="fila">
+							<td class="producto"></td>
+							<td></td>
+							<td style="text-align:right;">Total:</td>
+							<td><%=total%></td>
+							<td><a href="ProductoController?accion=carritoSupr">Vaciar</a></td>
+						</tr>
+				</table>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id ne 1 || sessionScope.usuario.rol.id ne 2}">
+				<%	Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error= "Ud estó intentando realizar una operación no permitida.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+					return;%>
 			</c:if>
 		</div>
 	</div>

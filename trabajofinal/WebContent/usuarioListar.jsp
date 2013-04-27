@@ -66,9 +66,13 @@
 						</c:forEach>
 					</div>
 				</c:when>
-				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">
-					<%	String redirectURL="HomeController";
-						response.sendRedirect(redirectURL);%>
+				<c:when test="${sessionScope.usuario.rol.id ne 1}">
+					<%	Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error= "Ud estó intentando realizar una operación no permitida.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+						return;%>
 				</c:when>
 			</c:choose>
 		</div>

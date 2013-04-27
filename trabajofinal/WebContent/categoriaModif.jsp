@@ -50,32 +50,40 @@
 		<!------------------------------------------------------->
 		<div id="content">
 			<!-- Sesión iniciada -->
-				<c:if test="${sessionScope.usuario.rol.id eq 1}">
-					<div id="alta">
-						<h2>Modificación de categoría</h2>
-						<form id="formAlta" action="CategoriaController" method="post">
-							<input type="hidden" name="accion" value="modificar">
-							<fieldset id="categoria">
-								<legend class="campoTit">Datos de la categoría</legend>
-								<div id="nom">
-									<label class="infoCampo">Nombre de la Categoria:</label>
-									<select class="campo" name="v_nombre">
-										<c:forEach var="cats" items="${sessionScope.listacategorias}">
-											<option value="${cats.nombre}">${cats.nombre}</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div id="nom">
-									<label class="infoCampo">Nombre modificado:</label>
-									<input class="campo" name="v_nombre_m" type="text" required="required" maxlength="25" />
-								</div>
-							</fieldset>
-							<div id="envio">
-								<input type="submit" value="Enviar"/>
+			<c:if test="${sessionScope.usuario.rol.id eq 1}">
+				<div id="alta">
+					<h2>Modificación de categoría</h2>
+					<form id="formAlta" action="CategoriaController" method="post">
+						<input type="hidden" name="accion" value="modificar">
+						<fieldset id="categoria">
+							<legend class="campoTit">Datos de la categoría</legend>
+							<div id="nom">
+								<label class="infoCampo">Nombre de la Categoria:</label>
+								<select class="campo" name="v_nombre">
+									<c:forEach var="cats" items="${sessionScope.listacategorias}">
+										<option value="${cats.nombre}">${cats.nombre}</option>
+									</c:forEach>
+								</select>
 							</div>
-						</form>
-					</div>
-				</c:if>
+							<div id="nom">
+								<label class="infoCampo">Nombre modificado:</label>
+								<input class="campo" name="v_nombre_m" type="text" required="required" maxlength="25" />
+							</div>
+						</fieldset>
+						<div id="envio">
+							<input type="submit" value="Enviar"/>
+						</div>
+					</form>
+				</div>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id ne 1}">
+				<%	Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error= "Ud estó intentando realizar una operación no permitida.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+					return;%>
+			</c:if>
 		</div>
 	</div>
 	<!------------------------------------------------------->

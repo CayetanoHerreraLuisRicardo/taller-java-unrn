@@ -50,27 +50,35 @@
 		<!------------------------------------------------------->
 		<div id="content">
 			<!-- Sesión iniciada -->
-				<c:if test="${sessionScope.usuario.rol.id eq 1}">
-					<div id="alta">
-						<h2>Eliminar Categoría</h2>
-						<fieldset id="categoria">
-							<legend class="campoTit">Datos de la categoría</legend>
-							<input type="hidden" name="accion" value="eliminar">
-							<table>
-								<tr><th>Categoría</th><th>¿Eliminar?</th></tr>
-								<c:forEach var="cats" items="${sessionScope.listacategorias}">
-									<tr>
-										<td class="delDesc" id="${cats.id}">${cats.nombre}</td>
-										<td class="del">
-											<!-- <input type="checkbox" name="cat" value="${cats.id}"> -->
-											<a class="borrar" href="CategoriaController?accion=eliminar&cat=${cats.id}">Borrar</a>
-										</td>
-									</tr>
-								</c:forEach>
-							</table>
-						</fieldset>
-					</div>
-				</c:if>
+			<c:if test="${sessionScope.usuario.rol.id eq 1}">
+				<div id="alta">
+					<h2>Eliminar Categoría</h2>
+					<fieldset id="categoria">
+						<legend class="campoTit">Datos de la categoría</legend>
+						<input type="hidden" name="accion" value="eliminar">
+						<table>
+							<tr><th>Categoría</th><th>¿Eliminar?</th></tr>
+							<c:forEach var="cats" items="${sessionScope.listacategorias}">
+								<tr>
+									<td class="delDesc" id="${cats.id}">${cats.nombre}</td>
+									<td class="del">
+										<!-- <input type="checkbox" name="cat" value="${cats.id}"> -->
+										<a class="borrar" href="CategoriaController?accion=eliminar&cat=${cats.id}">Borrar</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</fieldset>
+				</div>
+			</c:if>
+			<c:if test="${sessionScope.usuario.rol.id ne 1}">
+				<%	Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error= "Ud estó intentando realizar una operación no permitida.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+					return;%>
+			</c:if>
 		</div>
 	</div>
 	<!------------------------------------------------------->
