@@ -12,7 +12,8 @@
     height: 30px;
     left: 50%;
     margin-left: -60px;
-    position: absolute;
+    position: fixed;
+	z-index:100;
     text-align: center;
     top: 50px;
     width: 120px;
@@ -25,7 +26,8 @@
     height: 0;
     left: 50%;
     margin-left: -10px;
-    position: absolute;
+    position: fixed;
+	z-index:100;
     top: 40px;
     width: 0;
 }

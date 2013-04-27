@@ -43,7 +43,7 @@ public class ProductoController extends HttpServlet {
 				request.setAttribute("exito", exito);
 				String error="El sistema no reconoce esta Acción.";
 				request.setAttribute("error", error);
-				response.sendRedirect("HomeController");
+				getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 			}else{
 				//
 				//Listar
@@ -114,7 +114,11 @@ public class ProductoController extends HttpServlet {
 				if (accion.equals("carritoDel")){
 					Hashtable<Producto,Integer>productos=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 					if(productos == null){
-						response.sendRedirect("HomeController");
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="No puede eliminar un producto si el carrito está vacío.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 						return;
 					}
 					Enumeration<Producto> prods=productos.keys();
@@ -126,6 +130,10 @@ public class ProductoController extends HttpServlet {
 							if(productos.get(prod)>1){
 								productos.put(prod,productos.get(prod)-1);
 								session.setAttribute("carrito", productos);
+								Boolean exito=true;
+								request.setAttribute("exito", exito);
+								String error="Se borró un producto de su carrito.";
+								request.setAttribute("error", error);
 							}//Solo tenia uno
 							else{
 								productos.remove(prod);
@@ -144,6 +152,27 @@ public class ProductoController extends HttpServlet {
 						}
 					}
 					getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
+				}
+				//
+				//Eliminar del carrito
+				//
+				if (accion.equals("carritoDel")){
+					Hashtable<Producto,Integer>productos=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
+					if(productos == null){
+						Boolean exito=false;
+						request.setAttribute("exito", exito);
+						String error="No puede eliminar un producto si el carrito está vacío.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
+						return;
+					}
+					session.setAttribute("carrito",new Hashtable<Producto,Integer>());
+					Boolean exito=false;
+					request.setAttribute("exito", exito);
+					String error="Se vació el carrito.";
+					request.setAttribute("error", error);
+					getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
+					return;
 				}
 				//
 				//Guardar

@@ -37,7 +37,7 @@ public class CategoriaController extends HttpServlet {
 				request.setAttribute("exito", exito);
 				String error="El sistema no reconoce esta Acción.";
 				request.setAttribute("error", error);
-				response.sendRedirect("/home.jsp");
+				getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 			}else{
 				//
 				//Listar

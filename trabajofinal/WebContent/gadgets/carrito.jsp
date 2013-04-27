@@ -42,7 +42,7 @@
 								<td><%=prod.getPrecio() %></td>
 								<td><%=cantidad %></td>
 								<td><%=prod.getPrecio()*cantidad %></td>
-								<td><a href="ProductoController?accion=carritoDel&cat=<%=request.getParameter("cat")%>&prodID=<%=prod.getId() %>">Sacar</a></td>
+								<td><a href="ProductoController?accion=carritoDel&cat=<%=prod.getCategoria().getId()%>&prodID=<%=prod.getId() %>">Sacar</a></td>
 							</tr>
 							<%
 						}%>
@@ -51,6 +51,7 @@
 							<td></td>
 							<td style="text-align:right;">Total:</td>
 							<td><%=total%></td>
+							<td><a href="ProductoController?accion=carritoSupr">Sacar</a></td>
 						</tr>
 				</table>
 				<%}%>
