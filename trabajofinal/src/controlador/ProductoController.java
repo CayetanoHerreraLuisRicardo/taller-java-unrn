@@ -263,12 +263,12 @@ public class ProductoController extends HttpServlet {
 			//Buscar
 			//
 			
-			/*if (accion.equals("buscar")) {
+			if(accion.equals("buscar")) {
 				ProductoDao daoproducto = new ProductoDao();
-				List<Producto> listaproducto = daoproducto.buscador(request.getParameter("txtbuscar"),Integer.valueOf(request.getParameter("categoria")));
-				request.setAttribute("listaproducto", listaproducto);
-				getServletContext().getRequestDispatcher("/productoEliminar.jsp").forward(request, response);
-			}*/
+				List<Producto> listaProducto = daoproducto.buscador(request.getParameter("v_buscar"),Integer.valueOf(request.getParameter("categoria")));
+				request.setAttribute("listaproductos", listaProducto);
+				getServletContext().getRequestDispatcher("/productoListar.jsp").forward(request, response);
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 			response.sendRedirect("/web_mensaje.jsp?mensaje="+e.getMessage());
