@@ -59,4 +59,14 @@
     <servlet-name>UsuarioController</servlet-name>
     <url-pattern>/UsuarioController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImagenController</display-name>
+    <servlet-name>ImagenController</servlet-name>
+    <servlet-class>controlador.ImagenController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImagenController</servlet-name>
+    <url-pattern>/ImagenController</url-pattern>
+  </servlet-mapping>
 </web-app>
