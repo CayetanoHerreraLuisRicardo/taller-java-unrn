@@ -57,8 +57,8 @@ public class ProductoDao extends BaseDao {
 	public Integer guardar(Object prod) {
 		Integer id=null;
 		Categoria cat=((Producto) prod).getCategoria();
-		String sqlSent="INSERT INTO `producto` (`nombre`,`descrip`,`precio`,`categoria_id`) VALUES " +
-				"('"+((Producto) prod).getNombre()+"','"+((Producto) prod).getDescripcion()+"',"+((Producto) prod).getPrecio()+","+cat.getId()+")";
+		String sqlSent="INSERT INTO `producto` (`nombre`,`descrip`,`precio`,`categoria_id`,`img_url`) VALUES " +
+				"('"+((Producto) prod).getNombre()+"','"+((Producto) prod).getDescripcion()+"',"+((Producto) prod).getPrecio()+","+cat.getId()+",'"+((Producto) prod).getImgURL()+"')";
 		try {
 			id=modificar(sqlSent);
 			return id;

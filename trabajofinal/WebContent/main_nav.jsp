@@ -43,7 +43,7 @@
 				</li>
 				<li id="prods" class="lvl1"><a href="#">Productos</a>
 					<ul>
-						<li class="lvl2"><a href="">Buscar</a></li>
+						<li class="lvl2"><a href="productoBuscar.jsp">Buscar</a></li>
 					</ul>
 				</li>
 				<li class="lvl1"><a href="UsuarioController?accion=logOut">Cerrar Sesión</a></li>
@@ -52,7 +52,7 @@
 				<li class="lvl1"><a href="usuarioAlta.jsp">Crear una cuenta</a></li>
 				<li id="prods" class="lvl1"><a href="#">Productos</a>
 					<ul>
-						<li class="lvl2"><a href="">Buscar</a></li>
+						<li class="lvl2"><a href="productoBuscar.jsp">Buscar</a></li>
 					</ul>
 				</li>
 				<li class="lvl1"><a href="http://www.3djuegos.com/">Ir a 3dJuegos</a></li>

@@ -50,8 +50,6 @@
 		<div id="content">
 			<h2 id="titProd">Buscador de Productos</h2>
 				<!-- Sesión iniciada -->
-
-				<c:if test="${sessionScope.usuario.rol.id eq 1}">
 					<form id="formAlta" action="ProductoController" method="post">
 						
 							<label class="infoCampo">Ingrese la palabra o frase:</label>
@@ -75,8 +73,7 @@
 							
 								<input type="submit" value="Enviar"/>
 							</div>							
-					</form>									
-				</c:if>
+					</form>
 				<br>
 				<b>*Tenga en cuenta que puede buscar por nombre o descripcion.</b><br></br>
 				<b>*No es necesario ingresar la palabra entera</b>

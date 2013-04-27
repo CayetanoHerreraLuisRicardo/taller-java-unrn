@@ -103,10 +103,11 @@ public class ImagenController extends HttpServlet {
 				UploadFile file = (UploadFile) files.get("v_img_url");
 				if(listaext.contains(file.getContentType())){
 					upBean = new UploadBean();
-					upBean.setFolderstore("D:\\");
+					String dir="C:\\Users\\Luciano Graziani\\Dropbox\\UNRN - Materias\\workspace\\trabajofinal\\WebContent\\img";
+					upBean.setFolderstore(dir);
 					upBean.store(mrequest, "v_img_url");
 					urlimg = "img/" + file.getFileName();
-					System.out.println("imagen: " + "D:\\" + urlimg);
+					System.out.println("imagen: " + dir + urlimg);
 					System.out.println("nombre: " + urlimg);
 					System.out.println("tipo: " + file.getContentType());
 					System.out.println("tamanio: " + file.getFileSize());
@@ -128,7 +129,7 @@ public class ImagenController extends HttpServlet {
 		} catch (UploadException exc) {
 			System.out.println("Error en lo primero: " + exc.getMessage());
 		}
-		prod.setImgURL(mrequest.getParameter(urlimg));
+		prod.setImgURL(urlimg);
 		//sigo con la carga de producto
 		Categoria cat=new Categoria();
 		cat.setId(Integer.parseInt(mrequest.getParameter("v_cat_id")));
