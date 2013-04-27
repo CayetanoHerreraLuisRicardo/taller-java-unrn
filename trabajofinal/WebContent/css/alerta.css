@@ -65,10 +65,15 @@
     display: block;
     font: bold 16px/40px sans-serif;
     height: 40px;
-    position: absolute;
+	-moz-border-radius-topleft: 20px;
+	-webkit-border-top-left-radius: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	z-index:100;
+    position: fixed;
     text-align: center;
     text-decoration: none;
-    top:-20px;
+    top:0;
     width: 100%;
     -webkit-animation: alert 1s ease forwards;
        -moz-animation: alert 1s ease forwards;

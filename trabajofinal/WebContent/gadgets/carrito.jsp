@@ -25,7 +25,7 @@
 				}else{%>
 				<h3>Carrito</h3>
 				<table id="prods">
-					<tr>
+					<tr class="fila">
 						<th>Producto</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
@@ -37,7 +37,7 @@
 							Producto prod=prods.nextElement();
 							Integer cantidad=carrito.get(prod);
 							total=total+prod.getPrecio()*cantidad;%>
-							<tr>
+							<tr class="fila">
 								<td><%=prod.getNombre() %></td>
 								<td><%=prod.getPrecio() %></td>
 								<td><%=cantidad %></td>
@@ -46,10 +46,10 @@
 							</tr>
 							<%
 						}%>
-						<tr>
+						<tr class="fila">
 							<td></td>
 							<td></td>
-							<td>Total:</td>
+							<td style="text-align:right;">Total:</td>
 							<td><%=total%></td>
 						</tr>
 				</table>

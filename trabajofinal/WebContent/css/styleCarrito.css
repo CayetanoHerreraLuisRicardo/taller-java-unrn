@@ -34,18 +34,19 @@
 	letter-spacing: -1px;
 	color: #fff;
 	font-weight: 700;
-	text-transform: uppercase;
 	margin: 0;
 	padding: 8px 0 8px 0;
 }
 
-#gadgetCarrito p {
+#gadgetCarrito #prods {
 	color: #cccccc;
 	line-height: 22px;
 	padding: 0 0 10px;
-	margin: 20px 0 20px 0;
+	text-align:center;
 }
-
+.fila td{
+	width:75px;
+}
 #gadgetCarrito .panel {
 	position: fixed;
 	top: 50px;
