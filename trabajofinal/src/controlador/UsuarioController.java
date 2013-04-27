@@ -122,8 +122,8 @@ public class UsuarioController extends HttpServlet {
 				//
 				else if(accion.equals("buscar")){
         			UsuarioDao daousuario= new UsuarioDao();
-        			List<Usuario> listausuario = daousuario.buscador(request.getParameter("v_buscar"));
-        			request.setAttribute("listausuario", listausuario);
+        			List<Usuario> listaUsuario = daousuario.buscador(request.getParameter("v_buscar"));
+        			request.setAttribute("listausuarios", listaUsuario);
         			getServletContext().getRequestDispatcher("/usuarioListar.jsp").forward(request, response);
         		}
 				//
