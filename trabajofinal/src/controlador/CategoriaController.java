@@ -114,20 +114,20 @@ public class CategoriaController extends HttpServlet {
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
 					if(usuario==null){
-						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Ud. no es administrador, no puede realizar dicha acción.";
 						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 						return;
 					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
-						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Ud. no es administrador, no puede realizar dicha acción.";
 						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 						return;
 					}
 					//Listar categorías
@@ -158,20 +158,20 @@ public class CategoriaController extends HttpServlet {
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
 					if(usuario==null){
-						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Ud. no es administrador, no puede realizar dicha acción.";
 						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 						return;
 					}
 					Rol rol=usuario.getRol();
 					if(rol.getId() != 1 || rol.getId() == null){
-						response.sendRedirect("HomeController");
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Ud. no es administrador, no puede realizar dicha acción.";
 						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 						return;
 					}
 					//Lista las Categorías
@@ -223,7 +223,11 @@ public class CategoriaController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String accion=request.getParameter("accion");
 		if(accion==null || accion.isEmpty()){
-			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+			Boolean exito=false;
+			request.setAttribute("exito", exito);
+			String error="El sistema no reconoce esta Acción.";
+			request.setAttribute("error", error);
+			getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 		}else{
 			//Nota: nunca lo usé.
 			if(accion.equals("guardar") || accion.equals("modificar")){

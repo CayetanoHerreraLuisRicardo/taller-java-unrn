@@ -372,7 +372,11 @@ public class ProductoController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String accion=request.getParameter("accion");
 		if(accion==null || accion.isEmpty()){
-			response.sendRedirect("/web_mensaje.jsp?mensaje=El sistema no reconoce esta Acción");
+			Boolean exito=false;
+			request.setAttribute("exito", exito);
+			String error="El sistema no reconoce esta Acción.";
+			request.setAttribute("error", error);
+			getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 		}else{
 			//Nota: nunca lo usó.
 			if(accion.equals("guardar") || accion.equals("modificar")){
