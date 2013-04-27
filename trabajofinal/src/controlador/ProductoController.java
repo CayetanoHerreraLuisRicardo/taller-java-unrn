@@ -1,6 +1,5 @@
 package controlador;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -9,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.oreilly.servlet.multipart.FilePart;
-import com.oreilly.servlet.multipart.MultipartParser;
-import com.oreilly.servlet.multipart.Part;
 
 import modelo.*;
 import dao.*;
@@ -312,20 +307,5 @@ public class ProductoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		processRequest(request, response);
-	}
-
-	private Boolean existeProducto(String nom) throws Exception {
-		ProductoDao daoproducto = new ProductoDao();
-		List<Producto> listaproductos = daoproducto.listar();
-		if (listaproductos == null) {
-			return false;
-		} else {
-			for (Producto prod : listaproductos) {
-				if (prod.getNombre().equals(nom)) {
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 }
