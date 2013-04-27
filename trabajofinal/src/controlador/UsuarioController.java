@@ -365,7 +365,7 @@ public class UsuarioController extends HttpServlet {
 				//
 				else if(accion.equals("logOut")){ 
 					session.invalidate();
-					getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
 				}
 			}
 		}catch (Exception e){
