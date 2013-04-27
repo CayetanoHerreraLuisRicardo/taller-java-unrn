@@ -21,7 +21,7 @@
 			<div class="panel">
 				<%	@SuppressWarnings("unchecked")
 					Hashtable<Producto,Integer>carrito=(Hashtable<Producto,Integer>)session.getAttribute("carrito");if(carrito.size()==0){
-					%><h3>Cargue un producto para ver </h3><%
+					%><h3>Carrito vacío</h3><%
 				}else{%>
 				<h3>Carrito</h3>
 				<table id="prods">

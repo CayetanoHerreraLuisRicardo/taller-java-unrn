@@ -43,7 +43,7 @@ public class ProductoController extends HttpServlet {
 				request.setAttribute("exito", exito);
 				String error="El sistema no reconoce esta Acción.";
 				request.setAttribute("error", error);
-				response.sendRedirect("/home.jsp");
+				response.sendRedirect("HomeController");
 			}else{
 				//
 				//Listar
@@ -368,7 +368,7 @@ public class ProductoController extends HttpServlet {
 
 	private Boolean existeProducto(String nom) throws Exception {
 		ProductoDao daoproducto = new ProductoDao();
-		List<Producto> listaproductos = daoproducto.listar(null);
+		List<Producto> listaproductos = daoproducto.listar();
 		if (listaproductos == null) {
 			return false;
 		} else {
