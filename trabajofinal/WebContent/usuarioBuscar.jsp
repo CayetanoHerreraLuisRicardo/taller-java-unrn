@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="java.util.Enumeration"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="css/styleListaUsers.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styleIndex.css"/>
 	<link rel="shortcut icon" href="img/favicon.png">
+	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>PS3 Argento</title>
 </head>
 <body>
@@ -36,50 +36,47 @@
 		<!---Panel de navegación, ubicado a la izquierda--------->
 		<!------------------------------------------------------->
 		<div id="panelIzq">
-			<jsp:include page="panel_izq.jsp" />
+		<jsp:include page="panel_izq.jsp" />
 		</div>
 		<!------------------------------------------------------->
 		<!---Panel de navegación, ubicado a la derecha----------->
 		<!------------------------------------------------------->
 		<div id="panelDer">
-			<jsp:include page="panel_der.jsp" />
+		<jsp:include page="panel_der.jsp" />
 		</div>
 		<!------------------------------------------------------->
 		<!---Estructura de la página en cuestión----------------->
 		<!------------------------------------------------------->
 		<div id="content">
 			<h2 id="titProd">Buscador</h2>
-			<!-- Sesión iniciada -->
-			<c:choose>
-				<c:when test="${sessionScope.usuario.rol.id eq 1}">
+				<!-- Sesión iniciada -->
+
+				<c:if test="${sessionScope.usuario.rol.id eq 1}">
 					<form id="formAlta" action="UsuarioController" method="post">
-						<fieldset id="categoria">
-							<legend class="campoTit">Buscar Usuario</legend>
+						<table>
+							<tr>
 							<div id="nom">
-								<label class="infoCampo">Ingrese la palabra o frase:</label>
-								<input type="hidden" name="accion" value="buscar">
-								<input class="campo" name="v_buscar" type="text" required="required" maxlength="25" />
+								<td><label class="infoCampo">Ingrese la palabra o frase:</label></td>
+								<td><input type="hidden" name="accion" value="buscar"></td>
+								<td><input class="campo" name="v_buscar" type="text" required="required" maxlength="25" /></td>
 							</div>
-						</fieldset>
-						<div id="envio">
-							<input type="submit" value="Enviar"/>
-						</div>
+							<th>
+							<div id="envio">
+								<input type="submit" value="Enviar"/>
+							</div>
+						</table>
 					</form>									
-				</c:when>
+				</c:if>
+				<br>
 				<b>*Tenga en cuenta que puede buscar por nombre, apellido, mail o nombre de usuario.</b><br></br>
 				<b>*No es necesario ingresar la palabra entera</b>
-				<c:when test="${sessionScope.usuario.rol.id eq 2 || sessionScope.usuario eq null}">
-					<%	String redirectURL="HomeController";
-						response.sendRedirect(redirectURL);%>
-				</c:when>
-			</c:choose>
 		</div>
 	</div>
 	<!------------------------------------------------------->
 	<!---Pie de Página--------------------------------------->
 	<!------------------------------------------------------->
 	<div id="footer">
-	<jsp:include page="footer.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </div>
 </body>
