@@ -67,7 +67,7 @@ public class PedidoController extends HttpServlet {
 						}
 						request.setAttribute("pedidos", pedsUser);
 						getServletContext().getRequestDispatcher("/pedidoListar.jsp").forward(request, response);
-					;
+					return;
 					//
 					//Guardar
 					//
@@ -88,12 +88,10 @@ public class PedidoController extends HttpServlet {
 						usuario=(Usuario) session.getAttribute("usuario");
 						DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 						Date date=new Date();
-						String fechaPedido=dateFormat.format(date);
-						String fechaEntrega=dateFormat.format(date);
+						String fechaCompra=dateFormat.format(date);
 						PedidoDao pedDao=new PedidoDao();
 						Pedido pedido=new Pedido();
-						pedido.setFechaEntrega(fechaEntrega);
-						pedido.setFechaPedido(fechaPedido);
+						pedido.setFechaCompra(fechaCompra);
 						pedido.setProductos(productos);
 						pedido.setUsuario(usuario);
 						Integer carga=pedDao.guardar(pedido);

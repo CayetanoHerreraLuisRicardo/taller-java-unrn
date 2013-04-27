@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.*;
 import java.util.*;
+
 import modelo.*;
 
 public class PedidoDao extends BaseDao {
@@ -18,11 +19,10 @@ public class PedidoDao extends BaseDao {
 				//Inicialización de pedidos
 				Pedido pedido=new Pedido();
 				pedido.setId(pedidoResult.getInt("id"));
-				pedido.setFechaEntrega(pedidoResult.getString("fecha_entrega"));
-				pedido.setFechaPedido(pedidoResult.getString("fecha_pedido"));
+				pedido.setFechaCompra(pedidoResult.getString("fecha_compra"));
 				//Cargar usuario
 				pedido.setUsuario(userDao.buscar(pedidoResult.getInt("usuario_id")));
-				pedido=Pedido.cargarProds(pedido);
+				pedido=cargarProds(pedido);
 				pedidos.add(pedido);
 			}
 		} catch (Exception e) {
@@ -38,8 +38,8 @@ public class PedidoDao extends BaseDao {
 		Integer resultadoFinal=null;
 		//Por cada producto en el objeto pedido, se crea una tupla en la tabla pedidio_producto
 		Usuario usuario=((Pedido) ped).getUsuario();
-		String sqlSent="INSERT INTO `pedido` (`usuario_id`,`fecha_pedido`,`fecha_entrega`) VALUES " +
-			"("+usuario.getId()+",'"+((Pedido) ped).getFechaPedido()+"','"+((Pedido) ped).getFechaEntrega()+"');";
+		String sqlSent="INSERT INTO `pedido` (`usuario_id`,`fecha_compra`) VALUES " +
+			"("+usuario.getId()+",'"+((Pedido) ped).getFechaCompra()+"');";
 		try {
 			resultadoInicial=modificar(sqlSent);
 		} catch (Exception e1) {
@@ -71,7 +71,7 @@ public class PedidoDao extends BaseDao {
 		//Se recorre pedido_producto, y luego de borrar todas las coincidencias, se borra la fila de la tabla pedido
 		Pedido ped=new Pedido();
 		ped.setId(id);
-		ped=Pedido.cargarProds(ped);
+		ped=cargarProds(ped);
 		Hashtable<Producto,Integer> prodsTable=((Pedido)ped).getProductos();
 		for(int a=0;a<prodsTable.size();a++){
 			String sqlSentProd="DELETE FROM `pedido_producto` WHERE pedido_id="+id;
@@ -102,8 +102,7 @@ public class PedidoDao extends BaseDao {
 		Usuario user=((Pedido)ped).getUsuario();
 		String sqlSent="UPDATE `pedido` SET " +
 			"usuario_id="+user.getId()+", " +
-			"fecha_pedido="+((Pedido)ped).getFechaPedido()+", " +
-			"fecha_entrega="+((Pedido)ped).getFechaEntrega()+" " +
+			"fecha_compra="+((Pedido)ped).getFechaCompra()+", " +
 			"WHERE id="+((Pedido) ped).getId();
 		try {
 			resultado=modificar(sqlSent);
@@ -124,8 +123,7 @@ public class PedidoDao extends BaseDao {
 			if(pedidoResult.next()){
 				//Inicialización del pedido
 				pedido.setId(id);
-				pedido.setFechaEntrega(pedidoResult.getString("fecha_entrega"));
-				pedido.setFechaPedido(pedidoResult.getString("fecha_pedido"));
+				pedido.setFechaCompra(pedidoResult.getString("fecha_compra"));
 				//Cargar usuario
 				pedido.setUsuario(userDao.buscar(pedidoResult.getInt("usuario_id")));
 				return pedido;
@@ -141,4 +139,34 @@ public class PedidoDao extends BaseDao {
 		}
 	}
 
+	private Pedido cargarProds(Pedido ped){
+		//Creación de la lista de productos
+		try{
+			ResultSet p_pID=dao.BaseDao.consultar("Select * FROM pedido_producto WHERE pedido_id="+ped.getId());
+			Hashtable<Producto,Integer> pList=new Hashtable<Producto,Integer>();
+			while(p_pID.next()){
+				ResultSet prodID=dao.BaseDao.consultar("Select * FROM producto WHERE id="+p_pID.getInt("producto_id"));
+				prodID.next();
+				Producto prod=new Producto();
+				prod.setId(prodID.getInt("id"));
+				prod.setDescripcion(prodID.getString("descrip"));
+				prod.setNombre(prodID.getString("nombre"));
+				prod.setPrecio(prodID.getDouble("precio"));
+					ResultSet catID=dao.BaseDao.consultar("Select * FROM categoria WHERE id="+prodID.getInt("categoria_id"));
+					catID.next();
+					Categoria cat=new Categoria();
+					cat.setId(catID.getInt("id"));
+					cat.setNombre(catID.getString("nombre"));
+				Integer cant=p_pID.getInt("cantProds");
+				pList.put(prod, cant);
+			}
+			ped.setProductos(pList);
+			return ped;
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			ped.setProductos(null);
+			return ped;
+		}
+	}
 }

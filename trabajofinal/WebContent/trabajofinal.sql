@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS `trabajofinal`.`pedido` ;
 CREATE  TABLE IF NOT EXISTS `trabajofinal`.`pedido` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `usuario_id` INT NOT NULL ,
-  `fecha_pedido` DATE NOT NULL ,
+  `fecha_compra` DATE NOT NULL ,
   `fecha_entrega` DATE NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_pedido_usuario_idx` (`usuario_id` ASC) ,
