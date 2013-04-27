@@ -65,7 +65,7 @@
 					</c:forEach>
 				</div>
 			</c:if>
-			<c:if test="${sessionScope.usuario.rol.id ne 1 || sessionScope.usuario.rol.id ne 2}">
+			<c:if test="${sessionScope.usuario.rol.id ne 1 && sessionScope.usuario.rol.id ne 2}">
 				<%	String redirectURL="HomeController";
 					response.sendRedirect(redirectURL);%>
 			</c:if>
