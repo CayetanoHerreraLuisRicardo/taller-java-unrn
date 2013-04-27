@@ -133,6 +133,7 @@ public class UsuarioDao extends BaseDao {
 			usuario.setPass(usuarioID.getString("pass"));
 			usuario.setRol(new RolDao().buscar(usuarioID.getInt("rol_id")));
 			usuarios.add(usuario);
+			if (usuarios.isEmpty()) System.out.println("esta vacia");
 						
 		}
 		return usuarios;
