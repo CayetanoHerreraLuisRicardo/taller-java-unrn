@@ -14,32 +14,21 @@
 	//Falta poner errores
 	String compra=request.getParameter("compra");
 	if(compra==null || compra.isEmpty()){
-		Boolean exito=false;
-		request.setAttribute("exito", exito);
-		String error="El sistema no reconoce esta Acción.";
-		request.setAttribute("error", error);
-		getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
+		String redirectURL="HomeController";
+		response.sendRedirect(redirectURL);
 	}
 	@SuppressWarnings("unchecked")
 	Hashtable<Producto,Integer>carrito=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
 	if(compra.equals("facturar")){
 		if(carrito==null || carrito.size()==0){
-			Boolean exito=false;
-			request.setAttribute("exito", exito);
-			String error="No se puede facturar una compra vacía.";
-			request.setAttribute("error", error);
-			String url="HomeController";
-			getServletContext().getRequestDispatcher(url).forward(request, response);
-			return;
+			String redirectURL="HomeController";
+			response.sendRedirect(redirectURL);
 		}
 	}else{
-		Boolean exito=false;
-		request.setAttribute("exito", exito);
-		String error="El sistema no reconoce esta Acción.";
-		request.setAttribute("error", error);
-		getServletContext().getRequestDispatcher("/HomeController").forward(request, response);
+		String redirectURL="HomeController";
+		response.sendRedirect(redirectURL);
 	}
-	
+
 %>
 <body>
 <!------------------------------------------------------->
