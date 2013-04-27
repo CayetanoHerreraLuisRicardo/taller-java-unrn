@@ -48,7 +48,7 @@
 		<!---Estructura de la página en cuestión----------------->
 		<!------------------------------------------------------->
 		<div id="content">
-			<h2 id="titProd">Buscador</h2>
+			<h2 id="titProd">Buscador de Usuarios</h2>
 				<!-- Sesión iniciada -->
 
 				<c:if test="${sessionScope.usuario.rol.id eq 1}">
