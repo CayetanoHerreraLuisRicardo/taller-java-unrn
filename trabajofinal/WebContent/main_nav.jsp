@@ -17,7 +17,7 @@
 				<li id="prods" class="lvl1"><a href="#">Productos</a>
 					<ul>
 						<li class="lvl2"><a href="productoAlta.jsp">Crear</a></li>
-						<li class="lvl2"><a href="">Buscar</a></li>
+						<li class="lvl2"><a href="productoBuscar.jsp">Buscar</a></li>
 					</ul>
 				</li>
 				<li class="lvl1"><a href="#">Administrar Cuentas</a>
