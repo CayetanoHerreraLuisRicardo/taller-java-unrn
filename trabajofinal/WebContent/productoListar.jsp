@@ -75,8 +75,7 @@
 							<img alt="Imágen no disponible" src="${prods.imgURL}" height="100%" width="25%"/>
 							<ul class="desc_prod">${prods.descripcion}</ul>
 							<ul class="edit">
-								<li><a href="CarritoController?accion=agregar&cat=<%=request.getParameter("cat")%>&prodID=${prods.id}">Agregar</a></li>
-								<li><a href="CarritoController?accion=quitar&cat=<%=request.getParameter("cat")%>&prodID=${prods.id}">Quitar</a></li>
+								<li><a href="ProductoController?accion=carritoAdd&cat=<%=request.getParameter("cat")%>&prodID=${prods.id}">Agregar al carrito</a></li>
 							</ul>
 						</div>
 						</c:forEach>

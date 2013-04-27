@@ -43,6 +43,9 @@ public class PedidoController extends HttpServlet {
 				request.setAttribute("error", error);
 				response.sendRedirect("/home.jsp");
 			}else{
+				//
+				//Lista
+				//
 				if(accion.equals("lista")){
 					Usuario user=(Usuario) session.getAttribute("usuario");
 					PedidoDao daoPedido=new PedidoDao();
@@ -58,23 +61,24 @@ public class PedidoController extends HttpServlet {
 						request.setAttribute("exito", exito);
 						String error="No ha realizado una compra en nuestra web.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/WebController?url=/home.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 						return;
 					}
 					request.setAttribute("pedidos", pedsUser);
-					getServletContext().getRequestDispatcher("/WebController?url=/pedidoListar.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/pedidoListar.jsp").forward(request, response);
 				}
+				//
 				//Guardar
+				//
 				if(accion.equals("guardar")){
 					//Verifica el rol del usuario
 					Usuario usuario=(Usuario) session.getAttribute("usuario");
-					Rol rol=usuario.getRol();
-					if(rol.getId() != 1){
-						response.sendRedirect("HomeController");
+					if(usuario == null){
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
-						String error="Ud. no es administrador, no puede realizar dicha acción.";
+						String error="Ud. es un invitado, inicie sesión antes de intentar realizar una compra.";
 						request.setAttribute("error", error);
+						response.sendRedirect("HomeController");
 						return;
 					}
 					@SuppressWarnings("unchecked")
@@ -92,19 +96,22 @@ public class PedidoController extends HttpServlet {
 					pedido.setProductos(productos);
 					pedido.setUsuario(usuario);
 					Integer carga=pedDao.guardar(pedido);
+					//Reseteo del carrito
+					Hashtable<Producto,Integer>carrito=new Hashtable<Producto,Integer>();
+					session.setAttribute("carrito",carrito);
 					if(carga != -1){
 						Boolean exito=true;
 						request.setAttribute("exito", exito);
 						String error="Su compra ha sido realizada con éxito.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/WebController?url=/home.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 						return;
 					}else{
 						Boolean exito=false;
 						request.setAttribute("exito", exito);
 						String error="Hubo un error en la facturación, por favor intente de nuevo más tarde.";
 						request.setAttribute("error", error);
-						getServletContext().getRequestDispatcher("/WebController?url=/home.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 					}
 				}
 				//Eliminar

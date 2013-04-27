@@ -31,10 +31,9 @@ public class HomeController extends HttpServlet {
 			session.setAttribute("error", new String());
 			session.setAttribute("mensaje", new String());
 			if(session.getAttribute("carrito")==null){
-				session.setAttribute("carrito", new Pedido());
 				session.setAttribute("usuario", null);
-				Hashtable<Producto,Integer>total=new Hashtable<Producto,Integer>();
-				session.setAttribute("total",total);
+				Hashtable<Producto,Integer>carrito=new Hashtable<Producto,Integer>();
+				session.setAttribute("carrito",carrito);
 			}
 			getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
 		}

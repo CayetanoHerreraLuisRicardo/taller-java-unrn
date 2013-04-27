@@ -7,7 +7,7 @@ import modelo.*;
 
 public class ProductoDao extends BaseDao {
 	private ResultSet productoResult;
-	private CategoriaDao catDao;
+	private CategoriaDao catDao=new CategoriaDao();
 	private List<Producto> productos=new ArrayList<Producto>();
 
 	@Override

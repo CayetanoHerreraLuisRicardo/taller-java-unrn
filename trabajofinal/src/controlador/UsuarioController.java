@@ -39,7 +39,9 @@ public class UsuarioController extends HttpServlet {
 				request.setAttribute("error", error);
 				response.sendRedirect("/home.jsp");
 			}else{
-				//Nota: nunca lo usé.
+				//
+				//Lista
+				//
 				if(accion.equals("lista")){
 					UsuarioDao daoUser=new UsuarioDao();
 					List<Usuario> listaUsuario=daoUser.listar();

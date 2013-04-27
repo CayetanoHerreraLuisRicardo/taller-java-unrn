@@ -66,76 +66,70 @@ public class ProductoController extends HttpServlet {
 				//Insertar al carrito
 				//
 				if (accion.equals("carritoAdd")) {
-					Usuario usuario=(Usuario) session.getAttribute("usuario");
-					if(usuario==null){
-						response.sendRedirect("HomeController");
+					ProductoDao daoProd = new ProductoDao();
+					Hashtable<Producto,Integer>productos=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
+					if(productos == null){
+						getServletContext().getRequestDispatcher("HomeController").forward(request, response);
 						return;
 					}
-					ProductoDao daoProd = new ProductoDao();
-					Pedido pedido = (Pedido) session.getAttribute("carrito");
-					Hashtable<Producto,Integer>total=(Hashtable<Producto,Integer>)session.getAttribute("total");
-					Producto prod=daoProd.buscar(Integer.valueOf(request.getParameter("id")));
+					Producto prod=daoProd.buscar(Integer.valueOf(request.getParameter("prodID")));
 					//Busca dentro del carrito si ya esta cargado el mismo producto
-					Hashtable<Producto,Integer>prodsTable=pedido.getProductos();
-					Enumeration<Producto> prods=prodsTable.keys();
-					while(prods.hasMoreElements()){
-						Producto tempProd=prods.nextElement();
-						if(tempProd.getId()==prod.getId()){
-							Integer cant=total.get(tempProd);
-							cant++;
-							total.put(tempProd, cant);
-							session.setAttribute("total", total);
-							pedido.getProductos().put(tempProd, cant);
-							session.setAttribute("carrito", pedido);
-							Boolean exito=true;
-							request.setAttribute("exito", exito);
-							String error="Se cargó un nuevo producto a su carrito.";
-							request.setAttribute("error", error);
-							getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
-							return;
+					if(productos.size()>0){
+						Enumeration<Producto> prods=productos.keys();
+						while(prods.hasMoreElements()){
+							Producto tempProd=prods.nextElement();
+							if(tempProd.getId()==prod.getId()){
+								Integer cant=productos.get(tempProd);
+								cant++;
+								productos.put(tempProd, cant);
+								session.setAttribute("carrito", productos);
+								Boolean exito=true;
+								request.setAttribute("exito", exito);
+								String error="Se cargó un nuevo producto a su carrito.";
+								request.setAttribute("error", error);
+								getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
+								return;
+							}
 						}
+						productos.put(prod,1);
+						session.setAttribute("carrito", productos);
+						Boolean exito=true;
+						request.setAttribute("exito", exito);
+						String error="Se agregó un nuevo producto a su carrito.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
+					}else{
+						productos.put(prod,1);
+						session.setAttribute("carrito", productos);
+						Boolean exito=true;
+						request.setAttribute("exito", exito);
+						String error="Se agregó un nuevo producto a su carrito.";
+						request.setAttribute("error", error);
+						getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
 					}
-					pedido.getProductos().put(prod,0);
-					total.put(prod, 0);
-					session.setAttribute("total", total);
-					session.setAttribute("carrito", pedido);
-					Boolean exito=true;
-					request.setAttribute("exito", exito);
-					String error="Se agregó un nuevo producto a su carrito.";
-					request.setAttribute("error", error);
-					getServletContext().getRequestDispatcher("/ProductoController?accion=lista&cat="+request.getParameter("cat")).forward(request, response);
 				}
 				//
 				//Eliminar del carrito
 				//
 				if (accion.equals("carritoDel")){
-					Usuario usuario=(Usuario) session.getAttribute("usuario");
-					if(usuario==null){
+					Hashtable<Producto,Integer>productos=(Hashtable<Producto,Integer>) session.getAttribute("carrito");
+					if(productos == null){
 						response.sendRedirect("HomeController");
 						return;
 					}
-					Pedido pedido = (Pedido) session.getAttribute("carrito");
-					Hashtable<Producto,Integer>prodsTable=pedido.getProductos();
-					Hashtable<Producto,Integer>total=(Hashtable<Producto,Integer>)session.getAttribute("total");
-					Enumeration<Producto> prods=prodsTable.keys();
+					Enumeration<Producto> prods=productos.keys();
 					while(prods.hasMoreElements()){
 						Producto prod=prods.nextElement();
 						//Existe?
-						if(prod.getId() == Integer.parseInt(request.getParameter("id"))){
+						if(prod.getId() == Integer.parseInt(request.getParameter("prodID"))){
 							//Tiene mós de un producto?
-							if(prodsTable.get(prod)>1){
-								prodsTable.put(prod,prodsTable.get(prod)-1);
-								total.put(prod,prodsTable.get(prod)-1);
-								session.setAttribute("total", total);
-								pedido.setProductos(prodsTable);
-								session.setAttribute("carrito", pedido);
+							if(productos.get(prod)>1){
+								productos.put(prod,productos.get(prod)-1);
+								session.setAttribute("carrito", productos);
 							}//Solo tenia uno
 							else{
-								prodsTable.remove(prod);
-								total.remove(prod);
-								session.setAttribute("total", total);
-								pedido.setProductos(prodsTable);
-								session.setAttribute("carrito", pedido);
+								productos.remove(prod);
+								session.setAttribute("carrito", productos);
 								Boolean exito=true;
 								request.setAttribute("exito", exito);
 								String error="Se borró un producto de su carrito.";
